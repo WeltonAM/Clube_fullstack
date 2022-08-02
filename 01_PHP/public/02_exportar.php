@@ -2,3 +2,4 @@
 
 $person = 'Juliana';
 
+echo $person;
