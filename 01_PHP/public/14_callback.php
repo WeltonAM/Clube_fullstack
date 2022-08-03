@@ -38,19 +38,35 @@
 
 
 // ----------------------
-class User
-{
-    public function __invoke()
-    {
-        return 'Aqui o teste';
-    }
-}
+// class User
+// {
+//     public function __invoke()
+//     {
+//         return 'Aqui o teste';
+//     }
+// }
 
-$user = new User;
+// $user = new User;
+
+// function teste($fn)
+// {
+//     return $fn();
+// }
+
+// echo teste($user);
+
+
+
+//----------------------------
+
+$user = function($name)
+{
+    return 'teste ' . $name;
+};
 
 function teste($fn)
 {
-    return $fn();
+    return call_user_func($fn, 'Juliana');
 }
 
 echo teste($user);
