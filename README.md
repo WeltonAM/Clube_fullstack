@@ -3,7 +3,7 @@
 
 01-PHP
 
-02-PHP-professrional
+02-PHP-professional
 
 03-PHP OO
 
