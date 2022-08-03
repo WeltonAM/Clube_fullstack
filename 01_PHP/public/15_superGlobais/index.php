@@ -19,7 +19,7 @@
 </head>
 <body>
 
-    <form action="03_post.php">
+    <form action="03_post.php" method="POST">
         <input type="text" name="name" placeholder="Nome">
         <input type="email" name="email" placeholder="Email">
         <button type="submit">Cadastrar</button>
