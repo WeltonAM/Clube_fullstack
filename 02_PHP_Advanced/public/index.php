@@ -14,7 +14,12 @@
 <body>
     <div class="container">
         <?php
-            require load();
+            try {
+                require load();
+            } catch (\Exception $e) {
+                echo $e->getMessage();
+            }
+
         ?>
     </div>
 </body>
