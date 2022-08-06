@@ -1,6 +1,6 @@
 <?php
 
-function validate(array $fields)
+function validate(array $fields
 {
     
 }
