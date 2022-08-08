@@ -2,11 +2,27 @@
 
 require "../../../bootstrap.php";
 
-dd($_POST);
+if(isEmpty()){
+    flash('message', 'Preencha todos os campos');
 
-// $validate = validate({
-//     'name' => 's';
-//     'email' => 'e';
-//     'subject' => 's';
-//     'message' => 's';
-// });
+    return redirect("contato");
+}
+
+$validate = validate([
+    'name' => 's',
+    'email' => 'e',
+    'subject' => 's',
+    'message' => 's',
+]);
+
+$data = [
+    'quem' => $validate->email,
+    'para' => 'contato@devclass.com.br',
+    'mensagem' => $validate->message,
+    'assunto' => $validate->subject,
+];
+
+if(send($data)){
+    flash('message', 'Email enviado com sucesso');
+    return redirect("contato");
+}
