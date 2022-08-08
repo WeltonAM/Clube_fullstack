@@ -1,4 +1,6 @@
-<form action="" method="POST" role="form">
+<?=get('message');?>
+
+<form action="/pages/forms/create_user.php" method="POST" role="form">
     <legend></legend>
 
     <div class="form-group">

@@ -5,7 +5,7 @@ require "../../../bootstrap.php";
 if(isEmpty()){
     flash('message', 'Preencha todos os campos');
 
-    return redirect("contato");
+    return redirect("create_user");
 }
 
 $validate = validate([
