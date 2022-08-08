@@ -1,4 +1,4 @@
-<?php 
+<?php
     require "../bootstrap.php";
 ?>
 
@@ -14,12 +14,14 @@
 <body>
     <div class="container">
         <?php
-            try {
+            try
+            {
                 require load();
-            } catch (\Exception $e) {
+            }
+            catch (Exception $e)
+            {
                 echo $e->getMessage();
             }
-
         ?>
     </div>
 </body>
