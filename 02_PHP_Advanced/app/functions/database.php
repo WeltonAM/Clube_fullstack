@@ -34,7 +34,21 @@ function all($table){
     return $list->fetchAll();
 }
 
-function update(){
+function update($table, $fields, $where){
+    if(!is_array($fields)){
+        $fields = (array) $fields;
+    }
+
+    $pdo = connect();
+
+    $fileds = array_map(function($field){
+        return "{$field} = :{$field}";
+    }, array_key($fileds));
+
+    $sql = "update {$table} set";
+
+    $sql .= implode(',', $fields);
+
 
 }
 
