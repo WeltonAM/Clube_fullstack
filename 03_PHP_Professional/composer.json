@@ -1,0 +1,19 @@
+{
+    "name": "pilgr/03_php_professional",
+    "description": "php-profissional",
+    "autoload": {
+        "files": [
+            "app/helpers/constants.php"
+        ],
+        "psr-4": {
+            "app\\": "app"
+        }
+    },
+    "authors": [
+    {
+        "name": "Welton Almeida de Matos",
+            "email": "74322996+WeltonAM@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}
