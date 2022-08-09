@@ -3,6 +3,7 @@
 <a href="?page=create_user">Cadastrar usuário</a>
 
 <?=get('message');?>
+
 <table class="table table-striped table-hover">
     <thead>
         <tr>
