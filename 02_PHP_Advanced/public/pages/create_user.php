@@ -23,6 +23,6 @@
         <input type="text" class="form-control" name="password" placeholder="">
     </div>
 
-    <button class="btn btn-primary">Cadastrar</button>
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
 
 </form>
