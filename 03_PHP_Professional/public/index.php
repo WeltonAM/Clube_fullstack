@@ -5,8 +5,14 @@ require 'bootstrap.php';
 try {
     $data = router();
 
-    extract($data['data']);
+    if(!isset($data['data'])){
+        throw new Exception("Index is missing");
+    }
 
+    if(!isset($data['data']['title'])){
+        throw new Exception("Missing Title");
+    }
+    
     if(!isset($data['view'])){
         throw new Exception("View doesn't exist");
     }
@@ -14,6 +20,8 @@ try {
     if(!file_exists(VIEWS.$data['view'])){
         throw new Exception("File {$data['view']} doesn't exist");
     }
+    
+    extract($data['data']);
 
     $view = $data['view'];
 

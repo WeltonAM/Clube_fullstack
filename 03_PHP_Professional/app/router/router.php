@@ -67,6 +67,6 @@ function router()
     if(!empty($matchedUri)){
         return controller($matchedUri, $params);
     }
-    throw new Exception("Error Processing Request");
+    throw new Exception("Route not found");
     
 }
