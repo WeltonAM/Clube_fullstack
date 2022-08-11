@@ -1,3 +1,3 @@
 <?php
 
-define('TESTE','teste constants');
+define('CONTROLLER_PATH',"app\\controllers\\");

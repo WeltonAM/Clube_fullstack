@@ -9,6 +9,7 @@ class ComposerStaticInitcb17bedea4d185234c7ccd18c69ac0dc
     public static $files = array (
         'ff6b4dc42151b900ffa538013dd668f9' => __DIR__ . '/../..' . '/app/helpers/constants.php',
         '40cdf5859ba16811f2c6958ea2c2b139' => __DIR__ . '/../..' . '/app/router/router.php',
+        '2167ec012c94ce7e4842b738f56a38dc' => __DIR__ . '/../..' . '/app/core/controller.php',
     );
 
     public static $prefixLengthsPsr4 = array (
