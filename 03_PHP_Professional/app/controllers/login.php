@@ -25,7 +25,7 @@ class Login
             return setMessageAndRedirect('message', 'Usuário ou senha inválidos 2', '/login');
         }
         
-        if(!password_verify($password, $clientes->senha)){
+        if(password_verify($password, $user->senha)){
             return setMessageAndRedirect('message', 'Usuário ou senha inválidos 3', '/login');
         }
 

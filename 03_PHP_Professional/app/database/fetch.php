@@ -19,6 +19,7 @@ function findBy($table, $field, $value, $fields = '*')
         $prepare->execute([
             $field => $value
         ]);
+        return $prepare->fetchObject();
     } catch (PDOException $e) {
         var_dump($e->getMessage());
     }
