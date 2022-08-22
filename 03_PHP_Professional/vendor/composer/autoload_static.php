@@ -25,12 +25,20 @@ class ComposerStaticInitcb17bedea4d185234c7ccd18c69ac0dc
         array (
             'app\\' => 4,
         ),
+        'L' => 
+        array (
+            'League\\Plates\\' => 14,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'app\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
+        ),
+        'League\\Plates\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/plates/src',
         ),
     );
 

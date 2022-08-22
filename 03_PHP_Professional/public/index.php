@@ -17,15 +17,20 @@ try {
         throw new Exception("View doesn't exist");
     }
     
-    if(!file_exists(VIEWS.$data['view'])){
+    if(!file_exists(VIEWS.$data['view'].'.php')){
         throw new Exception("File {$data['view']} doesn't exist");
     }
+
+    $templates = new League\Plates\Engine(VIEWS);
+
+    // Render a template
+    echo $templates->render($data['view'], $data['data']);
     
-    extract($data['data']);
+    // extract($data['data']);
 
-    $view = $data['view'];
+    // $view = $data['view'];
 
-    require VIEWS.'master.php';
+    // require VIEWS.'master.php';
 } catch (Exception $e ) {
     var_dump($e->getMessage());
 }

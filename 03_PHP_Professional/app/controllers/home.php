@@ -8,7 +8,7 @@ class Home
     {
         $users = all('clientes');
         return [
-            'view' => 'home.php',
+            'view' => 'home',
             'data' => ['title' => 'Home','users' => $users]
         ];
     }

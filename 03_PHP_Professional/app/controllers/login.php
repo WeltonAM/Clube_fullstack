@@ -6,7 +6,7 @@ class Login
 {
     public function index(){
         return [
-            'view' => 'login.php',
+            'view' => 'login',
             'data' => ['title' => 'Login']
         ];
     }
@@ -16,17 +16,17 @@ class Login
         $password = strip_tags($_POST['password']);
 
         if(empty($email) || empty($password)){
-            return setMessageAndRedirect('message', 'Usuário ou senha inválidos 1', '/login');
+            return setMessageAndRedirect('message', 'Usuário ou senha inválidos', '/login');
         }
         
         $user = findBy('clientes', 'email', $email);
         
         if(!$user) {
-            return setMessageAndRedirect('message', 'Usuário ou senha inválidos 2', '/login');
+            return setMessageAndRedirect('message', 'Usuário ou senha inválidos', '/login');
         }
         
         if(password_verify($password, $user->senha)){
-            return setMessageAndRedirect('message', 'Usuário ou senha inválidos 3', '/login');
+            return setMessageAndRedirect('message', 'Usuário ou senha inválidos', '/login');
         }
 
         $_SESSION[LOGGED] = $user;
