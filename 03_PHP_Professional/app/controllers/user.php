@@ -17,7 +17,7 @@ class User
     public function create()
     {
         return [
-            'view' => 'create.php',
+            'view' => 'create',
             'data' => ['title' => 'Create']
         ];
     }
@@ -38,6 +38,7 @@ class User
         // $validate['senha'] = password_hash($validate['senha'], PASSWORD_DEFAULT);
 
         $created = create('clientes', $validate);
+        
         if(!$created){
             setFlash('message', 'Ocorreu um erro ao cadastrar. Tente novamente!');
             return redirect('/user/create');

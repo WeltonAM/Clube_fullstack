@@ -21,6 +21,13 @@ try {
         throw new Exception("File {$data['view']} doesn't exist");
     }
 
+    $arr = [
+        "nomecompleto" => "Juliana",
+        "cidade" => "FSA",
+        "email" => "ju@hta.com",
+        "senha" => "123",
+    ];
+
     $templates = new League\Plates\Engine(VIEWS);
 
     // Render a template
