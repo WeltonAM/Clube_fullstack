@@ -25,17 +25,24 @@ class User
     public function store()
     {
         $validate = validate([
-            'firstName' => 'required',
-            'lastName' => 'required',
+            'nomecompleto' => 'required',
+            'cidade' => 'required',
             'email' => 'email|unique:clientes',
-            'password' => 'required|maxlen:10',
+            'senha' => 'required|maxlen:10',
         ]);
 
         if(!$validate){
             return redirect('/user/create');
         }
 
-        var_dump($validate);
-        die();
+        // $validate['senha'] = password_hash($validate['senha'], PASSWORD_DEFAULT);
+
+        $created = create('clientes', $validate);
+        if(!$created){
+            setFlash('message', 'Ocorreu um erro ao cadastrar. Tente novamente!');
+            return redirect('/user/create');
+        }
+
+        return redirect('/');
     }
 }
