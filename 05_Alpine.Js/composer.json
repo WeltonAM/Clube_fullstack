@@ -1,0 +1,21 @@
+{
+    "name": "pilgr/05_alpine.js",
+    "autoload": {
+        "psr-4": {
+            "Pilgr\\05AlpineJs\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Welton Almeida de Matos",
+            "email": "74322996+WeltonAM@users.noreply.github.com"
+        }
+    ],
+    "require": {
+    },
+    "autoload":{
+        "psr-4":{
+            "classes\\":"classes"
+        }
+    }
+}
