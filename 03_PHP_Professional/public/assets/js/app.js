@@ -1,3 +1,5 @@
-import users from './users';
+import Alpine from 'alpinejs';
 
-users();
+window.Alpine = Alpine;
+
+Alpine.start()

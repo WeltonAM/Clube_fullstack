@@ -2,6 +2,10 @@
 
 <h2>Clientes</h2>
 
+<div x-data="">
+    
+</div>
+
 <ul id="users-home">
     <?php foreach ($users as $user): ?>
         <li>
