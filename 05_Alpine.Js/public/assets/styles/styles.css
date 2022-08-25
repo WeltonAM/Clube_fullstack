@@ -1,0 +1,8 @@
+.bg-active{
+    background-color: aqua;
+}
+
+.bg-inactive{
+    background-color: red;
+    color: white;
+}
