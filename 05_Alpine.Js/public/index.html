@@ -11,10 +11,20 @@
 
     <link rel="stylesheet" href="./assets/styles/styles.css">
 
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js"></script>
+    
 </head>
 <body>
     <div class="container">
-        <h2>Teste</h2>
+        <div x-data="app()">
+            <button @click="show= !show">Clicar</button>
+            
+            <div x-show="show">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae et illum cum nisi debitis? Sint, recusandae. Nostrum non aliquid laborum earum dignissimos libero magnam ex repellat. Sint culpa autem obcaecati.</div>
+        </div>
     </div>
+
+    
+    <script src="assets/src/index.js"></script>
 </body>
 </html>
