@@ -17,11 +17,14 @@
 </head>
 <body>
     <div class="container">
-        <div x-data="app()">
-            <button @click="show= !show">Clicar</button>
-            
-            <div x-bind:class="{'bg-active':show, 'bg-inactive':!show}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae et illum cum nisi debitis? Sint, recusandae. Nostrum non aliquid laborum earum dignissimos libero magnam ex repellat. Sint culpa autem obcaecati.</div>
-        </div>
+        <div x-data="app()" x-init="() => data()">
+            <ul>
+                <template x-for="user in users" :key="user.clienteID">
+                    <li>
+                        <span x-text="user.nomecompleto"></span>
+                    </li>
+                </template>
+            </ul>
     </div>
 
 
