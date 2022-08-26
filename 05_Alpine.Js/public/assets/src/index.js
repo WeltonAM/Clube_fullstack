@@ -11,12 +11,17 @@ function app(){
 
         // two way data bind
         // firstName: 'Alexandre',
-        send(){
-            console.log('send');
+        // send(){
+        //     console.log('send');
+        // },
+       
+        isVisible: false,
+        show:{
+            ['@click'](){
+                this.isVisible = !this.isVisible;
+            },
         },
-        show: true,
         
-        show: true,
         users:[],
         data(){
             this.users = [

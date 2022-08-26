@@ -18,13 +18,14 @@
 <body>
     <div class="container">
         <div x-data="app()" x-init="() => data()">
-            <ul>
+       
+            <!-- <ul>
                 <template x-for="user in users" :key="user.clienteID">
                     <li>
                         <span x-text="user.nomecompleto"></span>
                     </li>
                 </template>
-            </ul>
+            </ul> -->
 
             <!-- x-ref -->
             <!-- <img x-ref="image" src="" alt="">
@@ -38,13 +39,16 @@
             </form> -->
 
             <!-- Events -->
-            <a href="" @click.prevent="send">Send</a>
+            <!-- <a href="" @click.prevent="send">Send</a>
             <form action="">
                 <input type="text" @keydown="send">
             </form>
 
             <div x-show="show">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit cupiditate, minus mollitia repellendus quae laborum, nam adipisci illo ut, dolor odio ratione? Rerum ea in aut eaque consequuntur. Repellat, dolore.</div>
-            <div @resize.window="show = window.outerWidth < 768 ? false : true"></div>
+            <div @resize.window="show = window.outerWidth < 768 ? false : true"></div> -->
+
+            <div x-show="isVisible">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum odit, fugit temporibus ipsum voluptas doloribus ducimus vitae, magnam praesentium nihil eaque deserunt eius quae aliquam minima voluptate tempora facilis laboriosam.</div>
+            <button x-spread="show">Send</button>
 
 
     </div>
