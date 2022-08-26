@@ -8,6 +8,12 @@ function app(){
         //     image.src = this.images[random];
         //     console.log(this.$el);
         // },
+
+        // two way data bind
+        // firstName: 'Alexandre',
+        // send(){
+        //     console.log(this.firstName);
+        // },
         
         show: true,
         users:[],
