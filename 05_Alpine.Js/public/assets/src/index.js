@@ -1,5 +1,14 @@
 function app(){
     return{
+
+        // refs
+        // changeImage(){
+        //     const random = Math.floor(Math.random() * this.images.length);
+        //     const image = this.$refs['image'];
+        //     image.src = this.images[random];
+        //     console.log(this.$el);
+        // },
+        
         show: true,
         users:[],
         data(){
