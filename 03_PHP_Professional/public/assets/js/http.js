@@ -5,7 +5,7 @@ const axiosConfig = axios.create({
         "Content-type":"application/json",
         HTTP_X_REQUESTED_WITH: "XMLHttpRequest",
     },
-    baseURL: 'http://localhost:8888',
+    baseURL: 'http://localhost:8000',
 });
 
 export default axiosConfig;
