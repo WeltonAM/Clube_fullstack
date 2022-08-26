@@ -1,6 +1,6 @@
 <?php
 
-function validate(array $validations)
+function validate(array $validations, bool $persistInputs = false)
 {
     $result = [];
     $param = '';
@@ -9,6 +9,10 @@ function validate(array $validations)
         $result[$field] = (!str_contains($validate, '|')) ?
             singleValidations($validate, $field, $param):
             multipleValidations($validate, $field, $param);
+    }
+
+    if($persistInputs){
+        setOld();
     }
     
     if(in_array(false, $result)){

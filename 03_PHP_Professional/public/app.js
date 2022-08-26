@@ -5552,8 +5552,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var axiosConfig = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
   headers: {
-    "Content-type": "application/json",
-    HTTP_X_REQUESTED_WITH: "XMLHttpRequest"
+    'Content-type': 'application/json',
+    HTTP_X_REQUESTED_WITH: 'XMLHttpRequest'
   },
   baseURL: 'http://localhost:8000'
 });
