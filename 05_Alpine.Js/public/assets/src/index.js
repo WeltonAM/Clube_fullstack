@@ -1,6 +1,17 @@
 function app(){
     return{
 
+        isVisible:false,
+
+        showModal(){
+            const modal = this.$refs['modal'];
+            modal.classList.add('is-active');
+        },
+        closeModal(){
+            const modal = this.$refs['modal'];
+            modal.classList.remove('is-active');
+        },
+
         // refs
         // changeImage(){
         //     const random = Math.floor(Math.random() * this.images.length);
@@ -15,12 +26,16 @@ function app(){
         //     console.log('send');
         // },
        
-        isVisible: false,
-        show:{
-            ['@click'](){
-                this.isVisible = !this.isVisible;
-            },
-        },
+        // Multiple Events 
+        // isVisible: false,
+        // show:{
+        //     ['@click'](){
+        //         this.isVisible = !this.isVisible;
+        //     },
+        //     ['@click.away'](){
+        //         this.isVisible = !this.isVisible;
+        //     },
+        // },
         
         users:[],
         data(){

@@ -7,17 +7,50 @@
     <title>Curso de Alpine</title>
 
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"> -->
+
+    <!-- Bulma -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 
     <link rel="stylesheet" href="./assets/styles/styles.css">
 
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js"></script>
     
 </head>
 <body>
     <div class="container">
         <div x-data="app()" x-init="() => data()">
+
+            <div class="modal" x-ref="modal">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+                  <header class="modal-card-head">
+                    <p class="modal-card-title">Modal title</p>
+                    <button class="delete" aria-label="close" @click="closeModal"></button>
+                  </header>
+                  <section class="modal-card-body">
+                    <h2>Teste</h2>
+                  </section>
+                  <footer class="modal-card-foot">
+                    <button class="button is-success">Save changes</button>
+                    <button class="button" @click="closeModal">Cancel</button>
+                  </footer>
+                </div>
+            </div>
+            <button @click="showModal">Show Modal</button>
+            <button @click="isVisible = true">Show Message</button>
+
+            <template x-if="isVisible">
+                <article class="message is-primary">
+                    <div class="message-header">
+                      <p>Primary</p>
+                      <button class="delete" aria-label="delete" @click="isVisible = false"></button>
+                    </div>
+                    <div class="message-body">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+                    </div>
+                  </article>
+            </template>
        
             <!-- <ul>
                 <template x-for="user in users" :key="user.clienteID">
@@ -47,8 +80,8 @@
             <div x-show="show">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit cupiditate, minus mollitia repellendus quae laborum, nam adipisci illo ut, dolor odio ratione? Rerum ea in aut eaque consequuntur. Repellat, dolore.</div>
             <div @resize.window="show = window.outerWidth < 768 ? false : true"></div> -->
 
-            <div x-show="isVisible">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum odit, fugit temporibus ipsum voluptas doloribus ducimus vitae, magnam praesentium nihil eaque deserunt eius quae aliquam minima voluptate tempora facilis laboriosam.</div>
-            <button x-spread="show">Send</button>
+            <!-- <div x-show="isVisible">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum odit, fugit temporibus ipsum voluptas doloribus ducimus vitae, magnam praesentium nihil eaque deserunt eius quae aliquam minima voluptate tempora facilis laboriosam.</div>
+            <button x-spread="show">Send</button> -->
 
 
     </div>
