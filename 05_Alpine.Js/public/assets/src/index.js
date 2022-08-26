@@ -11,9 +11,10 @@ function app(){
 
         // two way data bind
         // firstName: 'Alexandre',
-        // send(){
-        //     console.log(this.firstName);
-        // },
+        send(){
+            console.log('send');
+        },
+        show: true,
         
         show: true,
         users:[],
