@@ -29,7 +29,7 @@ class User
             'cidade' => 'required',
             'email' => 'email|unique:clientes',
             'senha' => 'required|maxlen:10',
-        ], persistInputs:true);
+        ], persistInputs:true, checkCsrf:true);
 
         if(!$validate){
             return redirect('/user/create');

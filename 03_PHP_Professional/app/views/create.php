@@ -5,6 +5,9 @@
 <?php echo getFlash('message'); ?>
 
 <form id="box-login" action="/user/store" method="POST">
+
+    <?php echo getCsrf(); ?>
+
     <input type="text" name="nomecompleto" placeholder="Seu nome completo" value="<?php echo getOld('nomecompleto') ?>">
     <?php echo getFlash('nomecompleto'); ?>
 

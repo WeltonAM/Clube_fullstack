@@ -21,4 +21,5 @@ return array(
     '5348f8b747605c4f58d3977a60dae8bb' => $baseDir . '/app/helpers/validations.php',
     '30862e4eb689a23f4581c3e6bc63b193' => $baseDir . '/app/helpers/helpers.php',
     'b012cd3488a80f36aa21f76cec26b9d3' => $baseDir . '/app/helpers/old.php',
+    '59f0d3005a272db5f54740d60243823f' => $baseDir . '/app/helpers/csrf.php',
 );
