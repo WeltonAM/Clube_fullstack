@@ -54,22 +54,40 @@ function paginate($perpage = 10)
     $query['paginate'] = true;
 }
 
-function where($field, $operator, $value)
+// function where($field, $operator, $value)
+function where()
 {
     global $query;
+
+    $args = func_get_args();
+    $numArgs = func_num_args();
 
     if(!isset($query['read'])){
         throw new Exception("Antes de chamar o where chame o read");
     }
 
-    if(func_num_args() !== 3){
-        throw new Exception("O where pracisa de 3 parâmetros");
+    if($numArgs < 2 || $numArgs > 3){
+        throw new Exception("O where pracisa de 2 ou 3 parâmetros");
+    }
+
+    if($numArgs === 2){
+        $field = $args[0];
+        $operator = '=';
+        $value = $args[1];
+    }
+
+    if($numArgs === 3){
+        $field = $args[0];
+        $operator = $args[1];
+        $value = $args[2];
     }
     
     $query['where'] = true;
     $query['execute'] = array_merge($query['execute'], [$field => $value]);
     $query['sql'] = " {$query['sql']} where {$field} {$operator} :{$field} ";
 }
+
+
 
 function orWhere($field, $operator, $value, $typeWhere = 'or')
 {
@@ -98,7 +116,7 @@ function execute()
 
     $connect = connect();
 
-    // var_dump($query);
+    var_dump($query);
 
     $prepare = $connect->prepare($query['sql']);
     $prepare->execute($query['execute'] ?? []);
