@@ -4,13 +4,23 @@ namespace app\controllers;
 
 class Home 
 {
-    public function index($params): array
+    public function index($params)
     {
-        $users = all('clientes');
-        return [
-            'view' => 'home',
-            'data' => ['title' => 'Home','users' => $users]
-        ];
+        // $users = all('clientes');
+
+        read();
+
+        where();
+        
+        orwhere();
+        
+        execute();
+
+
+        // return [
+        //     'view' => 'home',
+        //     'data' => ['title' => 'Home','users' => $users]
+        // ];
     }
 
 }
