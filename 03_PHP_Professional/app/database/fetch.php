@@ -3,61 +3,44 @@
 // Query Builder
 $query = [];
 
-function read()
+function read($table, $fields = '*')
 {
     global $query;
 
-    $query['sql'] = "select * from clientes ";
+    $query['read'] = true;
+    $query['execute'] = [];
+
+    $query['sql'] = "select {$fields} from {$table} ";
 }
 
-function where()
+function where($field, $operator, $value)
 {
     global $query;
-    
-    $query['where'] = true;
-    $query['sql'] = " {$query['sql']} where ";
-}
 
-function orWhere()
-{
-    global $query;
-    
-    if(!isset($query['where'])){
-        throw new Exception("Precisa execcutar o Where antes do or Where");
+    if(!isset($query['read'])){
+        throw new Exception("Antes de chamar o where chame o read");
     }
 
-    $query['sql'] = "{$query['sql']} or ";
+    if(func_num_args() !== 3){
+        throw new Exception("O where pracisa de 3 parâmetros");
+    }
+    
+    $query['where'] = true;
+    $query['execute'] = array_merge($query['execute'], [$field => $value]);
+    $query['sql'] = " {$query['sql']} where {$field} {$operator} :{$field} ";
 }
-
-// function search()
-// {
-
-// }
-
-// function paginate()
-// {
-
-// }
-
-// function limit()
-// {
-
-// }
-
-// function order()
-// {
-
-// }
 
 function execute()
 {
     global $query;
 
-    // $connect = connect();
-    // $prepare = $connect->prepare($query['sql']);
-    // $prepare->execute();
+    $connect = connect();
+    $prepare = $connect->prepare($query['sql']);
+    $prepare->execute($query['execute'] ?? []);
 
-    var_dump($query);
+    return $prepare->fetchAll();
+
+    // var_dump($query);
 }
 
 // Complete query

@@ -8,14 +8,13 @@ class Home
     {
         // $users = all('clientes');
 
-        read();
-
-        where();
+        read('clientes');
         
-        orwhere();
-        
-        execute();
+        where('clienteID', '>', 5);
 
+        $users = execute();
+
+        var_dump($users);
 
         // return [
         //     'view' => 'home',
