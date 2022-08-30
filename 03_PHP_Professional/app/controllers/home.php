@@ -10,16 +10,15 @@ class Home
 
         read('clientes');
         
-        where('clienteID', '>', 5);
+        where('clienteID', 7);
+
+        orWhere('estadoID', '=', '27', 'and');
         
         order('clienteID');
 
         // paginate(10);
         
         limit(5);
-
-        
-        // orWhere('nomecompleto', '=', 'Raul');
 
         $users = execute();
 
