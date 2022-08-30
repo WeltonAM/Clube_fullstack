@@ -13,6 +13,47 @@ function read($table, $fields = '*')
     $query['sql'] = "select {$fields} from {$table} ";
 }
 
+function limit($limit)
+{
+    global $query;
+
+    $query['limit'] = true;
+
+    if(isset($query['paginate'])){
+        throw new Exception("O Limite não pode ser chamado com o Paginate");
+    }
+
+    $query['sql'] = " {$query['sql']} limit {$limit} ";
+
+}
+
+function order($by, $order = 'asc')
+{
+    global $query;
+
+    if(isset($query['limit'])){
+        throw new Exception("O Order não pode vir depois do Limit");
+    }
+
+    if(isset($query['paginate'])){
+        throw new Exception("O Order não pode vir depois do Paginate");
+    }
+
+    $query['sql'] = " {$query['sql']} order by {$by} {$order} ";
+
+}
+
+function paginate($perpage = 10)
+{
+    global $query;
+
+    if(isset($query['limit'])){
+        throw new Exception("O Paginate não pode ser chamada com o Limit");
+    }
+
+    $query['paginate'] = true;
+}
+
 function where($field, $operator, $value)
 {
     global $query;
@@ -56,12 +97,13 @@ function execute()
     global $query;
 
     $connect = connect();
-    // $prepare = $connect->prepare($query['sql']);
-    // $prepare->execute($query['execute'] ?? []);
 
-    // return $prepare->fetchAll();
+    // var_dump($query);
 
-    var_dump($query);
+    $prepare = $connect->prepare($query['sql']);
+    $prepare->execute($query['execute'] ?? []);
+
+    return $prepare->fetchAll();
 }
 
 // Complete query

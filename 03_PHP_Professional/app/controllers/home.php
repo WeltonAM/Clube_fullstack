@@ -9,10 +9,16 @@ class Home
         // $users = all('clientes');
 
         read('clientes');
+
+        order('clienteID');
+
+        // paginate(10);
         
-        where('clienteID', '>', 5);
+        limit(5);
+
+        // where('clienteID', '>', 5);
         
-        orWhere('nomecompleto', '=', 'Juliana');
+        // orWhere('nomecompleto', '=', 'Raul');
 
         $users = execute();
 
