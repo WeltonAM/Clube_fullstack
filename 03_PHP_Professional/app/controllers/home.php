@@ -11,6 +11,8 @@ class Home
         read('clientes');
         
         where('clienteID', '>', 5);
+        
+        orWhere('nomecompleto', '=', 'Juliana');
 
         $users = execute();
 
