@@ -2,6 +2,9 @@
 
 require 'bootstrap.php';
 
+var_dump($_ENV);
+die();
+
 try {
     $data = router();
 
