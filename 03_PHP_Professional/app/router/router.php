@@ -57,10 +57,18 @@ function router()
         $params = params($uri, $matchedUri);
         $params = paramsFormat($uri, $params);
     }
+    
+    if($_ENV['MAINTENANCE'] === 'true'){
+        $matchedUri = ['/maintenance' => 'Maintenance@index'];
+    }
+
+    // var_dump($matchedUri);
+    // die();
 
     if(!empty($matchedUri)){
         return controller($matchedUri, $params);
     }
+
     throw new Exception("Route not found");
     
 }

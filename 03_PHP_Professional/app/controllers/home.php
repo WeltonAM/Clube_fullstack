@@ -10,24 +10,24 @@ class Home
 
         read('clientes');
         
-        where('clienteID', 7);
+        // where('clienteID', 7);
 
-        orWhere('estadoID', '=', '27', 'and');
+        // orWhere('estadoID', '=', '27', 'and');
         
-        order('clienteID');
+        // order('clienteID');
 
         // paginate(10);
         
-        limit(5);
+        // limit(5);
 
         $users = execute();
 
         var_dump($users);
 
-        // return [
-        //     'view' => 'home',
-        //     'data' => ['title' => 'Home','users' => $users]
-        // ];
+        return [
+            'view' => 'home',
+            'data' => ['title' => 'Home','users' => $users]
+        ];
     }
 
 }
