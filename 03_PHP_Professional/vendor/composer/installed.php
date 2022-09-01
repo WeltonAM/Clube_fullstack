@@ -3,13 +3,22 @@
         'name' => 'pilgr/03_php_professional',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'ef9fc4b54db2ebe0e67656f2c501dc79d86304c9',
+        'reference' => '5c8c897841d092b1e0ea9d99acb48d7ad07c16b9',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
+        'doctrine/inflector' => array(
+            'pretty_version' => '2.0.4',
+            'version' => '2.0.4.0',
+            'reference' => '8b7ff3e4b7de6b2c84da85637b59fd2880ecaa89',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../doctrine/inflector',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'graham-campbell/result-type' => array(
             'pretty_version' => 'v1.1.0',
             'version' => '1.1.0.0',
@@ -40,7 +49,7 @@
         'pilgr/03_php_professional' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'ef9fc4b54db2ebe0e67656f2c501dc79d86304c9',
+            'reference' => '5c8c897841d092b1e0ea9d99acb48d7ad07c16b9',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

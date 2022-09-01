@@ -1,5 +1,7 @@
 <?php
 
+use doctrine\inflector\InflectorFactory;
+
 // Query Builder
 $query = [];
 
@@ -10,6 +12,7 @@ function read($table, $fields = '*')
     $query = [];
 
     $query['read'] = true;
+    $query['table'] = $table;
     $query['execute'] = [];
 
     $query['sql'] = "select {$fields} from {$table} ";
@@ -60,6 +63,10 @@ function paginate($perpage = 10)
 function where()
 {
     global $query;
+
+    if(isset($query['where'])){
+        throw new Exception("Verifique quantos 'Where' estão sendo chamados");
+    }
 
     $args = func_get_args();
     $numArgs = func_num_args();
@@ -136,7 +143,8 @@ function orWhere()
     $query['sql'] = " {$query['sql']} {$typeWhere} {$field} {$operator} :{$field} ";
 }
 
-function whereIn($field, $data){
+function whereIn($field, $data)
+{
     global $query;
 
     if(isset($query['where'])){
@@ -146,6 +154,38 @@ function whereIn($field, $data){
     $query['where'] = true;
 
     $query['sql'] = "{$query['sql']} where {$field} in (".'\''.implode('\',\'', $data).'\''.')';
+}
+
+function fieldFK($table, $field)
+{
+    $inflector = InflectorFactory::create()->build();
+    $tableToSingular = $inflector->sigularize($table);
+
+    return $tableToSingular.ucfirst($field);
+}
+
+function tableJoin($table, $fieldFK, $typeJoin = 'inner')
+{
+    global $query;
+
+    if(isset($query['where'])){
+        throw new Exception("Não pode chamar where antes do join");
+    }
+
+    $fkToJoin = fieldFK($query['table'], $fieldFK);
+    $query['sql'] = "{$query['sql']} {$typeJoin} join {$table} on {$table}.{$fkToJoin} = {$query['table']}.{$fieldFK}";
+}
+
+function tableJoinWithFK($table, $fieldFK, $typeJoin = 'inner')
+{
+    global $query;
+
+    if(isset($query['where'])){
+        throw new Exception("Não pode chamar where antes do join");
+    }
+
+    $fkToJoin = fieldFK($table, $fieldFK);
+    $query['sql'] = "{$query['sql']} {$typeJoin} join {$table} on {$table}.{$fieldFK} = {$query['table']}.{$fkToJoin}";
 }
 
 function search($search){

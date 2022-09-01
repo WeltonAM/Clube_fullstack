@@ -11,6 +11,8 @@ class Home
         
         read('clientes');
 
+        // tableJoin('clienteID', 'email');
+
         // whereIn('nomecompleto', ['Jone', 'Bob', 'Juliana Karla']);
         
         // if($search){
