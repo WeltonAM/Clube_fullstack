@@ -2,6 +2,12 @@
 
 <h2>Clientes</h2>
 
+<form action="/" method="get">
+    <input type="text" name="s" placeholder="Digite o nome que deseja buscar">
+
+    <button type="submit">Buscar</button>
+</form>
+
 <!-- <div x-data="users()" x-init="loadUsers()">
     <ul>
         <template x-for="user in data">

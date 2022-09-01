@@ -12,13 +12,13 @@ class Home
         read('clientes');
         
         if($search){
-            search(['nomecompleto ' => $search, 'cidade ' => $search]);
+            search(['nomecompleto' => $search, 'cidade' => $search]);
         }
         
         $users = execute();
 
-        var_dump($users);
-        die();
+        // var_dump($users);
+        // die();
 
         return [
             'view' => 'home',

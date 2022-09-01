@@ -170,8 +170,6 @@ function execute($isFatchAll = true, $rowCount = false)
         if(!isset($query['sql'])){
             throw new Exception("Precisa ter o SQL para executar a Query");
         }
-
-        // var_dump($query);
     
         $prepare = $connect->prepare($query['sql']);
         $prepare->execute($query['execute'] ?? []);
