@@ -136,6 +136,18 @@ function orWhere()
     $query['sql'] = " {$query['sql']} {$typeWhere} {$field} {$operator} :{$field} ";
 }
 
+function whereIn($field, $data){
+    global $query;
+
+    if(isset($query['where'])){
+        throw new Exception("Não pode chamar Where com a WhereIn");
+    }
+
+    $query['where'] = true;
+
+    $query['sql'] = "{$query['sql']} where {$field} in (".'\''.implode('\',\'', $data).'\''.')';
+}
+
 function search($search){
     global $query;
 
@@ -165,6 +177,9 @@ function search($search){
 function execute($isFatchAll = true, $rowCount = false)
 {
     global $query;
+
+    // var_dump($query);
+    // die();
 
     try {
         $connect = connect();

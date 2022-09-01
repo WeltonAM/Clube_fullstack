@@ -10,10 +10,12 @@ class Home
         $search = filter_input(INPUT_GET, 's');
         
         read('clientes');
+
+        // whereIn('nomecompleto', ['Jone', 'Bob', 'Juliana Karla']);
         
-        if($search){
-            search(['nomecompleto' => $search, 'cidade' => $search]);
-        }
+        // if($search){
+        //     search(['nomecompleto' => $search, 'cidade' => $search]);
+        // }
         
         $users = execute();
 
