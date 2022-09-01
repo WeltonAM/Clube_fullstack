@@ -6,24 +6,19 @@ class Home
 {
     public function index($params)
     {
-        // $users = all('clientes');
 
+        $search = filter_input(INPUT_GET, 's');
+        
         read('clientes');
         
-        // where('clienteID', 7);
-
-        // orWhere('estadoID', '=', '27', 'and');
+        if($search){
+            search(['nomecompleto ' => $search, 'cidade ' => $search]);
+        }
         
-        // order('clienteID');
+        $users = execute();
 
-        // paginate(10);
-        
-        // limit(5);
-
-        $users = execute(isFatchAll: true);
-
-        // var_dump($users);
-        // die();
+        var_dump($users);
+        die();
 
         return [
             'view' => 'home',
