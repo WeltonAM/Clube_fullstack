@@ -134,18 +134,34 @@ function orWhere()
     $query['sql'] = " {$query['sql']} {$typeWhere} {$field} {$operator} :{$field} ";
 }
 
-function execute()
+function execute($isFatchAll = true, $rowCount = false)
 {
     global $query;
 
-    $connect = connect();
+    try {
+        $connect = connect();
 
-    // var_dump($query);
+        if(!isset($query['sql'])){
+            throw new Exception("Precisa ter o SQL para executar a Query");
+        }
 
-    $prepare = $connect->prepare($query['sql']);
-    $prepare->execute($query['execute'] ?? []);
+        // var_dump($query);
+    
+        $prepare = $connect->prepare($query['sql']);
+        $prepare->execute($query['execute'] ?? []);
 
-    return $prepare->fetchAll();
+        if($rowCount){
+            return $prepare->rowCount();
+        }
+    
+        return $isFatchAll ? $prepare->fetchAll() : $prepare->fetch();
+
+    } catch (Exception $e) {
+        $message = "Erro no arquivo <br /> {$e->getFIle()} <br /> na linha {$e->getLine()} <br /> com a mensagem: {$e->getMessage()}<br /> ";
+        $message.= $query['sql'];
+        ddd($message);
+    }
+
 }
 
 // Complete query

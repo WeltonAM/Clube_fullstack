@@ -20,9 +20,10 @@ class Home
         
         // limit(5);
 
-        $users = execute();
+        $users = execute(isFatchAll: true);
 
-        var_dump($users);
+        // var_dump($users);
+        // die();
 
         return [
             'view' => 'home',
