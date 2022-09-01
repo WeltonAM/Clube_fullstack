@@ -7,6 +7,8 @@ function read($table, $fields = '*')
 {
     global $query;
 
+    $query = [];
+
     $query['read'] = true;
     $query['execute'] = [];
 
@@ -181,9 +183,13 @@ function execute($isFatchAll = true, $rowCount = false)
         return $isFatchAll ? $prepare->fetchAll() : $prepare->fetch();
 
     } catch (Exception $e) {
-        $message = "Erro no arquivo <br /> {$e->getFIle()} <br /> na linha {$e->getLine()} <br /> com a mensagem: {$e->getMessage()}<br /> ";
-        $message.= $query['sql'];
-        ddd($message);
+        $error = [
+          'file' => $e->getFile(),  
+          'line' => $e->getLine(),  
+          'message' => $e->getMessage(),  
+          'sql' => $query['sql'],  
+        ];
+        ddd($error);
     }
 
 }
