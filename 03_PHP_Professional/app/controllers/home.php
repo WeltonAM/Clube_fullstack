@@ -10,16 +10,20 @@ class Home
         $search = filter_input(INPUT_GET, 's');
         
         read('clientes');
+        
+        // var_dump(http_build_query(['page' => 1, 's' => 'Jone']));
+        // die();
 
+        if($search){
+            search(['nomecompleto' => $search, 'cidade' => $search]);
+        }
+        
         paginate(5);
 
         // tableJoin('clienteID', 'email');
 
         // whereIn('nomecompleto', ['Jone', 'Bob', 'Juliana Karla']);
         
-        // if($search){
-        //     search(['nomecompleto' => $search, 'cidade' => $search]);
-        // }
         
         $users = execute();
 

@@ -80,21 +80,6 @@ function render()
 
     global $query;
 
-    // <nav aria-label="...">
-    //     <li class="page-item disabled">
-    //       <a class="page-link">Previous</a>
-    //     </li>
-    //     <li class="page-item"><a class="page-link" href="#">1</a></li>
-    //     <li class="page-item active" aria-current="page">
-    //       <a class="page-link" href="#">2</a>
-    //     </li>
-    //     <li class="page-item"><a class="page-link" href="#">3</a></li>
-    //     <li class="page-item">
-    //       <a class="page-link" href="#">Next</a>
-    //     </li>
-    //   </ul>
-    // </nav>
-
     $pageCount = $query['pageCount'];
     $currentPage = $query['currentPage'];
 
@@ -104,7 +89,8 @@ function render()
     for ($i=1; $i <= $pageCount ; $i++) { 
         $page = "?page={$i}";
         $active = $currentPage === $i ? 'active' : '';
-        $links .= "<li class='page-item {$active}'><a href='{$page}' class='page-link'>{$i}</a></li>";
+        $linkPage = http_build_query(array_merge($_GET,['page' => $i]));
+        $links .= "<li class='page-item {$active}'><a href='?{$linkPage}' class='page-link'>{$i}</a></li>";
     }
     $links .= '</ul>';
 
