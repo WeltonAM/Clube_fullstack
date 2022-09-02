@@ -48,7 +48,7 @@ function order($by, $order = 'asc')
 
 }
 
-function paginate($perpage = 10)
+function paginate($perPage = 10)
 {
     global $query;
 
@@ -56,7 +56,23 @@ function paginate($perpage = 10)
         throw new Exception("O Paginate não pode ser chamada com o Limit");
     }
 
+    $rowCount = execute(rowCount:true);
+
+    $page = filter_input(INPUT_GET, 'page',);
+
+    $page = $page ?? 1;
+
+    $query['currentPage'] = (int)$page;
+
+    $query['pageCount'] = (int)ceil($rowCount / $perPage);
+    $offSet = ($page - 1) * $perPage;
+
     $query['paginate'] = true;
+
+    $query['sql'] = "{$query['sql']} limit {$perPage} offset {$offSet}";
+
+    // var_dump($query);
+    // die();
 }
 
 // function where($field, $operator, $value)
@@ -93,8 +109,6 @@ function where()
     $query['execute'] = array_merge($query['execute'], [$field => $value]);
     $query['sql'] = " {$query['sql']} where {$field} {$operator} :{$field} ";
 }
-
-
 
 // function orWhere($field, $operator, $value, $typeWhere = 'or')
 function orWhere()
@@ -159,7 +173,7 @@ function whereIn($field, $data)
 function fieldFK($table, $field)
 {
     $inflector = InflectorFactory::create()->build();
-    $tableToSingular = $inflector->sigularize($table);
+    $tableToSingular = $inflector->singularize($table);
 
     return $tableToSingular.ucfirst($field);
 }

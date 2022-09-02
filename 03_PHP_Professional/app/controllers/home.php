@@ -10,6 +10,8 @@ class Home
         $search = filter_input(INPUT_GET, 's');
         
         read('clientes');
+        
+        paginate(5);
 
         // tableJoin('clienteID', 'email');
 
