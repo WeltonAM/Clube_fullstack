@@ -82,15 +82,17 @@ function render()
 
     $pageCount = $query['pageCount'];
     $currentPage = $query['currentPage'];
+    $maxLinks = 2;
 
     $links = '<ul class="pagination">';
     $active = '';
-
-    for ($i=1; $i <= $pageCount ; $i++) { 
-        $page = "?page={$i}";
-        $active = $currentPage === $i ? 'active' : '';
-        $linkPage = http_build_query(array_merge($_GET,['page' => $i]));
-        $links .= "<li class='page-item {$active}'><a href='?{$linkPage}' class='page-link'>{$i}</a></li>";
+    for ($i=$currentPage - $maxLinks; $i <= $currentPage + $maxLinks ; $i++) { 
+        // $page = "?page={$i}";
+        if($i > 0 && $i <= $pageCount){
+            $active = $currentPage === $i ? 'active' : '';
+            $linkPage = http_build_query(array_merge($_GET,['page' => $i]));
+            $links .= "<li class='page-item {$active}'><a href='?{$linkPage}' class='page-link'>{$i}</a></li>";
+        }
     }
     $links .= '</ul>';
 
