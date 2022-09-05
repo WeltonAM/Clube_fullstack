@@ -70,9 +70,6 @@ function paginate($perPage = 10)
     $query['paginate'] = true;
 
     $query['sql'] = "{$query['sql']} limit {$perPage} offset {$offSet}";
-
-    // var_dump($query);
-    // die();
 }
 
 function render()
@@ -99,7 +96,6 @@ function render()
     return $links;
 }
 
-// function where($field, $operator, $value)
 function where()
 {
     global $query;
@@ -134,7 +130,6 @@ function where()
     $query['sql'] = " {$query['sql']} where {$field} {$operator} :{$field} ";
 }
 
-// function orWhere($field, $operator, $value, $typeWhere = 'or')
 function orWhere()
 {
     global $query;
@@ -173,8 +168,6 @@ function orWhere()
         $value = $args[2];
         $typeWhere = $args[3];
     }
-
-    // var_dump([$field => $value]);
     
     $query['where'] = true;
     $query['execute'] = array_merge($query['execute'], [$field => $value]);
@@ -256,9 +249,6 @@ function execute($isFatchAll = true, $rowCount = false)
 {
     global $query;
 
-    // var_dump($query);
-    // die();
-
     try {
         $connect = connect();
 
@@ -270,18 +260,10 @@ function execute($isFatchAll = true, $rowCount = false)
         $prepare->execute($query['execute'] ?? []);
 
         if($rowCount){
-            $query['count'] = $prepare->rowCount();
-            return $query['count'];
+            return $prepare->rowCount();
         }
 
-        if($isFatchAll){
-            return (object)[
-                'count' => $query['count'] ?? $prepare->rowCount(),
-                'rows' => $prepare->fetchAll()
-            ];
-        }
-    
-        return $prepare->fetch();
+        return $isFatchAll ? $prepare->fetchAll() : $prepare->fetch();
 
     } catch (Exception $e) {
         $error = [
