@@ -35,6 +35,14 @@ function render()
     $maxLinks = 2;
 
     $links = '<ul class="pagination">';
+
+    if ($currentPage > 1) {
+        $previous = $currentPage - 1;
+        $linkPage = http_build_query(array_merge($_GET, ['page' => $previous]));
+        $first = http_build_query(array_merge($_GET, ['page' => 1]));
+        $links.= "<li class='page-item'><a href='?{$first}' class='page-link'><<</a></li>";
+    }
+
     $active = '';
     for ($i=$currentPage - $maxLinks; $i <= $currentPage + $maxLinks ; $i++) { 
         if($i > 0 && $i <= $pageCount){
@@ -43,6 +51,14 @@ function render()
             $links .= "<li class='page-item {$active}'><a href='?{$linkPage}' class='page-link'>{$i}</a></li>";
         }
     }
+
+    if ($currentPage < $pageCount) {
+        $next = $currentPage + 1;
+        $linkPage = http_build_query(array_merge($_GET, ['page' => $next]));
+        $last = http_build_query(array_merge($_GET, ['page' => $pageCount]));
+        $links.= "<li class='page-item'><a href='?{$last}' class='page-link'>>></a></li>";
+    }
+
     $links .= '</ul>';
 
     return $links;

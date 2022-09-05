@@ -15,7 +15,3 @@ require 'noQueryBuilder/create.php';
 require 'noQueryBuilder/read.php';
 require 'noQueryBuilder/update.php';
 require 'noQueryBuilder/delete.php';
-
-
-
-// Complete query
