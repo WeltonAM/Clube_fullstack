@@ -270,10 +270,18 @@ function execute($isFatchAll = true, $rowCount = false)
         $prepare->execute($query['execute'] ?? []);
 
         if($rowCount){
-            return $prepare->rowCount();
+            $query['count'] = $prepare->rowCount();
+            return $query['count'];
+        }
+
+        if($isFatchAll){
+            return (object)[
+                'count' => $query['count'] ?? $prepare->rowCount(),
+                'rows' => $prepare->fetchAll()
+            ];
         }
     
-        return $isFatchAll ? $prepare->fetchAll() : $prepare->fetch();
+        return $prepare->fetch();
 
     } catch (Exception $e) {
         $error = [

@@ -27,8 +27,8 @@ class Home
         
         $users = execute();
 
-        // var_dump($users);
-        // die();
+        var_dump($users);
+        die();
 
         return [
             'view' => 'home',
