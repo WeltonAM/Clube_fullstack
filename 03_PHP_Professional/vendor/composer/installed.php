@@ -3,7 +3,7 @@
         'name' => 'pilgr/03_php_professional',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '5c8c897841d092b1e0ea9d99acb48d7ad07c16b9',
+        'reference' => '6f6349cde6902ba32f36d04731f96f37732f5e60',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -37,6 +37,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'phpmailer/phpmailer' => array(
+            'pretty_version' => 'v6.6.4',
+            'version' => '6.6.4.0',
+            'reference' => 'a94fdebaea6bd17f51be0c2373ab80d3d681269b',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phpmailer/phpmailer',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'phpoption/phpoption' => array(
             'pretty_version' => '1.9.0',
             'version' => '1.9.0.0',
@@ -49,7 +58,7 @@
         'pilgr/03_php_professional' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '5c8c897841d092b1e0ea9d99acb48d7ad07c16b9',
+            'reference' => '6f6349cde6902ba32f36d04731f96f37732f5e60',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
