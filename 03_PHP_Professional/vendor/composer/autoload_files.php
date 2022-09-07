@@ -15,6 +15,7 @@ return array(
     '963bfeca2a23b5529f2096e68052cef6' => $baseDir . '/app/database/connect.php',
     '291cc6d825c4d09fb34aa033615b4cf8' => $baseDir . '/app/database/queries.php',
     'ee77845031dcda73e13a7b673f933e0b' => $baseDir . '/app/helpers/redirect.php',
+    'd1212457e2738dbef59380db38bb045f' => $baseDir . '/app/helpers/email.php',
     '86bf89571801980a7c4abf4c239b1900' => $baseDir . '/app/helpers/flash.php',
     'deffddcf3157ea9d831b50caa0344b2b' => $baseDir . '/app/helpers/sessions.php',
     '527ffb5c9d57c388e14816a544bac456' => $baseDir . '/app/helpers/validate.php',
