@@ -43,7 +43,8 @@ function send($emailData)
     
         return $mail->send();
     } catch (\Exception $e) {
-        echo  $e->getMessage();
+        var_dump($e->getMessage());
+        die(); 
     }
 }
 
@@ -63,15 +64,19 @@ function checkPropertiesEmail($emailData)
 
 function template($emailData)
 {
-    $template = file_get_contents(ROOT."/app/views/emails/{$emailData->template}.html");
+    $templateFile = file_get_contents(ROOT."/app/views/emails/{$emailData->template}.html");
+
+    if(!file_exists($templateFile)){
+        throw new Exception("O template {$emailData->template}.html não existe");
+    }
+
+    $template = file_get_contents($templateFile);
 
     $emailVars = get_object_vars($emailData);
 
     $arr = array_map(function($key){
         return "@{$key}";
     }, array_keys($emailVars));
-
-    $str = "Olá, @toName, seu email é @toEmail, e você tem @age anos";
 
     return str_replace($arr, array_values($emailVars), $template);
 }

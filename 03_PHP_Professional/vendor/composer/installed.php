@@ -3,7 +3,7 @@
         'name' => 'pilgr/03_php_professional',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '6f6349cde6902ba32f36d04731f96f37732f5e60',
+        'reference' => '02a3ed8f1334e9bfea8e485d9c24ce25652a41c7',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -58,7 +58,7 @@
         'pilgr/03_php_professional' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '6f6349cde6902ba32f36d04731f96f37732f5e60',
+            'reference' => '02a3ed8f1334e9bfea8e485d9c24ce25652a41c7',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

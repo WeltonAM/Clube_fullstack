@@ -10,23 +10,41 @@ class Contact
     {
         return [
             'view' => 'contact',
-            'data' => ['title' => 'Contact'],
+            'data' => ['title' => 'Contact']
         ];
     }
 
     public function store()
     {        
+        $validated = validate([
+            'nomecompleto' => 'required',
+            'email' => 'required|email',
+            'subject' => 'required',
+            'message' => 'required',
+        ], persistInputs:true, checkCsrf:true);
+
+        
+        if(!$validated){
+            return redirect('/contact');
+        }
+        
         $sent = send([
-           'fromName' => 'Juliana',
-           'fromEmail' => 'jujuhta@gmail.br',
-           'toName' => 'Me',
-           'toEmail' => 'jujuhta@email.br',
-           'subject' => 'Assunto teste',
-           'message' => 'Mensagem teste',
-           'template' => 'contact',
+            'fromName' => $validated['nomecompleto'],
+            'fromEmail' => $validated['email'],
+            'toName' => $_ENV['TONAME'],
+            'toEmail' => $_ENV['TOEMAIL'],
+            'subject' => $validated['subject'],
+            'message' => $validated['message'],
+            'template' => 'contacts'
         ]);
 
-        var_dump($sent);
+        if($sent){
+            return setMessageAndRedirect('contact_success', 'Enviado com sucesso', '/contact');
+        }
+
+        return setMessageAndRedirect('contact_error', 'Ocorreu um erro ao enviar o email. Tente novamente.', '/contact');
+        
+        var_dump($validated);
         die();
     }
 }
