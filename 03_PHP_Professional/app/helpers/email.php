@@ -24,6 +24,10 @@ function send($emailData)
             $emailData = (object)$emailData;
         }
 
+        $body = (isset($emailData->template)) ? template($emailData) : $emailData->message;
+
+        template($emailData);
+
         checkPropertiesEmail($emailData);
         
         //Recipients
@@ -31,9 +35,10 @@ function send($emailData)
         $mail->addAddress($emailData->toEmail, $emailData->toName);                
     
         //Content
-        $mail->isHTML(true);                                  
+        $mail->isHTML(true);      
+        $mail->CharSet = 'UTF-8';                            
         $mail->Subject = $emailData->subject;
-        $mail->Body    = $emailData->message;
+        $mail->Body    = $body;
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
     
         return $mail->send();
@@ -54,4 +59,19 @@ function checkPropertiesEmail($emailData)
             throw new Exception("{$prop} é obrigatório para enviar o email");
         }
     }
+}
+
+function template($emailData)
+{
+    $template = file_get_contents(ROOT."/app/views/emails/{$emailData->template}.html");
+
+    $emailVars = get_object_vars($emailData);
+
+    $arr = array_map(function($key){
+        return "@{$key}";
+    }, array_keys($emailVars));
+
+    $str = "Olá, @toName, seu email é @toEmail, e você tem @age anos";
+
+    return str_replace($arr, array_values($emailVars), $template);
 }

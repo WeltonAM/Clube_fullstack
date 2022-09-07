@@ -24,7 +24,6 @@ class Contact
            'subject' => 'Assunto teste',
            'message' => 'Mensagem teste',
            'template' => 'contact',
-
         ]);
 
         var_dump($sent);
