@@ -9,8 +9,7 @@
 <div id="status_login">
     Bem vindo, 
     <?php if(logged()) : ?>
-        <?php echo user()->nomecompleto; ?> 
-    | <a href="/logout">Logout</a>
+        <?php echo user()->nomecompleto; ?> | <a href="/logout">Logout</a> | <a href="/user/edit/profile">Edit Profile</a>
     <?php else : ?>
         visitante
     <?php endif; ?>
