@@ -6,6 +6,6 @@ class UserImage
 {
     public function store()
     {
-        upload();
+        upload(640, 480, 'assets/img');
     }
 }
