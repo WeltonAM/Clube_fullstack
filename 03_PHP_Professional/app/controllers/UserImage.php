@@ -6,6 +6,10 @@ class UserImage
 {
     public function store()
     {
-        upload(640, 480, 'assets/img');
+        try {
+            upload(640, 480, 'assets/img');
+        } catch (\Exception $e) {
+            setMessageAndRedirect('upload_error', $e->getMessage(), '/user/edit/profile');
+        }
     }
 }

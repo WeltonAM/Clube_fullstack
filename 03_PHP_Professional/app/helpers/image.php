@@ -16,16 +16,17 @@ function getFunctionCreateFrom(string $extension)
 
 function isFileToUpload($fieldName)
 {
-    if(!isset($_FILES[$fieldName]) || !isset($_FILES[$fieldName]['name']) || $_FILES[$fieldName]['name'] === ''){
-        throw new Exception("O campo {$fieldName} não existe ou imagem não escolhida");
-        
+    if(!isset($_FILES[$fieldName], $_FILES[$fieldName]['name']) || $_FILES[$fieldName]['name'] === ''){
+        throw new Exception("O campo {$fieldName} não existe ou imagem não escolhida");   
     }
 }
 
 function isImage($extension)
 {
-    if(!in_array($extension, ['jpeg', 'jpg', 'gif', 'png'])){
-        throw new Exception("Arquivo não aceito");
+    $acceptedExtentions = ['jpeg', 'jpg', 'gif', 'png'];
+    if(!in_array($extension, $acceptedExtentions)){
+        $extensions = implode(', ', $acceptedExtentions);
+        throw new Exception("Arquivo inválido. Carregue um {$extensions}");
     }
 }
 
@@ -40,14 +41,28 @@ function resize($width, $height, $newWidth, $newHeight)
     return [$newWidth, $newHeight];
 }
 
-function crop()
+function crop($width, $height, $newWidth, $newHeight)
 {
+    $thumbWidth = $newWidth;
+    $thumbHeight = $newHeight;
 
+    $srcAspect = $width / $height;
+    $dstAspect = $thumbWidth / $thumbHeight;
+
+    ($srcAspect >= $dstAspect) ?
+        $newWidth = $width / ($height / $thumbHeight) :
+        $newHeight = $height / ($width / $thumbWidth);
+
+    return [$newWidth, $newHeight, $thumbWidth, $thumbHeight];
 }
 
 function upload($newWidth, $newHeight, $folder, $type = 'resize')
 {
+    isFileToUpload('file');
+    
     $extension = getExtension($_FILES['file']['name']);
+
+    isImage($extension);
 
     [$width, $height] = getimagesize($_FILES['file']['tmp_name']);
 
@@ -60,10 +75,21 @@ function upload($newWidth, $newHeight, $folder, $type = 'resize')
         $dst = imagecreatetruecolor($newWidth, $newHeight);
         imagecopyresampled($dst, $src, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
     } else {
-        crop();
-        // imagecopyresampled($dst, $src, 0, 0, 0, 0, 640, 480, $width, $height);
+        [$newWidth, $newHeight, $thumbWidth, $thumbHeight] = crop($width, $height, $newWidth, $newHeight);
+        $dst = imagecreatetruecolor($thumbWidth, $thumbHeight);
+        imagecopyresampled(
+            $dst, 
+            $src, 
+            0 - ($newWidth - $thumbWidth) / 2,
+            0 - ($newHeight - $thumbHeight) / 2,
+            0, 
+            0, 
+            $newWidth, 
+            $newHeight, 
+            $width, 
+            $height
+        );
     }
-
 
 
     $saveImage($dst, $folder.DIRECTORY_SEPARATOR.rand().'.'.$extension);
