@@ -84,9 +84,8 @@ class User
 
         $updated = update('clientes', $validated, ['id' => $args['user']]);
 
-        if(!$updated){
-            setMessageAndRedirect('updated_success', 'Atualizado com sucesso', '/user/edit/profile');
-            return;
+        if($updated){
+            return setMessageAndRedirect('updated_success', 'Atualizado com sucesso', '/user/edit/profile');
         }
         setMessageAndRedirect('updated_error', 'Ocorreu um erro ao atualizar', '/user/edit/profile');
     }
