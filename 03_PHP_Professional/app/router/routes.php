@@ -4,7 +4,8 @@ return [
     'POST' => [
         '/login' => 'Login@store',
         '/contact' => 'Contact@store',
-        '/user/store' => 'User@store',
+        '/user/[0-9]+' => 'user@update',
+        '/user/store' => 'user@store',
         '/user/image/update' => 'UserImage@store',
     ],
     'GET' => [

@@ -1,5 +1,21 @@
 <?php $this->layout('master', ['title' => $title]) ?>
 
+<?php echo getFlash('updated_success', 'color:green'); ?>
+<?php echo getFlash('updated_error'); ?>
+
+<form method="post" action="/user/<?php echo $user->id ?>">
+    <input type="text" name="nomecompleto" value="<?php echo $user->nomecompleto ?>">
+    <?php echo getFlash('nomecompleto') ?>
+    <input type="text" name="cidade" value="<?php echo $user->cidade ?>">
+    <?php echo getFlash('cidade') ?>
+    <input type="text" name="email" value="<?php echo $user->email ?>">
+    <?php echo getFlash('email') ?>
+    
+    <button type="submit">Atualizar</button>
+</form>
+
+<hr>
+
 <?php if($user->path): ?>
     <img src="/<?php echo $user->path ?>" width="80%" alt="">
 <?php endif; ?>

@@ -64,4 +64,30 @@ class User
 
         return redirect('/');
     }
+
+    public function update($args)
+    {
+
+        if(!isset($args['user'])){
+            redirect('/');
+        }
+
+        $validated = validate([
+            'nomecompleto' => 'required',
+            'cidade' => 'required',
+            'email' => 'required',
+        ]);
+
+        if(!$validated){
+            redirect('/user/edit/profile');
+        }
+
+        $updated = update('clientes', $validated, ['id' => $args['user']]);
+
+        if(!$updated){
+            setMessageAndRedirect('updated_success', 'Atualizado com sucesso', '/user/edit/profile');
+            return;
+        }
+        setMessageAndRedirect('updated_error', 'Ocorreu um erro ao atualizar', '/user/edit/profile');
+    }
 }
