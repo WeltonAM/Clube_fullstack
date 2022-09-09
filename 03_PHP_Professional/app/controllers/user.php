@@ -10,15 +10,25 @@ class User
             return redirect('/');
         }
         
-        $user = findBy('clientes', 'clienteID', $params['user']);
+        $user = findBy('clientes', 'id', $params['user']);
         die();
     }
 
     public function edit()
     {
+        if(!logged()){
+            redirect('/');
+        }
+
+        read('clientes', 'clientes.id,nomecompleto,cidade,email,senha,path');
+        tableJoin('photos', 'id', 'left');
+        where('clientes.id', user()->id);
+
+        $user = execute(isFetchAll:false);
+
         return [
             'view' => 'edit',
-            'data' => ['title' => 'Edit']
+            'data' => ['title' => 'Edit','user' => $user]
         ];
     }
 

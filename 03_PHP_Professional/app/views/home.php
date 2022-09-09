@@ -20,7 +20,7 @@
     <?php foreach ($users as $user) : ?>
         <li>
             <?php echo $user->nomecompleto; ?> |
-            <a href="/user/<?php echo $user->clienteID; ?>">Detalhes</a>
+            <a href="/user/<?php echo $user->id; ?>">Detalhes</a>
         </li>
     <?php endforeach; ?>
 </ul>

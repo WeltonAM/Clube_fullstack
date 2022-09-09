@@ -1,3 +1,9 @@
+<?php $this->layout('master', ['title' => $title]) ?>
+
+<?php if($user->path): ?>
+    <img src="/<?php echo $user->path ?>" width="80%" alt="">
+<?php endif; ?>
+
 <form method="post" action="/user/profile/update"></form>
 
 <hr>

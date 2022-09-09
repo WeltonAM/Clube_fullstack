@@ -1,6 +1,6 @@
 <?php
 
-use doctrine\inflector\InflectorFactory;
+use Doctrine\Inflector\InflectorFactory;
 
 function fieldFK($table, $field)
 {

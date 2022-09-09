@@ -1,7 +1,7 @@
 <?php
 
 
-function execute($isFatchAll = true, $rowCount = false)
+function execute($isFetchAll = true, $rowCount = false)
 {
     global $query;
 
@@ -19,7 +19,7 @@ function execute($isFatchAll = true, $rowCount = false)
             return $prepare->rowCount();
         }
 
-        return $isFatchAll ? $prepare->fetchAll() : $prepare->fetch();
+        return $isFetchAll ? $prepare->fetchAll() : $prepare->fetch();
 
     } catch (Exception $e) {
         $error = [

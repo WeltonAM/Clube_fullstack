@@ -12,23 +12,25 @@ class UserImage
             $auth = user();
 
             read('photos');
-            where('userId', $auth->clienteID);
+            where('clienteId', $auth->id);
 
-            $photoUser = execute(isFatchAll:false);
+            $photoUser = execute(isFetchAll:false);
 
             if($photoUser){
                 $updated = update('photos', [
                     'path' => $path,
                 ], [
-                    'userId' => $auth->clienteID,
+                    'clienteId' => $auth->id,
                 ]);
                 @unlink($photoUser->path);
             }else {
                 $updated = create('photos', [
-                    'userId' => $auth->clienteID,
+                    'clienteId' => $auth->id,
                     'path' => $path,
                 ]);
             }
+
+            $auth->path = $path;
 
             if($updated){
                 setMessageAndRedirect('upload_success', 'Imagem carregada com sucesso!', '/user/edit/profile');

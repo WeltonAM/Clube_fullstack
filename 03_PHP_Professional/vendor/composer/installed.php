@@ -3,7 +3,7 @@
         'name' => 'pilgr/03_php_professional',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '02a3ed8f1334e9bfea8e485d9c24ce25652a41c7',
+        'reference' => 'f73095023757c8592a215053cdc1310537788e3c',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'doctrine/inflector' => array(
-            'pretty_version' => '2.0.4',
-            'version' => '2.0.4.0',
-            'reference' => '8b7ff3e4b7de6b2c84da85637b59fd2880ecaa89',
+            'pretty_version' => '2.0.5',
+            'version' => '2.0.5.0',
+            'reference' => 'ade2b3bbfb776f27f0558e26eed43b5d9fe1b392',
             'type' => 'library',
             'install_path' => __DIR__ . '/../doctrine/inflector',
             'aliases' => array(),
@@ -58,7 +58,7 @@
         'pilgr/03_php_professional' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '02a3ed8f1334e9bfea8e485d9c24ce25652a41c7',
+            'reference' => 'f73095023757c8592a215053cdc1310537788e3c',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

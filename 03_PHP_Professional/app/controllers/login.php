@@ -19,7 +19,14 @@ class Login
             return setMessageAndRedirect('message', 'Usuário ou senha inválidos', '/login');
         }
         
-        $user = findBy('clientes', 'email', $email);
+        // $user = findBy('clientes', 'email', $email);
+
+        read('clientes', 'clientes.id,nomecompleto,cidade,email,senha,path');
+        tableJoin('photos', 'id', 'left');
+        where('email', $email);
+
+        $user = execute(isFetchAll:false);
+
         
         if(!$user) {
             return setMessageAndRedirect('message', 'Usuário ou senha inválidos', '/login');

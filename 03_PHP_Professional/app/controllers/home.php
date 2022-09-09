@@ -20,7 +20,7 @@ class Home
         
         paginate(5);
 
-        // tableJoin('clienteID', 'email');
+        // tableJoin('id', 'email');
 
         // whereIn('nomecompleto', ['Jone', 'Bob', 'Juliana Karla']);
         
