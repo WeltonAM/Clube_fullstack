@@ -20,9 +20,9 @@
 <form action="/password/user/<?php echo $user->id ?>" method="post">
     
     <?php echo getCsrf(); ?>
-    <input type="text" name="senha">
+    <input type="text" name="senha" placeholder="Nova senha">
     <?php echo getFlash('senha') ?>
-    <input type="text" name="senha_confirmada">
+    <input type="text" name="senha_confirmada" placeholder="Confirmar nova senha">
     <?php echo getFlash('senha_confirmada') ?>
     <button type="submit">Atualizar</button>
 </form>

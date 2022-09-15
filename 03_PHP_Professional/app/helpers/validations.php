@@ -49,18 +49,22 @@ function maxlen($field, $param)
 
 function confirmed($field)
 {
-    if(!isset($_POST['senha'], $_POST['senha_confirmada'])){
+    if(!isset($_POST[$field], $_POST[$field.'_confirmada'])){
         setFlash($field, "Os campos para atualizar a senha são obrigatórios");
         return false;
     }
     
-    $senha = strip_tags($_POST['senha']);
-    $senha_confirmada = strip_tags($_POST['senha_confirmada']);
+    $value = strip_tags($_POST[$field]);
+    $value_confirmada = strip_tags($_POST[$field.'_confirmada']);
     
-    if($senha !== $senha_confirmada){
-        setFlash($field, "Senhas precisam ser identicas");
+    if($value !== $value_confirmada){
+        setFlash($field, "Os dois campos precisam ser iguais.");
         return false;
     }
 
-    return $senha;
+    if($field === 'senha'){
+        return password_hash($value, PASSWORD_DEFAULT);
+    }
+
+    return $value;
 }
