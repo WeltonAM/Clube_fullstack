@@ -43,6 +43,24 @@ function maxlen($field, $param)
         setFlash($field, "Senha não pode passar de {$param} caracteres");
         return false;
     }
-
+    
     return $data;
+}
+
+function confirmed($field)
+{
+    if(!isset($_POST['senha'], $_POST['senha_confirmada'])){
+        setFlash($field, "Os campos para atualizar a senha são obrigatórios");
+        return false;
+    }
+    
+    $senha = strip_tags($_POST['senha']);
+    $senha_confirmada = strip_tags($_POST['senha_confirmada']);
+    
+    if($senha !== $senha_confirmada){
+        setFlash($field, "Senhas precisam ser identicas");
+        return false;
+    }
+
+    return $senha;
 }

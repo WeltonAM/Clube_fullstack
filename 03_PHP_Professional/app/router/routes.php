@@ -7,6 +7,7 @@ return [
         '/user/[0-9]+' => 'user@update',
         '/user/store' => 'user@store',
         '/user/image/update' => 'UserImage@store',
+        '/password/user/[0-9]+' => 'Password@update',
     ],
     'GET' => [
         '/' => 'Home@index',

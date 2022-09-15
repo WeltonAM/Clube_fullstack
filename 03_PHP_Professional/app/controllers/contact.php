@@ -43,8 +43,5 @@ class Contact
         }
 
         return setMessageAndRedirect('contact_error', 'Ocorreu um erro ao enviar o email. Tente novamente.', '/contact');
-        
-        var_dump($validated);
-        die();
     }
 }

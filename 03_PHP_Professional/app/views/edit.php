@@ -15,6 +15,19 @@
 </form>
 
 <hr>
+<?php echo getFlash('password_success','color:green'); ?>
+<?php echo getFlash('password_error'); ?>
+<form action="/password/user/<?php echo $user->id ?>" method="post">
+    
+    <?php echo getCsrf(); ?>
+    <input type="text" name="senha">
+    <?php echo getFlash('senha') ?>
+    <input type="text" name="senha_confirmada">
+    <?php echo getFlash('senha_confirmada') ?>
+    <button type="submit">Atualizar</button>
+</form>
+
+<hr>
 
 <?php if($user->path): ?>
     <img src="/<?php echo $user->path ?>" width="80%" alt="">
