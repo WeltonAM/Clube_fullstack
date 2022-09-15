@@ -68,7 +68,7 @@ class User
     public function update($args)
     {
 
-        if(!isset($args['user'])){
+        if(!isset($args['user']) || $args['user'] !== user()->id){
             redirect('/');
         }
 
@@ -82,7 +82,7 @@ class User
             redirect('/user/edit/profile');
         }
 
-        $updated = update('clientes', $validated, ['id' => $args['user']]);
+        $updated = update('clientes', $validated, ['id' => user()->id]);
 
         if($updated){
             return setMessageAndRedirect('updated_success', 'Atualizado com sucesso', '/user/edit/profile');
