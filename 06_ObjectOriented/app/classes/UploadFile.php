@@ -12,7 +12,7 @@ class UploadFile extends Upload
 
     public function __construct($file)
     {
-        parent::__construct($file);
+        parent::__construct($file); // scope resolution operator
         echo 'construct from upload file';
     }
     
