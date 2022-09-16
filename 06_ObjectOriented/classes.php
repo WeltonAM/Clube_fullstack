@@ -1,7 +1,9 @@
 <?php
 
-require "app/classes/Person.php";
-require "app/classes/Activities.php";
+require "vendor/autoload.php";
+
+use app\classes\Person;
+use app\classes\Activites;
 
 $person = new Person;
 $person->age = 27;
