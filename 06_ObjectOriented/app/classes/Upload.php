@@ -2,7 +2,7 @@
 
 namespace app\classes;
 
-class Upload
+abstract class Upload
 {
     private $file; // access modifiers 
 
