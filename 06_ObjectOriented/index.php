@@ -6,11 +6,7 @@ use app\classes\UploadPhoto;
 use app\classes\UploadFile;
 
 $uploadPhoto = new UploadPhoto('photo.png'); // $this equals $upload inside of the class
-$uploadPhoto->extension();
-$uploadPhoto->rename();
-echo $uploadPhoto->upload();
+echo $uploadPhoto->upload().PHP_EOL;
 
 $uploadFile = new UploadFile('pdf.pdf'); 
-$uploadFile->extension();
-$uploadFile->rename();
-echo $uploadFile->upload();
+echo $uploadFile->upload().PHP_EOL;

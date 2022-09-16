@@ -8,6 +8,6 @@ class UploadPhoto extends Upload
     
     public function upload()
     {
-        return $this->newName;
+        return $this->rename();
     }
 }
