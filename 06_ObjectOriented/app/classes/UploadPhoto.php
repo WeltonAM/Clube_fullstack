@@ -2,9 +2,13 @@
 
 namespace app\classes;
 
+use app\traits\ValidationFile;
+
 class UploadPhoto extends Upload
 {
-    public $extensions = ['png', 'jpg'];
+    use ValidationFile;
+
+    private $extensions = ['png', 'jpg'];
     
     public function upload()
     {

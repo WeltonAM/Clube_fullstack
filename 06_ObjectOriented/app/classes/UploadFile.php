@@ -2,9 +2,13 @@
 
 namespace app\classes;
 
+use app\traits\ValidationFile;
+
 class UploadFile extends Upload
 {
-    public $extensions = ['zip', 'pdf', 'rar'];
+    use ValidationFile;
+
+    private $extensions = ['zip', 'pdf', 'rar'];
 
     public function __construct($file)
     {

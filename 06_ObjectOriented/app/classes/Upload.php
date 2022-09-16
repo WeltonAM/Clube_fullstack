@@ -11,7 +11,7 @@ class Upload
         $this->file = $file;
     }
 
-    private function extension()
+    protected function extension()
     {
         return pathinfo($this->file, PATHINFO_EXTENSION);
     }
