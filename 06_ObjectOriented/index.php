@@ -12,3 +12,5 @@ echo $uploadPhoto->upload().PHP_EOL;
 $uploadFile = new UploadFile('pdf.pdf');
 $uploadFile->validation(); 
 echo $uploadFile->upload().PHP_EOL;
+
+echo UploadPhoto::test();
