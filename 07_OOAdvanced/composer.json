@@ -1,0 +1,20 @@
+{
+    "name": "pilgr/07_oo-advanced",
+    "autoload": {
+        "psr-4": {
+            "Pilgr\\07OoAdvanced\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Welton Almeida de Matos",
+            "email": "74322996+WeltonAM@users.noreply.github.com"
+        }
+    ],
+    "require": {},
+    "autoload":{
+        "psr-4": {
+            "app\\":"app"
+        }
+    }
+}
