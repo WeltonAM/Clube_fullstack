@@ -1,11 +1,11 @@
 <?php
 
+require "../vendor/autoload.php";
+
 use app\classes\Crud;
 use app\classes\Login;
 use app\models\Products;
 use app\models\User;
-
-require "../vendor/autoload.php";
 
 $login = new Login;
 $login->email = 'ju@hta.com';
