@@ -2,8 +2,11 @@
     "name": "pilgr/07_oo-advanced",
     "autoload": {
         "psr-4": {
-            "Pilgr\\07OoAdvanced\\": "src/"
-        }
+            "app\\":"app"
+        },
+        "files": [
+            "helpers/functions.php"
+        ]
     },
     "authors": [
         {
@@ -11,10 +14,5 @@
             "email": "74322996+WeltonAM@users.noreply.github.com"
         }
     ],
-    "require": {},
-    "autoload":{
-        "psr-4": {
-            "app\\":"app"
-        }
-    }
+    "require": {}
 }

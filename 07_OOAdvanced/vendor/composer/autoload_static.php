@@ -6,6 +6,10 @@ namespace Composer\Autoload;
 
 class ComposerStaticInitca9d779e434863546870809ef635592e
 {
+    public static $files = array (
+        'ebf8e6a455e43dcb7e9f6596761dcdba' => __DIR__ . '/../..' . '/helpers/functions.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
         'a' => 
         array (
@@ -22,6 +26,10 @@ class ComposerStaticInitca9d779e434863546870809ef635592e
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'app\\classes\\Crud' => __DIR__ . '/../..' . '/app/classes/Crud.php',
+        'app\\classes\\Login' => __DIR__ . '/../..' . '/app/classes/Login.php',
+        'app\\classes\\Upload' => __DIR__ . '/../..' . '/app/classes/Upload.php',
+        'app\\models\\User' => __DIR__ . '/../..' . '/app/models/User.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
