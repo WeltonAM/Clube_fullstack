@@ -15,6 +15,10 @@ class ComposerStaticInitca9d779e434863546870809ef635592e
         array (
             'app\\' => 4,
         ),
+        'P' => 
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -22,14 +26,14 @@ class ComposerStaticInitca9d779e434863546870809ef635592e
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
     );
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'app\\classes\\Crud' => __DIR__ . '/../..' . '/app/classes/Crud.php',
-        'app\\classes\\Login' => __DIR__ . '/../..' . '/app/classes/Login.php',
-        'app\\classes\\Upload' => __DIR__ . '/../..' . '/app/classes/Upload.php',
-        'app\\models\\User' => __DIR__ . '/../..' . '/app/models/User.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
