@@ -3,8 +3,9 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "Pilgr\\08Composer\\": "src/"
-        }
+            "app\\": "app"
+        },
+        "files": ["functions/helpers.php"]
     },
     "authors": [
         {
