@@ -11,5 +11,8 @@
             "email": "74322996+WeltonAM@users.noreply.github.com"
         }
     ],
-    "require": {}
+    "require": {
+        "firebase/php-jwt": "^6.3",
+        "vlucas/phpdotenv": "^5.4"
+    }
 }

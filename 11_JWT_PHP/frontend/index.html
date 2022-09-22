@@ -33,7 +33,7 @@
     <div>
       <form id="form">
         <input type="text" name="email" value="jujuhta@gmail.br">
-        <input type="text" name="password" value="123">
+        <input type="text" name="senha" value="123">
         <button type="submit" class="btn-login">Login</button>
       </form>
     </div>
@@ -46,9 +46,20 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
         const form = document.querySelector("#form");
-        form.addEventListener('submit', function(e) {
+
+        axios.defaults.baseURL = 'http://localhost:3000';
+
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
-            console.log('submit')
+            try{
+                const formData = new FormData(e.target);
+                
+                const {data} = await axios.post('login.php', formData);
+                
+                sessionStorage.setItem('session', data);
+            }catch(error){
+                console.log(error);
+            }
         });
 
     </script>
