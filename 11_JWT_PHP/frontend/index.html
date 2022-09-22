@@ -76,7 +76,8 @@
                 console.log(data);
 
             }catch(error){
-                if(error.response.data === 'Expired token'){
+                const errors = error.response?.data;
+                if(errors === undefined || errors === 'Expired token'){
                     alert('Session expired');
                 }
                 console.log(error);
