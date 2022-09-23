@@ -1,0 +1,15 @@
+{
+    "name": "pc/12_shoppping_cart",
+    "autoload": {
+        "psr-4": {
+            "app\\": "app"
+        }
+    },
+    "authors": [
+        {
+            "name": "WeltonAM",
+            "email": "74322996+WeltonAM@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}
