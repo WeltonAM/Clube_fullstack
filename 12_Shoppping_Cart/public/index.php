@@ -19,6 +19,7 @@ $productsInCart = $cart->cart();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css">
     <title>Cart</title>
 </head>
 <body>
@@ -32,8 +33,8 @@ $productsInCart = $cart->cart();
                 <li>
                     <?php echo $product['name'] ?> |
                     R$ <?php echo number_format($product['price'],2,',','.') ?> 
+                    <a href="add.php?id=<?php echo $index ?>">Add to cart</a>
                 </li>
-                <a href="add.php?id=<?php echo $index ?>">Add to cart</a>
             <?php endforeach; ?>
         </ul>
     </div>

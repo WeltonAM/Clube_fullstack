@@ -24,7 +24,7 @@ class CartProducts
                 'id' => $productId,
                 'product' => $product['name'],
                 'price' => $product['price'],
-                'qtd' => $quantity,
+                'qty' => $quantity,
                 'subtotal' => $quantity * $product['price'],
             ];
 
