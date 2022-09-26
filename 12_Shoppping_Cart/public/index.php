@@ -3,10 +3,15 @@
 session_start();
 
 use app\classes\Cart;
+use app\database\models\Read;
+
+session_start();
 
 require '../vendor/autoload.php';
 
-$products = require '../app/helpers/products.php';
+$read = new Read;
+$products = $read->all('products');
+// $products = require '../app/helpers/products.php';
 
 $cart = new Cart;
 
@@ -29,11 +34,11 @@ $productsInCart = $cart->cart();
         </h3>
         <ul>
 
-            <?php foreach($products as $index => $product): ?>
+            <?php foreach($products as $product): ?>
                 <li>
-                    <?php echo $product['name'] ?> |
-                    R$ <?php echo number_format($product['price'],2,',','.') ?> 
-                    <a href="add.php?id=<?php echo $index ?>">Add to cart</a>
+                    <?php echo $product->name; ?> |
+                    R$ <?php echo number_format($product->price,2,',','.') ?> 
+                    <a href="add.php?id=<?php echo $product->id ?>">Add to cart</a>
                 </li>
             <?php endforeach; ?>
         </ul>

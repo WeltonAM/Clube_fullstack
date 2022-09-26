@@ -1,14 +1,19 @@
 <?php
 
-session_start();
-
 use app\classes\Cart;
 use app\classes\CartProducts;
+use app\database\models\Read;
+
+session_start();
 
 require '../vendor/autoload.php';
 
-$cartProducts = new CartProducts(new Cart);
-$products = $cartProducts->products();
+$read = new Read;
+
+$cartProducts = new CartProducts;
+
+$products = $cartProducts->products(new Cart);
+
 
 // (new Cart)->clear();
 
@@ -37,11 +42,11 @@ $products = $cartProducts->products();
                         <?php echo $product['product']; ?>
                         <form action="quantity.php" method="get">
                             <input type="text" name="qty" value="<?php echo $product['qty']; ?>" id="cart-input-qty">
-                            <input type="hidden" name="id" value="<?php echo $product['id']; ?>">
+                            <input type="hidden" name="id" value="<?php echo $product['id'] ?>">
                         </form> x R$ <?php echo number_format($product['price'],2,',','.'); ?> | <?php echo number_format($product['subtotal'],2,',','.'); ?>
                         | <a href="remove.php?id=<?php echo $product['id']?>" id="cart-remove">Remove</a>
                     </li>
-                <?php endforeach; ?>
+                <?php endforeach ?>
             </ul>
 
             <div id="cart-total-clear">
@@ -51,7 +56,7 @@ $products = $cartProducts->products();
                         <a href="clear.php">Clear cart</a>
                     </span>
             </div>
-        <?php endif; ?>
+        <?php endif ?>
 
     </div>
 </body>
