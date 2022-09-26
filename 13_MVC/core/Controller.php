@@ -36,13 +36,29 @@ class Controller
         if(!$this->controllerExist('HomeController')){
             throw new ControllerNotExistException("This page doesn't exist");
         }
-
+        
         return $this->instanciateController();
     }
 
     private function controllerNotHome()
     {
+        $controller = $this->getControllerNotHome();
+        
+        if(!$this->controllerExist($controller)){
+            throw new ControllerNotExistException("This page doesn't exist");
+        }
 
+        return $this->instanciateController();
+    }
+
+    private function getControllerNotHome()
+    {
+        if(substr_count($this->uri, '/') > 1){
+            list($controller) = array_values(array_filter(explode('/', $this->uri)));
+            return ucfirst($controller).'Controller';
+        }
+
+        return ucfirst(ltrim($this->uri, '/')).'Controller';
     }
 
     private function isHome()
