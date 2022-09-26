@@ -9,9 +9,9 @@ class CourseController
         
     }
 
-    public function show()
+    public function show($req)
     {
-        dd('show');
+        dd($req->next);
     }
 
     public function create()

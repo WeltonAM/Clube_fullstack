@@ -2,9 +2,10 @@
 
 require '../bootstrap.php';
 
+use core\Method;
 use app\classes\Uri;
 use core\Controller;
-use core\Method;
+use core\Parameters;
 
 try {
     $controller = new Controller;
@@ -12,8 +13,11 @@ try {
     
     $method = new Method;
     $method = $method->load($controller);
+
+    $parameters = new Parameters;
+    $parameters = $parameters->load();
     
-    $controller->$method();
+    $controller->$method($parameters);
 
 } catch (\Exception $e) {
     dd($e->getMessage());
