@@ -4,13 +4,17 @@ require '../bootstrap.php';
 
 use app\classes\Uri;
 use core\Controller;
-
-// dd(app\classes\Uri::uri());
+use core\Method;
 
 try {
     $controller = new Controller;
     $controller = $controller->load();
-    dd($controller);
+    
+    $method = new Method;
+    $method = $method->load($controller);
+    
+    $controller->$method();
+
 } catch (\Exception $e) {
     dd($e->getMessage());
 }
