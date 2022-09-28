@@ -8,11 +8,11 @@ class Connection
 {
     public function connect()
     {
-        $pdo = new PDO("mysql:host=localhost;dbname=curso_mvc;charset=utf8", "root", "root");
 
-        $pdo->setAttributes("PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION");
+        $config = Bind::get('config');
+        
+        $pdo = new PDO("mysql:host=$config->host;dbname=$config->dbname;charset=$config->charset", $config->name, $config->password, $config->options);
 
-        $pdo->setAttributes("PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ");
 
         return $pdo;
     }
