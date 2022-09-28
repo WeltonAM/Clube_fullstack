@@ -1,25 +1,23 @@
 <?php
 
-namespace app\core;
+namespace core;
 
 class Twig
 {
     private $twig;
-    private $functions = [];
+	private $functions = [];
 
-    public function loadTwig()
-    {
-        $this->twig = new \Twig_Environment($this->loadView(), [
-            'debug' => true,
-            // 'cache' => '/cache',
-            'auto_reload' => true,
-        ]);
+	public function loadTwig() {
+		$this->twig = new \Twig_Environment($this->loadViews(), [
+			'debug' => true,
+			// 'cache' => '/cache',
+			'auto_reload' => true,
+		]);
 
-        return $this->twig;
-    }
+		return $this->twig;
+	}
 
-    private function loadView()
-    {
-        return new \Twig_loader_Filesystem('../app/views');
-    }
+	private function loadViews() {
+		return new \Twig_Loader_Filesystem('../app/views');
+	}
 }

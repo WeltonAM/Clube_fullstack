@@ -14,8 +14,9 @@ class CourseController extends ContainerController
     public function show($req)
     {
         $this->view([
+            'title' => 'Course',
             'course' => 'PHP MVC',
-        ], 'portal.courses');
+        ], 'portal.course');
     }
 
     public function create()
