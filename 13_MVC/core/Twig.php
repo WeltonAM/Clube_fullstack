@@ -20,4 +20,23 @@ class Twig
 	private function loadViews() {
 		return new \Twig_Loader_Filesystem('../app/views');
 	}
+
+    public function loadExtensions()
+    {
+        return $this->twig->addExtensions(new \Twig_Extensions_Extension_Text());
+    }
+
+    public function functionsToView($name, \Closure $callback)
+    {
+        return new \Twig_Function($name, $callback);
+    }
+
+    public function loadFunctions()
+    {
+        require '../app/functions/twig.php';
+
+        foreach ($this->functions as $key => $value) {
+            $this->twig->addFunction($this->functions[$key]);
+        }
+    }
 }
