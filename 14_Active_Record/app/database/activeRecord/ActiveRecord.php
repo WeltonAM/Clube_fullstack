@@ -2,9 +2,11 @@
 
 namespace app\database\activerecord;
 
+use app\database\interfaces\ActiveRecordInterface;
+use app\database\interfaces\UpdateInterface;
 use ReflectionClass;
 
-abstract class ActiveRecord
+abstract class ActiveRecord implements ActiveRecordInterface
 {
 
     protected $table = null;
@@ -37,9 +39,9 @@ abstract class ActiveRecord
         return $this->attributes[$attribute];
     }    
 
-    public function update()
+    public function update(UpdateInterface $updateInterface)
     {
-
+        return $updateInterface->update();
     }
     
     public function delete()
