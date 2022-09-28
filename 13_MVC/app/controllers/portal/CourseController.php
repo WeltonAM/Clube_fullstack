@@ -2,7 +2,9 @@
 
 namespace app\controllers\portal;
 
-class CourseController
+use app\controllers\ContainerController;
+
+class CourseController extends ContainerController
 {
     public function index()
     {
@@ -11,7 +13,9 @@ class CourseController
 
     public function show($req)
     {
-        dd($req->next);
+        $this->view([
+            'course' => 'PHP MVC',
+        ], 'portal.courses');
     }
 
     public function create()
