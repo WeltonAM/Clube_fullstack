@@ -13,10 +13,10 @@ class Bind
         }        
     }
 
-    public static function get()
+    public static function get($name)
     {
         if(!isset(static::$bind[$name])){
-            throw new Exception("This indice doesn't exist inside BIND: {$name}");
+            throw new \Exception("This indice doesn't exist inside BIND: {$name}");
         }     
         
         return (object)static::$bind[$name];

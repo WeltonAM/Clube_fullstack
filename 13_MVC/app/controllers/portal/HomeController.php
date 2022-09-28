@@ -2,10 +2,19 @@
 
 namespace app\controllers\portal;
 
-class HomeController
+use app\models\portal\User;
+use app\classes\controllers\ContainerController;
+
+class HomeController extends ContainerController
 {
     public function index()
     {
-        dd('index');
+        $user = new User;
+        $users = $user->all();
+
+        $this->view([
+            'title' => 'Users list',
+            'users' => $users,
+        ], 'portal.home');
     }
 }
