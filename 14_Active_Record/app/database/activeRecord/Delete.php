@@ -6,13 +6,12 @@ use app\database\connection\Connection;
 use app\database\interfaces\ActiveRecordInterface;
 use app\database\interfaces\ActiveRecordExecuteInterface;
 
-class Update implements ActiveRecordExecuteInterface
+class Delete implements ActiveRecordExecuteInterface
 {
-
     public function __construct(private string $field, private string|int $value)
     {
     }
-
+ 
     public function execute(ActiveRecordInterface $activeRecordInterface)
     {
         try {
@@ -20,18 +19,13 @@ class Update implements ActiveRecordExecuteInterface
 
             $connection = Connection::connect();
 
-            $attributes = array_merge($activeRecordInterface->getAttributes(), [
+            $prepare = $connection->prepare($query);
+            $prepare->execute([
                 $this->field => $this->value
             ]);
 
-            // var_dump($query);
-            // die();
-
-            $prepare = $connection->prepare($query);
-
-            $prepare->execute($attributes);
-
             return $prepare->rowCount();
+
         } catch (\Throwable $th) {
             formatException($th);
         }
@@ -39,18 +33,12 @@ class Update implements ActiveRecordExecuteInterface
 
     private function createQuery(ActiveRecordInterface $activeRecordInterface)
     {
-        if(array_key_exists('id', $activeRecordInterface->getAttributes())){
-            throw new \Exception("Id must be informed in the query");
+        if($activeRecordInterface->getAttributes()){
+            throw new \Exception("Do not need atributes");
         }
 
-        $sql = "update {$activeRecordInterface->getTable()} set ";
-        
-        foreach($activeRecordInterface->getAttributes() as $key => $value){
-            $sql .= "{$key}=:{$key},";
-        }
-
-        $sql = rtrim($sql, ',');
-        $sql .= " where {$this->field} = :{$this->field}";
+        $sql = "delete from {$activeRecordInterface->getTable()} ";
+        $sql .= "where {$this->field} = :{$this->field}";
 
         return $sql;
     }
