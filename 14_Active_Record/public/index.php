@@ -8,9 +8,10 @@ use app\database\activerecord\Delete;
 use app\database\activerecord\FindBy;
 use app\database\activerecord\Insert;
 use app\database\activerecord\Update;
+use app\database\activerecord\FindAll;
 
 $user = new User;
 // $user->firstName = 'Frô';
 // $user->lastName = 'Lrinda';
 
-var_dump($user->execute(new FindBy(field:'id', value:1)));
+var_dump($user->execute(new FindAll(fields:'firstName')));
