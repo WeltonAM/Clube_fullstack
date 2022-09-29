@@ -2,6 +2,7 @@
 
 namespace app\database\connection;
 
+use PDO;
 class Connection
 {
     private static $pdo = null;

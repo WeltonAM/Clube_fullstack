@@ -2,8 +2,9 @@
 
 namespace app\database\activerecord;
 
+use app\database\interfaces\ActiveRecordExecuteInterface;
 use app\database\interfaces\ActiveRecordInterface;
-use app\database\interfaces\UpdateInterface;
+
 use ReflectionClass;
 
 abstract class ActiveRecord implements ActiveRecordInterface
@@ -39,13 +40,8 @@ abstract class ActiveRecord implements ActiveRecordInterface
         return $this->attributes[$attribute];
     }    
 
-    public function update(UpdateInterface $updateInterface)
+    public function execute(ActiveRecordExecuteInterface $activeRecordExecuteInterface)
     {
-        return $updateInterface->update();
-    }
-    
-    public function delete()
-    {
-
+        return $activeRecordExecuteInterface->execute($this);
     }
 }
