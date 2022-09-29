@@ -10,8 +10,5 @@ use app\database\activerecord\Update;
 $user = new User;
 $user->firstName = 'Juliana';
 $user->lastName = 'Karla';
-$user->id = 1;
 
-echo $user->execute(new Find);
-
-// var_dump($user);
+echo $user->execute(new Update(field:'id', value:1));

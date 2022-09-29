@@ -7,6 +7,6 @@ use app\database\activerecord\ActiveRecordUser;
 
 class User extends ActiveRecord
 {
-    // protected $table = 'user';
+    protected $table = 'users';
     
 }
