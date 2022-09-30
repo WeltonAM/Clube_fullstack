@@ -4,7 +4,10 @@
         "psr-4": {
             "Pc\\15MvcAdvanced\\": "src/",
             "app\\": "app"
-        }
+        },
+        "files": [
+            "app/helpers/exception.php"
+        ]
     },
     "authors": [
         {
