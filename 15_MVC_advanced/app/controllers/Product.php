@@ -14,7 +14,7 @@ class Product
 
     public function edit(array $args)
     {
-        $this->view = 'edit';
+        $this->view = 'edit.php';
         $this->data = [
             'title' => 'Edit'
         ];
