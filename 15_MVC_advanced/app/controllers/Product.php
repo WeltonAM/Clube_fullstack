@@ -9,7 +9,10 @@ class Product
 
     public function index()
     {
-        return 'index';
+        $this->view = 'edit.php';
+        $this->data = [
+            'title' => 'Edit'
+        ];
     }
 
     public function edit(array $args)
