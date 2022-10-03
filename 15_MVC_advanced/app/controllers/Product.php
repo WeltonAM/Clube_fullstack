@@ -4,6 +4,9 @@ namespace app\controllers;
 
 class Product
 {
+    public array $data = [];
+    public string $view;
+
     public function index()
     {
         return 'index';
@@ -11,6 +14,9 @@ class Product
 
     public function edit(array $args)
     {
-        var_dump($args);
+        $this->view = 'edit';
+        $this->data = [
+            'title' => 'Edit'
+        ];
     }
 }
