@@ -9,8 +9,8 @@ class Product
         return 'index';
     }
 
-    public function edit()
+    public function edit(array $args)
     {
-        return 'edit';
+        var_dump($args);
     }
 }
