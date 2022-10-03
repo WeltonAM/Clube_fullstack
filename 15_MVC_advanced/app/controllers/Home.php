@@ -10,9 +10,9 @@ class Home
     public function index()
     {
         $this->view = 'home.php';
-        
+
         $this->data = [
-            'name' => 'Juliana'
+            'title' => 'Home'
         ];
     }
 }

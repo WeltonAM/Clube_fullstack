@@ -16,5 +16,7 @@
             "email": "74322996+WeltonAM@users.noreply.github.com"
         }
     ],
-    "require": {}
+    "require": {
+        "filp/whoops": "^2.14"
+    }
 }
