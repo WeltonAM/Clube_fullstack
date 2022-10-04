@@ -4,9 +4,9 @@ namespace app\core;
 
 use app\core\Uri;
 use app\core\MethodExtract;
-use app\interfaces\ControllerInterface;
+use app\interfaces\AppInterface;
 
-class AppExtract implements ControllerInterface
+class AppExtract implements AppInterface
 {
     private array $params = [];
     private int $sliceIndexStartFrom;
