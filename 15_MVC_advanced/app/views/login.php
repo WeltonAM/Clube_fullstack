@@ -5,3 +5,7 @@
     <input type="password" name="password" placeholder="Password" value="123">
     <button type="submit">Login</button>
 </form>
+
+<br>
+
+<?php echo flash('login'); ?>
