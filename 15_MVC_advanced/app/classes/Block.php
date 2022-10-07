@@ -17,7 +17,7 @@ class Block
         $blockMethod = false;
 
         foreach($methods as $method){
-            if(in_array($method, $blockMethods) and $method === $actualMethod){
+            if(in_array($method, $blockMethods) AND $method === $actualMethod){
                 $blockMethod = true;
             }
         }
