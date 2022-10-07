@@ -26,7 +26,7 @@
                 </ul>
             </div>
         </div>
-        <p>Bem vindo, visitante</p>
+        <p><?php echo welcome('user'); ?></p>
     </nav>
 
     <div>

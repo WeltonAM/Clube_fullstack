@@ -22,7 +22,7 @@ class MethodExtract
             $method = 'index';
         }
 
-        if(!method_exists($controller, $method)){
+        if(!method_exists($controller, $method)){  
             $method = 'index';
             $sliceIndexStartFrom = 1;
         }

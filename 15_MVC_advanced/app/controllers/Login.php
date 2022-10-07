@@ -47,4 +47,11 @@ class Login
 
         return redirect('/');
     }
+
+    public function destroy()
+    {
+        session_destroy();
+
+        return redirect('/');
+    }
 }
