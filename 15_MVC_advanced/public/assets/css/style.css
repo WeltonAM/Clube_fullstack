@@ -15,4 +15,29 @@ ul {
 nav p {
     position: relative;
     margin-left: auto;
+    text-align: right;
+}
+
+nav p a {
+    text-decoration: none;
+}
+
+.form-div {
+    width: 60%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: center;
+}
+
+.form-div button {
+    float: right;
+}
+
+.flash-msg{
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

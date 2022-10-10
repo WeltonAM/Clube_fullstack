@@ -8,6 +8,13 @@ class ValidateRequired implements ValidateInterface
 {
     public function handle($field, $param)
     {
-        var_dump($field, $param);
+        $string = strip_tags($_POST[$field]);
+
+        if($string === ''){
+            Flash::set($field, 'Field required');
+            return false;
+        }
+
+        return $string;
     }
 }

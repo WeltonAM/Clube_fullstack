@@ -28,8 +28,11 @@ class SignUp
             'password' => [REQUIRED, MAXLEN.':10'],
         ]);
 
-        // if($validate->errors){
+        if($validate->errors){
+            return redirect('/signup');
+        }
 
-        // }
+        var_dump($validate->data);
+        die();
     }
 }

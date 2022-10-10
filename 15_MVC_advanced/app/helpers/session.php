@@ -7,6 +7,4 @@ function welcome($index)
 
         return 'Welcome, '.$user->firstName.' '.$user->lastName. ' | <a href="/login/destroy">Logout</a>';
     }
-
-    return 'Visitante';
 }

@@ -1,11 +1,21 @@
-<h2>Login</h2>
+<div class="form-div">
 
-<form action="/login/store" method="post">
-    <input type="text" name="email" placeholder="Email" value="ju@hta.com">
-    <input type="password" name="password" placeholder="Password" value="123">
-    <button type="submit">Login</button>
-</form>
+    <form action="/login/store" method="post">
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="text" class="form-control" name="email" value="ju@hta.com">
+        </div>
+        
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>    
+            <input type="password" class="form-control" name="password" value="123">
+        </div>
+    
+        <button class="btn btn-outline-dark btn-sm" type="submit">Login</button>
+    
+    </form>
+</div>
 
-<br>
-
-<?php echo flash('login'); ?>
+<div class="flash-msg">
+    <?php echo flash('login'); ?>
+</div>
