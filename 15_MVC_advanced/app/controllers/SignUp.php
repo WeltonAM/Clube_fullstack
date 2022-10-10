@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\classes\Validate;
+
 class SignUp
 {
     public string $view;
@@ -26,9 +28,9 @@ class SignUp
             'password' => [REQUIRED, MAXLEN.':10'],
         ]);
 
-        if($validate->errors){
+        // if($validate->errors){
 
-        }
+        // }
 
         
     }
