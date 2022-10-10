@@ -31,7 +31,5 @@ class SignUp
         // if($validate->errors){
 
         // }
-
-        
     }
 }
