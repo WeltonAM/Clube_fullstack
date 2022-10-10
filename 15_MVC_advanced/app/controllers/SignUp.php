@@ -2,7 +2,10 @@
 
 namespace app\controllers;
 
+use app\models\User;
+use app\classes\Flash;
 use app\classes\Validate;
+use app\models\activerecord\Insert;
 
 class SignUp
 {
@@ -32,6 +35,18 @@ class SignUp
             return redirect('/signup');
         }
 
+        $user = new User;
+        $user->firstName = $validate->data['firstName'];
+        $user->lastName = $validate->data['lastName'];
+        $user->email = $validate->data['email'];
+        $user->password = password_hash($validate->data['password'], PASSWORD_DEFAULT);
+        $created = $user->execute(new Insert);
+
+        if($created){
+            Flash::set('created', 'User registrated', 'success');
+            return redirect('/signup');
+        }
+        
         var_dump($validate->data);
         die();
     }

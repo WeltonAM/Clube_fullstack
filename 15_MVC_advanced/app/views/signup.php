@@ -1,3 +1,5 @@
+<?php echo flash('created'); ?>
+
 <div class="form-div">
     <form action="signup/store" method="post">
         <div class="mb-3">
