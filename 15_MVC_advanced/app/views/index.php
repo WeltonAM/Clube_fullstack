@@ -18,7 +18,7 @@
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/singup">Sing up</a>
+                        <a class="nav-link" href="/signup">Sign up</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/login">Login</a>
