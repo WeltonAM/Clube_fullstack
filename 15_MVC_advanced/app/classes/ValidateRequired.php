@@ -15,6 +15,8 @@ class ValidateRequired implements ValidateInterface
             return false;
         }
 
+        Old::set($field, $string);
+
         return $string;
     }
 }

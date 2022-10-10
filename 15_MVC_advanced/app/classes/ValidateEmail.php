@@ -15,6 +15,10 @@ class ValidateEmail implements ValidateInterface
             return false;
         }
 
-        return strip_tags($_POST[$field]);
+        $string = strip_tags($_POST[$field]);
+
+        Old::set($field, $string);
+
+        return $string;
     }
 }
