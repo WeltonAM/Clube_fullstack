@@ -6,9 +6,9 @@ use app\core\Uri;
 
 class FolderExtract
 {
-    public static function extract()
+    public static function extract($uri):string
     {
-        $folder = '';
+        $folder = CONTROLLER_FOLDER_DEFAULT;
 
         $uri = Uri::uri();
 

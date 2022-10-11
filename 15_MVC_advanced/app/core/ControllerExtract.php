@@ -8,14 +8,14 @@ class ControllerExtract
     {
         $uri = Uri::uri();
 
-        $folder = FolderExtract::extract();
+        $folder = FolderExtract::extract($uri);
 
         if($folder){
             $controller = Uri::uriExist($uri, index: 1);
             $namespaceAndController = "app\\controllers\\".$folder."\\";
         } else {
             $controller = Uri::uriExist($uri, index: 0);
-            $namespaceAndController = "app\\controllers\\";
+            $namespaceAndController = "app\\controllers\\".CONTROLLER_FOLDER_DEFAULT."\\";
         }
 
         if(!$controller){
