@@ -9,7 +9,7 @@ class User
 {
     public string $view;
     public array $data = [];
-    public string $master = 'user.php';
+    public string $master = 'index.php';
 
     public function show(array $args)
     {
