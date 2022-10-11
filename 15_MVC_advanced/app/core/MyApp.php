@@ -27,12 +27,10 @@ class MyApp
         if($_SERVER['REQUEST_METHOD'] === 'GET'){
             if(!isset($this->controller->data)){
                 throw new \Exception("Data is required");
-                
             }
         
             if(!array_key_exists('title', $this->controller->data)){
-                throw new \Exception("Title is required");
-                
+                throw new \Exception("Title is required"); 
             }
         
             extract($this->controller->data);

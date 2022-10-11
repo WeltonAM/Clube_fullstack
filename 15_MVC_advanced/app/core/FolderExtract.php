@@ -13,9 +13,7 @@ class FolderExtract
         $uri = Uri::uri();
 
         if(isset($uri[0]) and $uri[0] !== ''){
-            $folder = $uri[0];
-
-            return is_dir(strtolower(string: ROOT.'/'.CONTROLLER_PATH.$folder)) ? $folder : '';
+            return is_dir(strtolower(string: ROOT.'/'.CONTROLLER_PATH.$uri[0])) ? $uri[0] : '';
         }
 
         return $folder;
