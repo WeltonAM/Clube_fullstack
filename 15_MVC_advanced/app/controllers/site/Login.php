@@ -12,6 +12,7 @@ class Login implements ControllerInterface
 {
     public string $view;
     public array $data = [];
+    public string $master = 'login.php';
 
     public function __construct()
     {

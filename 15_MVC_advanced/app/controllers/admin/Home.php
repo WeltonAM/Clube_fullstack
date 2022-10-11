@@ -8,12 +8,15 @@ class Home implements ControllerInterface
 {
     public array $data = [];
     public string $view;
+    public string $master;
 
     public function index(array $args)
     {
         $this->data = [
             'title' => 'Admin',
         ];
+
+        $this->master = 'admin/index.php';
 
         $this->view = 'admin/home.php';
     }

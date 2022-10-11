@@ -28,13 +28,17 @@ class MyApp
             if(!isset($this->controller->data)){
                 throw new \Exception("Data is required");
             }
+
+            if(!isset($this->controller->master)){
+                throw new \Exception("Master is required");
+            }
         
             if(!array_key_exists('title', $this->controller->data)){
                 throw new \Exception("Title is required"); 
             }
         
             extract($this->controller->data);
-            require '../app/views/index.php';
+            require '../app/views/'.$this->controller->master;
         }
     }
 }

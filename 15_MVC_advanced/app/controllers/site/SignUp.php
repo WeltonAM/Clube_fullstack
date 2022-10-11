@@ -11,6 +11,7 @@ class SignUp
 {
     public string $view;
     public array $data = [];
+    public string $master = 'signup.php';
 
     public function index()
     {
