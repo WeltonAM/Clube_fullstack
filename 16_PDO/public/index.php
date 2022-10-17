@@ -1,14 +1,20 @@
 <?php
 
-use app\classes\Uri;
-use app\classes\Routes;
-
 require "../bootstrap.php";
 
+use app\classes\Uri;
+use app\classes\Layout;
+use app\classes\Routes;
+
 $routes = [
-    '/' => 'controllers/index.php',
+    '/' => 'controllers/index',
+    '/create_user' => 'controllers/create_user',
 ];
 
 $uri = Uri::load();
 
+$layout = new Layout;
+
 require Routes::load($routes, $uri);
+
+require $layout->master('layout');

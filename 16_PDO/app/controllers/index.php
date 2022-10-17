@@ -6,4 +6,4 @@ $user = new User;
 
 $users = $user->all();
 
-require "../app/views/index.php";
+$layout->add('home');
