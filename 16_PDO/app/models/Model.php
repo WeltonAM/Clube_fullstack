@@ -2,10 +2,14 @@
 
 namespace app\models;
 
+use app\traits\PersistDb;
 use app\models\Connection;
 
 abstract class Model
 {
+
+    use PersistDb;
+
     protected $connection;
 
     public function __construct()
@@ -32,7 +36,7 @@ abstract class Model
         return $list->fetch();
     }
 
-    public function delete()
+    public function delete($field, $value)
     {
         $sql = "delete from {$this->table} where $field = ?";
         $delete = $this->connection->prepare($sql);
