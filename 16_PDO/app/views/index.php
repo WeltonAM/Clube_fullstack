@@ -10,7 +10,23 @@
     <title>PDO course</title>
 </head>
 <body>
-    <h1>hello</h1>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>User id</th>
+                <th>User name</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <?php foreach($users as $user): ?>
+                <tr>
+                    <td><?= $user->id ?></td>
+                    <td><?= $user->name ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
