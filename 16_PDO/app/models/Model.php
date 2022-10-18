@@ -28,9 +28,9 @@ abstract class Model
 
     public function find($field, $value)
     {
-        $sql = "select * from {$this->table} where {$field} = ?";
+        $sql = "select * from {$this->table} where {$field} = :{$field}";
         $list = $this->connection->prepare($sql);
-        $list->bindValue(1, $value);
+        $list->bindValue($field, $value);
         $list->execute();
 
         return $list->fetch();

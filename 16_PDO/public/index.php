@@ -10,6 +10,8 @@ $routes = [
     '/' => 'controllers/index',
     '/create_user' => 'controllers/create_user',
     '/store_user' => 'controllers/store_user',
+    '/edit_user' => 'controllers/edit_user',
+    '/update_user' => 'controllers/update_user',
 ];
 
 $uri = Uri::load();

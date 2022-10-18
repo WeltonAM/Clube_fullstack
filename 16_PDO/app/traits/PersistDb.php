@@ -15,8 +15,8 @@ trait PersistDb
         return $insert->execute($attributes);
     }
 
-    public function update()
-    {
+    // public function update()
+    // {
 
-    }
+    // }
 }
