@@ -4,6 +4,10 @@ use app\models\User;
 
 $user = new User;
 
-$updated = $user->update($_POST);
+$id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
 
-header('Location:/');
+$updated = $user->update($_POST, ['id' => $id]);
+
+if($updated){
+    header('location:/');
+}
