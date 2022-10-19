@@ -1,17 +1,13 @@
 <?php
 
+use app\classes\Validation;
 use app\models\User;
 
-$name = strip_tags($_POST['name']);
-$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-$password = strip_tags($_POST['password']);
+$validation = new Validation;
+$validate = $validation->validate($_POST);
 
 $user = new User;
-$user->insert([
-    'name' => $name,
-    'email' => $email,
-    'password' => $password,
-]);
+$user->insert($validate);
 
 if($user){
     header('location:/');
