@@ -2,7 +2,8 @@
     "name": "pilgr/17_slim",
     "autoload": {
         "psr-4": {
-            "Pilgr\\17Slim\\": "src/"
+            "Pilgr\\17Slim\\": "src/",
+            "app\\": "app/"
         }
     },
     "authors": [
