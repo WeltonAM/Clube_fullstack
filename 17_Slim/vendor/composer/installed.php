@@ -3,7 +3,7 @@
         'name' => 'pilgr/17_slim',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '7e9e7270575203ce4d8cb91267466bd747b2383e',
+        'reference' => '02f73cd4e2543c4b92bf544365b2094d6266c480',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -31,7 +31,7 @@
         'pilgr/17_slim' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '7e9e7270575203ce4d8cb91267466bd747b2383e',
+            'reference' => '02f73cd4e2543c4b92bf544365b2094d6266c480',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

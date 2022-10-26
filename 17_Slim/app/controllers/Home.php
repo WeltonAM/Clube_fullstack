@@ -2,11 +2,10 @@
 
 namespace app\controllers;
 
-class Home
+class Home extends Base
 {
     public function index($request, $response)
     {
-        $response->getBody()->write("Index");
-        return $response;
+        return $this->getTwig()->render($response, $this->setView('site/home'));
     }
 }
