@@ -1,4 +1,5 @@
 <?php
+
 namespace app\traits;
 
 use Slim\Views\Twig;
