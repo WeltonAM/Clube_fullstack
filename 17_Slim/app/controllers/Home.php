@@ -15,8 +15,8 @@ class Home extends Base
 
     public function index($request, $response)
     {
-        $users = $this->user->findAll();
-
+        $users = $this->user->find();
+    
         return $this->getTwig()->render($response, $this->setView('site/home'), [
             'title' => 'Home',
             'users' => $users,

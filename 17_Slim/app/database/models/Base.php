@@ -2,25 +2,11 @@
 
 namespace app\database\models;
 
-use app\database\Connection;
+use app\traits\Read;
+use app\traits\Connection;
 
 abstract class Base
 {
-    private $connection;
+    use Read, Connection;
 
-    public function __construct()
-    {
-        $this->connection = Connection::connection();   
-    }
-
-    public function findAll()
-    {
-        try {
-            $query = $this->connection->query("select * from " . $this->table);
-            return $query->fetchAll();
-            
-        } catch (\PDOException $e) {
-            var_dump($e->getMessage());
-        }
-    }
 }
