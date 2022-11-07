@@ -17,11 +17,9 @@ class Home extends Base
     {
         $users = $this->user->findAll();
 
-        var_dump($users);
-        die();
-
         return $this->getTwig()->render($response, $this->setView('site/home'), [
             'title' => 'Home',
+            'users' => $users,
         ]);
     }
 }
