@@ -17,9 +17,11 @@ class Home extends Base
     {
         $users = $this->user->find();
     
-        $created = $this->user->create(['firstName' => 'asas', 'email' => 'asasas']);
+        // $created = $this->user->create(['firstName' => 'asas', 'email' => 'asasas']);
 
-        var_dump($created);
+        $updated = $this->user->update(['fields' => ['firstName' => 'Juliana', 'email' => 'Juju'], 'where' => ['id' => 1]]);
+
+        var_dump($updated);
         die();
 
         return $this->getTwig()->render($response, $this->setView('site/home'), [

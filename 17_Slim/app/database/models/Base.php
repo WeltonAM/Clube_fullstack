@@ -2,12 +2,13 @@
 
 namespace app\database\models;
 
-use app\traits\Read;
-use app\traits\Create;
 use app\traits\Connection;
+use app\traits\Create;
+use app\traits\Read;
+use app\traits\Update;
 
 abstract class Base
 {
-    use Read, Create, Connection;
+    use Read, Create, Update, Connection;
 
 }
