@@ -19,9 +19,11 @@ class Home extends Base
     
         // $created = $this->user->create(['firstName' => 'asas', 'email' => 'asasas']);
 
-        $updated = $this->user->update(['fields' => ['firstName' => 'Juliana', 'email' => 'Juju'], 'where' => ['id' => 1]]);
+        // $updated = $this->user->update(['fields' => ['firstName' => 'Juliana', 'email' => 'Juju'], 'where' => ['id' => 1]]);
 
-        var_dump($updated);
+        $deleted = $this->user->delete('id', 2);
+
+        var_dump($deleted);
         die();
 
         return $this->getTwig()->render($response, $this->setView('site/home'), [
