@@ -20,7 +20,7 @@ class Home extends Base
     {
         $users = $this->user->find();
 
-        $this->validate->exists(['firstName', 'email', 'password']);
+        $this->validate->exists(['firstName', 'email', 'password'])->email($this->user, 'email', 'Juju');
 
         var_dump($this->validate->getErrors());
         die();

@@ -12,8 +12,18 @@ class Validate
             if(empty($_POST[$field])){
                 $this->errors[$field] = 'Required field';
             }
-            
         }
+
+        return $this;
+    }
+
+    public function email($model, $field, $value)
+    {
+        $user = $model->findBy($field, $value);
+
+        if($user) $this->errors[$field] = 'Email already exists';
+
+        return $this;
     }
 
     public function getErrors()
