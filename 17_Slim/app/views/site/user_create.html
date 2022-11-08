@@ -1,0 +1,14 @@
+{% extends "site/master.html" %}
+
+{% block content %}
+
+    <h2>Create</h2>
+    
+    <form action="/user/store" method="post">
+        
+        <input type="hidden" name="_METHOD" value="PUT">
+
+        <button type="submit">Sign up</button>
+    </form>
+
+{% endblock %}
