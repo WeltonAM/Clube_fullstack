@@ -15,6 +15,10 @@ require '../app/routes/user.php';
 $methodOverrideMiddleware = new MethodOverrideMiddleware();
 $app->add($methodOverrideMiddleware);
 
+$app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATH'], '/{routes:.+}', function ($request, $response){
+    $response->getBody()->write("Route doesn't exist");
+    return $response;
+});
 
 $app->run();
 
