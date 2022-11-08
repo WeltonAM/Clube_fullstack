@@ -18,7 +18,6 @@ class Home extends Base
     {
         $users = $this->user->find();
 
-        Flash::set('message', 'Success to sign up');
         $message = Flash::get('message');
 
         return $this->getTwig()->render($response, $this->setView('site/home'), [
