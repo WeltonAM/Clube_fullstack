@@ -7,13 +7,13 @@
     
     <form action="/user/store" method="post">
         <input type="text" name="firstName" class="form-control" placeholder="Name">
-        {{ messages['firstName']['message'] }}
+        {{ messages['firstName']['message'] | message(messages['firstName']['alert']) | raw }}
         
         <input type="text" name="lastName" class="form-control" placeholder="Last name">
-        {{ messages['lastName']['message'] }}
+        {{ messages['lastName']['message'] | message(messages['lastName']['alert']) | raw }}
         
         <input type="text" name="email" class="form-control" placeholder="Email">
-        {{ messages['email']['message'] }}
+        {{ messages['email']['message'] | message(messages['email']['alert']) | raw }}
     
         <br>
         <button type="submit">Sign up</button>
