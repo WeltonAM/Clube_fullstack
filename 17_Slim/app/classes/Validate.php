@@ -6,7 +6,7 @@ class Validate
 {
     private $errors = [];
 
-    public function exists(array $fields)
+    public function required(array $fields)
     {
         foreach ($fields as $field) {
             if(empty($_POST[$field])){
@@ -17,11 +17,11 @@ class Validate
         return $this;
     }
 
-    public function email($model, $field, $value)
+    public function exist($model, $field, $value)
     {
-        $user = $model->findBy($field, $value);
+        $data = $model->findBy($field, $value);
 
-        if($user) $this->errors[$field] = 'Email already exists';
+        if($data) $this->errors[$field] = 'Email already exists';
 
         return $this;
     }

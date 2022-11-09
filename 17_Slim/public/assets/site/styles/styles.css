@@ -7,6 +7,16 @@ body {
     color: aliceblue;
 }
 
+#sign-up{
+    width: 50%;
+    margin: auto;
+    padding: 10px;
+}
+
+#sign-up, input{
+    margin-top: 10px;
+}
+
 #div-block-content{
     margin-top: 80px;
 }
