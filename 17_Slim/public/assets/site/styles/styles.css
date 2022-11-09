@@ -17,6 +17,10 @@ body {
     margin-top: 10px;
 }
 
+.alert-danger{
+    /* height: 5px; */
+}
+
 #div-block-content{
     margin-top: 80px;
 }

@@ -29,17 +29,30 @@ class User extends Base
 
     public function store($request, $response, $args)
     {
-        $email = 'Juju';
-        $this->validate->required(['firstName', 'lastName', 'email'])->exist($this->user, 'email', $email);
+        $firstName = strip_tags($_POST['firstName']);
+        $lastName = strip_tags($_POST['lastName']);
+        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+        $password = strip_tags($_POST['password']);
+
+        $this->validate->required(['firstName', 'lastName', 'email', 'password'])->exist($this->user, 'email', $email);
 
         $errors = $this->validate->getErrors();
 
         if($errors){
             FLash::flashes($errors);
             return redirect('/user/create', $response);
-        } 
+        }
         
-        return $response;
+        $created = $this->user->create(['firstName' => $firstName, 'lastName' => $lastName, 'email' => $email, 'password' => password_hash($password, PASSWORD_DEFAULT)]);
+
+        if($created){
+            Flash::set('message', 'Sing up successfully');
+            return redirect('/', $response);
+        }
+        
+        Flash::set('message', 'Something went wrong');
+        return redirect('/user/create', $response);
+        
     }
 
     public function update($request, $response, $args)
