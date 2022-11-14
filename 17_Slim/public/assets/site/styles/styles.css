@@ -7,18 +7,28 @@ body {
     color: aliceblue;
 }
 
-#sign-up{
+.cont-center{
     width: 50%;
     margin: auto;
     padding: 10px;
 }
 
-#sign-up, input{
+.cont-center input{
     margin-top: 10px;
 }
 
-.alert-danger{
-    /* height: 5px; */
+.cont-center button {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  padding: 11px 18px 11px;
+  outline: 0;
+  border: 1px solid black;
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+  color: aliceblue;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 #div-block-content{
@@ -34,9 +44,9 @@ footer{
     background-color: #292424;
 }
 
-/* 
-.header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-} */
+    
+@media (min-width: 768px) {
+    .button-52 {
+    padding: 13px 50px 13px;
+    }
+}

@@ -39,9 +39,12 @@ class User extends Base
             return redirect('/', $response);
         }
 
+        $messages = Flash::getAll();
+
         return $this->getTwig()->render($response, $this->setView('site/user_edit'), [
             'title' => 'User edit',
             'user' => $user,
+            'messages' => $messages,
         ]);
     }
 
@@ -74,7 +77,30 @@ class User extends Base
 
     public function update($request, $response, $args)
     {
-        var_dump('update');
+        $firstName = strip_tags($_POST['firstName']);
+        $lastName = strip_tags($_POST['lastName']);
+        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+        $id = filter_var($args['id'], FILTER_SANITIZE_NUMBER_INT);
+
+        $this->validate->required(['firstName', 'lastName', 'email']);
+
+        $errors = $this->validate->getErrors();
+
+        if($errors){
+            FLash::flashes($errors);
+            return redirect('/user/edit/' . $id, $response);
+        }
+        
+        $updated = $this->user->update(['fields' => ['firstName' => $firstName, 'lastName' => $lastName, 'email' => $email], 'where' => ['id' => $id]]);
+        
+        if($updated){
+            Flash::set('message', 'Successfully updated!');
+            return redirect('/user/edit/' . $id, $response);
+        }
+        
+        Flash::set('message', 'Error to update!');
+        return redirect('/user/edit/' . $id, $response);
+        
         return $response;
     }
 
