@@ -27,6 +27,24 @@ class User extends Base
         ]);
     }
 
+    public function edit($request, $response, $args)
+    {
+        $id = filter_var($args['id'], FILTER_SANITIZE_NUMBER_INT);
+
+        $user = $this->user->findBy('id', $id);
+
+        if(!$user){
+            Flash::set('message', "User doesn't exist", 'danger');
+
+            return redirect('/', $response);
+        }
+
+        return $this->getTwig()->render($response, $this->setView('site/user_edit'), [
+            'title' => 'User edit',
+            'user' => $user,
+        ]);
+    }
+
     public function store($request, $response, $args)
     {
         $firstName = strip_tags($_POST['firstName']);
@@ -52,7 +70,6 @@ class User extends Base
         
         Flash::set('message', 'Something went wrong');
         return redirect('/user/create', $response);
-        
     }
 
     public function update($request, $response, $args)
