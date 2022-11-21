@@ -11,18 +11,24 @@
           <li class="nav-item">
             <a class="nav-link" href="/user/create">Sign up</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/login">
-              Log in
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
         </ul>
       </div>
+
+      <div>
+        <p id="user-name">
+          {% if logged_in %} User, {{ user.firstName }} {{ user.lastName }}
+          <a class="nav-link log-btn" href="/logout">
+            Log out
+          </a>
+  
+          {% else %} Visitor
+          <a class="nav-link log-btn" href="/login">
+            Log in
+          </a>
+          
+          {% endif %}
+        </p>
+      </div>
     </div>
+
   </nav>

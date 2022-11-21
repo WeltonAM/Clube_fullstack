@@ -7,10 +7,27 @@ body {
     color: aliceblue;
 }
 
+#user-name{
+    color: #292424;
+    padding: 0 10px 0 10px;
+    margin: 0;
+}
+
 .cont-center{
     width: 50%;
     margin: auto;
     padding: 10px;
+}
+
+.log-btn{
+    font-size: 0.8em;
+    background-color: #332d2d98;
+    color: aliceblue;
+    border-radius: 4px;
+    text-align: center;
+    min-width: 50%;
+    max-width: 80%;
+    margin-left: auto;
 }
 
 .cont-center input{

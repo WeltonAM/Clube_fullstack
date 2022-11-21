@@ -2,6 +2,8 @@
 
 {% block content %}
 
+{% if logged_in %} Already logged! {% else %} 
+
 <div class="cont-center">
     <h2>Login</h2>
 
@@ -31,4 +33,4 @@
     </form>
 </div>
 
-{% endblock %}
+{% endif %} {% endblock %}

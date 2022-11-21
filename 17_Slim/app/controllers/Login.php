@@ -49,4 +49,11 @@ class Login extends Base
         Flash::set('message', 'Error to log in.');
         return redirect('/login', $response);
     }
+
+    public function destroy($request, $response)
+    {
+        $this->login->logout();
+
+        return redirect('/', $response);
+    }
 }
