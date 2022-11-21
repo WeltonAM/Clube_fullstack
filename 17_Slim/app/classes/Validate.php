@@ -26,6 +26,18 @@ class Validate
         return $this;
     }
 
+    public function email($email)
+    {
+        $validated = filter_var($email, FILTER_VALIDATE_EMAIL);
+
+        if(!$validated){
+            Flash::set('email', 'Invalid Email', 'danger');
+            $this->errors['email'] = true;
+        } else {
+            Flash::set('old_email', $email);
+        }
+    }
+
     public function getErrors()
     {
         return $this->errors;
