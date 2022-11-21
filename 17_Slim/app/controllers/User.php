@@ -106,7 +106,24 @@ class User extends Base
 
     public function destroy($request, $response, $args)
     {
-        var_dump('delete');
-        return $response;
+        $id = filter_var($args['id'], FILTER_SANITIZE_NUMBER_INT);
+
+        $user = $this->user->findBy('id', $id);
+
+        if(!$user){
+            Flash::set('message', "User doesn't exist", 'danger');
+
+            return redirect('/', $response);
+        }
+
+        $deleted = $this->user->delete('id', $id);
+
+        if($deleted){
+            Flash::set('message', 'Successfully deleted!');
+            return redirect('/', $response);
+        }
+        
+        Flash::set('message', 'Error to delete!');
+        return redirect('/' . $id, $response);
     }
 }
