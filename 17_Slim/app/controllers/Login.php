@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\classes\Flash;
+use app\classes\Login as Log;
 use app\classes\Validate;
 
 class Login extends Base
@@ -11,7 +12,7 @@ class Login extends Base
     
     public function __construct()
     {
-        // $this->login = new Login;
+        $this->login = new Log;
     }
 
     public function index($request, $response)
