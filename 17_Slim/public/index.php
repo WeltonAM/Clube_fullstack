@@ -12,6 +12,8 @@ $app = AppFactory::create();
 require '../app/routes/site.php';
 require '../app/routes/user.php';
 
+require '../app/routes/api.php';
+
 $methodOverrideMiddleware = new MethodOverrideMiddleware();
 $app->add($methodOverrideMiddleware);
 
