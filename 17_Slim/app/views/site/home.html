@@ -1,9 +1,21 @@
 {% extends "site/master.html" %}
 
 {% block content %}
+
+<div class="cont-center">
     <h2>Users</h2>
 
-    {{ message['message']|message(message['alert']) }}
+    <ul>
+        {% for user in users %}
+            <li>{{ user.firstName }}</li>
+        {% endfor %}
+    </ul>
+        
+
+    {{ links | raw }}
+</div>
+
+    {# {{ message['message']|message(message['alert']) }}
 
     <ul>
         {% for user in users %}
@@ -16,7 +28,7 @@
         </form>
         
         {% endfor %}
-    </ul>
+    </ul> #}
     
 
 {% endblock %}
