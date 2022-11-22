@@ -23,7 +23,13 @@ class Home extends Base
         $users = Cache::get('users');
 
         if(!$users){
-            $users = $this->user->find();
+            $users = $this->user->setLimit(10)->setCurrentPage()->users();
+
+            $links = $this->user->renderLinks($users['total']);
+
+            var_dump($users, $links);
+            die();
+
             Cache::set('users', $users);
         }
 
