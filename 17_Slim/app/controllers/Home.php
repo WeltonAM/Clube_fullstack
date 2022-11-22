@@ -21,14 +21,14 @@ class Home extends Base
         // $start = microtime(true);
         
         $users = Cache::get('users');
+        $users = $this->user->setLimit(10)->setCurrentPage()->users();
+
+        var_dump($users);
+        die();
 
         if(!$users){
-            $users = $this->user->setLimit(10)->setCurrentPage()->users();
 
             $links = $this->user->renderLinks($users['total']);
-
-            var_dump($users, $links);
-            die();
 
             Cache::set('users', $users);
         }
