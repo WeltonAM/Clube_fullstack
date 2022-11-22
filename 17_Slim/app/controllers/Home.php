@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\classes\Flash;
 use app\database\models\User;
+use app\classes\Cache;
 
 class Home extends Base
 {
@@ -16,9 +17,20 @@ class Home extends Base
 
     public function index($request, $response)
     {
-        $users = $this->user->find();
+        // $start = microtime(true);
+        
+        $users = Cache::get('users');
 
-        $message = Flash::get('message');
+        if(!$users){
+            $users = $this->user->find();
+            Cache::set('users', $users);
+        }
+
+        // $end = microtime(true);
+
+        // echo($end - $start) / 1000;
+
+        // return $response;
 
         return $this->getTwig()->render($response, $this->setView('site/home'), [
             'title' => 'Home',
