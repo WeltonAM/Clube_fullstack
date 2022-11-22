@@ -7,7 +7,7 @@ trait Paginate
     protected $limit = 10;
     protected $offset = 0;
     protected $currentPage;
-    protected $linksPerPage = 5;
+    protected $linksPerPage = 10;
 
     public function setLimit($limit)
     {
@@ -30,8 +30,19 @@ trait Paginate
         return ceil($total / $this->limit);
     }
 
-    public function renderLinks()
+    public function renderLinks($totalRegisters)
     {
-        return 'test';
+        $totalPages = $this->totalPages($totalRegisters);
+        
+        $links = '<ul class="pagination">';
+        
+        for ($i=1; $i < $totalPages; $i++) { 
+            $active = $this->currentPage == $i ? 'active' : '';
+            $links .= "<li class='page-item {$active}'> <a class='page-link' href='?page={$i}'>{$i}</a></li>";
+        }
+
+        $links .= '</ul>';
+
+        return $links;
     }
 }

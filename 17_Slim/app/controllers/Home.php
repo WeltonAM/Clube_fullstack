@@ -21,14 +21,10 @@ class Home extends Base
         // $start = microtime(true);
         
         $users = Cache::get('users');
-        $users = $this->user->setLimit(10)->setCurrentPage()->users();
-
-        var_dump($users);
-        die();
-
+        $users = $this->user->setLimit(2)->setCurrentPage()->users();
+        $links = $this->user->renderLinks($users['total']);
+        
         if(!$users){
-
-            $links = $this->user->renderLinks($users['total']);
 
             Cache::set('users', $users);
         }
@@ -37,7 +33,8 @@ class Home extends Base
 
         $view = $this->getTwig()->render($response, $this->setView($cacheHtml), [
             'title' => 'Home',
-            'users' => $users
+            'users' => $users['registers'],
+            'links' => $links,
         ]);
 
         // $end = microtime(true);
