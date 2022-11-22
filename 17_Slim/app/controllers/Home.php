@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\classes\Flash;
 use app\database\models\User;
 use app\classes\Cache;
+use app\classes\CacheHtml;
 
 class Home extends Base
 {
@@ -26,15 +27,18 @@ class Home extends Base
             Cache::set('users', $users);
         }
 
+        $cacheHtml = CacheHtml::get('site/home');
+
+        $view = $this->getTwig()->render($response, $this->setView($cacheHtml), [
+            'title' => 'Home',
+            'users' => $users
+        ]);
+
         // $end = microtime(true);
 
         // echo($end - $start) / 1000;
 
-        // return $response;
+        return $view;
 
-        return $this->getTwig()->render($response, $this->setView('site/home'), [
-            'title' => 'Home',
-            'users' => $users
-        ]);
     }
 }

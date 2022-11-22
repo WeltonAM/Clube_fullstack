@@ -22,7 +22,7 @@ class Cache
         $file = static::$folderCache.$file.'_cache.txt';
         
         if(file_exists($file)){
-            if(time() - filemtime($file) < static::$expireInSeconds){
+            if(time() - filemtime($file) > static::$expireInSeconds){
                 return json_decode(file_get_contents($file));
             }
 
