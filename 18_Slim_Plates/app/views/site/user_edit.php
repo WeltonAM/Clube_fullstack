@@ -11,13 +11,13 @@
         <input type="hidden" name="_METHOD" value="PUT">
 
         <input type="text" name="firstName" class="form-control" value="{{ user.firstName }}">
-        {{ messages['firstName']['message'] | message(messages['firstName']['alert']) | raw }}
+        <?php echo getFlash('firstName'); ?>
         
         <input type="text" name="lastName" class="form-control" value="{{ user.lastName }}">
-        {{ messages['lastName']['message'] | message(messages['lastName']['alert']) | raw }}
+        <?php echo getFlash('lastName'); ?>
         
         <input type="email" name="email" class="form-control" value="{{ user.email }}">
-        {{ messages['email']['message'] | message(messages['email']['alert']) | raw }}
+        <?php echo getFlash('email'); ?>
     
         <br>
         <button type="submit">Update</button>

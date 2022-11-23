@@ -6,7 +6,7 @@ use app\classes\Flash;
 use app\classes\Login as Log;
 use app\classes\Validate;
 
-class Login extends Base
+class Login
 {
     private $login;
     
@@ -17,12 +17,9 @@ class Login extends Base
 
     public function index($request, $response)
     {
-        $messages = Flash::getAll();
+        render('site/login');
 
-        return $this->getTwig()->render($response, $this->setView('site/login'),[
-            'title' => 'Login',
-            'messages' => $messages
-        ]);
+        return $response;
     }
 
     public function store($request, $response)
@@ -36,7 +33,6 @@ class Login extends Base
         $errors = $validate->getErrors();
 
         if($errors){
-            Flash::flashes($errors);
             return redirect('/login', $response);
         }
 

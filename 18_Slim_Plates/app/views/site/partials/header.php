@@ -11,23 +11,10 @@
           <li class="nav-item">
             <a class="nav-link" href="/user/create">Sign up</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
         </ul>
-      </div>
-
-      <div>
-        <p id="user-name">
-          {% if logged_in %} User, {{ user.firstName }} {{ user.lastName }}
-          <a class="nav-link log-btn" href="/logout">
-            Log out
-          </a>
-  
-          {% else %} Visitor
-          <a class="nav-link log-btn" href="/login">
-            Log in
-          </a>
-          
-          {% endif %}
-        </p>
       </div>
     </div>
 

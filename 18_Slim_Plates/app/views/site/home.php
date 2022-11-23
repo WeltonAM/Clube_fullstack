@@ -1,4 +1,4 @@
-<?php $this->layout('site/master') ?>
+<?php $this->layout('site/master', ['title' => $title]) ?>
 
 <div class="cont-center">
     <h2>Users</h2>

@@ -16,12 +16,9 @@ class Home
 
     public function index($request, $response)
     {
-
         $users = $this->user->find();
 
-        $message = Flash::get('message');
-
-        render('site/home', ['users' => $users]);
+        render('site/home', ['users' => $users, 'title' => 'Home']);
 
         return $response;
 

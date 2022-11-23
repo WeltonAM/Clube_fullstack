@@ -10,7 +10,8 @@ class Validate
     {
         foreach ($fields as $field) {
             if(empty($_POST[$field])){
-                $this->errors[$field] = 'Required field';
+                Flash::set($field, 'Required field', 'danger');
+                $this->errors[$field] = true;
             }
         }
 
@@ -21,7 +22,10 @@ class Validate
     {
         $data = $model->findBy($field, $value);
 
-        if($data) $this->errors[$field] = 'Email already exists';
+        if($data){
+            Flash::set($field, 'Email already exists', 'danger');
+            $this->errors[$field] = true;
+        }
 
         return $this;
     }
@@ -31,15 +35,13 @@ class Validate
         $validated = filter_var($email, FILTER_VALIDATE_EMAIL);
 
         if(!$validated){
-            Flash::set('email', 'Invalid Email', 'danger');
-            $this->errors['email'] = true;
-        } else {
-            Flash::set('old_email', $email);
-        }
+            Flash::set($email, 'Email invalid', 'danger');
+            $this->errors[$email] = true;
+        } 
     }
 
     public function getErrors()
     {
-        return $this->errors;
+        return !! $this->errors;
     }
 }

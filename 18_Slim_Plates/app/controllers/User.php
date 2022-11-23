@@ -6,7 +6,7 @@ use app\classes\Flash;
 use app\classes\Validate;
 use app\database\models\User as ModelUser;
 
-class User extends Base
+class User
 {
     private $validate;
     private $user;
@@ -19,12 +19,10 @@ class User extends Base
 
     public function create($request, $response, $args)
     {
-        $messages = FLash::getAll();
 
-        return $this->getTwig()->render($response, $this->setView('site/user_create'), [
-            'title' => 'Sign up',
-            'messages' => $messages,
-        ]);
+        render('site/user_create', ['title' => 'Sing up']);
+
+        return $response;
     }
 
     public function edit($request, $response, $args)
@@ -39,13 +37,9 @@ class User extends Base
             return redirect('/', $response);
         }
 
-        $messages = Flash::getAll();
+        render('site/user_edit');
 
-        return $this->getTwig()->render($response, $this->setView('site/user_edit'), [
-            'title' => 'User edit',
-            'user' => $user,
-            'messages' => $messages,
-        ]);
+        return $response;
     }
 
     public function store($request, $response, $args)
@@ -60,7 +54,6 @@ class User extends Base
         $errors = $this->validate->getErrors();
 
         if($errors){
-            FLash::flashes($errors);
             return redirect('/user/create', $response);
         }
         
@@ -87,7 +80,6 @@ class User extends Base
         $errors = $this->validate->getErrors();
 
         if($errors){
-            FLash::flashes($errors);
             return redirect('/user/edit/' . $id, $response);
         }
         
