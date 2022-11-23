@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,400;1,600&display=swap");
+
+html,
+body {
+    font-family: "Work Sans", sans-serif;
+    background-color: #332D2D;
+    color: aliceblue;
+}
+
+#user-name{
+    color: #292424;
+    padding: 0 10px 0 10px;
+    margin: 0;
+}
+
+.cont-center{
+    width: 50%;
+    margin: auto;
+    padding: 10px;
+}
+
+.log-btn{
+    font-size: 0.8em;
+    background-color: #332d2d98;
+    color: aliceblue;
+    border-radius: 4px;
+    text-align: center;
+    min-width: 50%;
+    max-width: 80%;
+    margin-left: auto;
+}
+
+.cont-center input{
+    margin-top: 10px;
+}
+
+.cont-center button {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  padding: 11px 18px 11px;
+  outline: 0;
+  border: 1px solid black;
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+  color: aliceblue;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+#div-block-content{
+    margin-top: 80px;
+}
+
+#btn-create {
+    margin-top: 10px;
+}
+
+footer{
+    position: fixed;
+    width: 100%;
+    padding: 10px;
+    bottom: 0;
+    text-align: center;
+    background-color: #292424;
+}
+
+    
+@media (min-width: 768px) {
+    .button-52 {
+    padding: 13px 50px 13px;
+    }
+}

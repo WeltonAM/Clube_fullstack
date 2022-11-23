@@ -1,0 +1,34 @@
+<nav class="navbar fixed-top navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="bi bi-list"></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/user/create">Sign up</a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <p id="user-name">
+          {% if logged_in %} User, {{ user.firstName }} {{ user.lastName }}
+          <a class="nav-link log-btn" href="/logout">
+            Log out
+          </a>
+  
+          {% else %} Visitor
+          <a class="nav-link log-btn" href="/login">
+            Log in
+          </a>
+          
+          {% endif %}
+        </p>
+      </div>
+    </div>
+
+  </nav>
