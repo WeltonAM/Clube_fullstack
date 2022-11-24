@@ -1,19 +1,24 @@
 <?php $this->layout('site/master', ['title' => $title]) ?>
 
-<div class="cont-center">
-    <h2>Users</h2>
+<h2>Users</h2>
 
-    <ul>
-        <?php foreach($users as $user): ?>
+<ul>
+    <?php foreach($users as $user): ?>
+        <li>
             
-            <li>
-                <?= $user->firstName ?> <?= $user->lastName ?>
-                <a class="btn btn-default" href="/user/edit/<?= $user->id ?>">Edit</a> |
+            <div style="padding: 5px; margin: 3px;">
+                <?= $user->firstName ?> <?= $user->lastName ?> |
+                <a id="btn-edit" href="/user/edit/<?= $user->id ?>">Edit</a>
+                
                 <form action="/user/delete/<?= $user->id ?>" method="post">
+                    
                     <input type="hidden" name="_METHOD" value="DELETE">
-                    <button class="btn btn-default" type="submit">Delete</button>
+                    
+                    <button id="btn-delete" type="submit">Delete</button>
+    
                 </form>
-            </li>
-            
-        <?php endforeach ?> 
-    </ul>
+            </div>
+        </li>
+        
+    <?php endforeach ?> 
+</ul>

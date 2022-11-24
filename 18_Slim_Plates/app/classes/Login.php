@@ -16,13 +16,11 @@ class Login
         }
 
         if(password_verify($password, $userFound->password)){
-            $_SESSION['user_logged_data'] = [
+            $_SESSION['user'] = [
                 'firstName' => $userFound->firstName,
                 'lastName' => $userFound->lastName,
                 'email' => $userFound->email,
             ];
-            $_SESSION['is_logged_in'] = true;
-
             return true;
         }
 
@@ -32,7 +30,7 @@ class Login
 
     public function logout()
     {
-        unset($_SESSION['user_logged_data'], $_SESSION['is_logged_in']);
+        unset($_SESSION['user']);
 
         return true;
     }

@@ -1,7 +1,7 @@
-<?php $this->layout('site/master') ?>
+<?php $this->layout('site/master', ['title' => $title]) ?>
 
-<div class="cont-center">
     <h2>Login</h2>
+    <?php echo getFlash('message'); ?>
 
     <form action="/login" method="post">
         <input 
@@ -22,7 +22,6 @@
         >
         <?php echo getFlash('password'); ?>
 
-        <button type="submit" id="btn-create">Log in</button>
-        
+        <button type="submit" class="btn-usual">Log in</button>
     </form>
-</div>
+

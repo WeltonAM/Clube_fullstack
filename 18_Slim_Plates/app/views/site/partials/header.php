@@ -11,11 +11,23 @@
           <li class="nav-item">
             <a class="nav-link" href="/user/create">Sign up</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/login">Login</a>
-          </li>
         </ul>
       </div>
-    </div>
 
+      <div class="log">
+        <?php if(isLogged()):  ?>
+          <p>
+            User, <?php echo auth()->firstName; ?>
+          </p>
+          <a href="/logout" class="log-btn">Log out</a>
+        <?php else:  ?>
+          <p>
+            Visitor,
+          </p>
+          <a href="/login" class="log-btn">Log in</a>
+        <?php endif;  ?>
+
+      </div>
+
+    </div>
   </nav>

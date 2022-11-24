@@ -17,7 +17,7 @@ class Login
 
     public function index($request, $response)
     {
-        render('site/login');
+        render('site/login', ['title' => 'Login']);
 
         return $response;
     }

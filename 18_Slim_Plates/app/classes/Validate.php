@@ -12,6 +12,8 @@ class Validate
             if(empty($_POST[$field])){
                 Flash::set($field, 'Required field', 'danger');
                 $this->errors[$field] = true;
+            } else {
+                Flash::set('old_'.$field, $_POST[$field]);
             }
         }
 
@@ -25,6 +27,8 @@ class Validate
         if($data){
             Flash::set($field, 'Email already exists', 'danger');
             $this->errors[$field] = true;
+        } else {
+            Flash::set('old_'.$field, $_POST[$field]);
         }
 
         return $this;
@@ -37,7 +41,10 @@ class Validate
         if(!$validated){
             Flash::set($email, 'Email invalid', 'danger');
             $this->errors[$email] = true;
-        } 
+        } else {
+            Flash::set('old_email', $email);
+        }
+
     }
 
     public function getErrors()
