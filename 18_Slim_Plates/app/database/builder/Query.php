@@ -65,7 +65,7 @@ class Query
         return $this;
     }
 
-    public function createQuery()
+    public function createQuery(bool $count = false)
     {
         if(!$this->fields){
             throw new \Exception("Needs to call the select");
@@ -75,8 +75,8 @@ class Query
             throw new \Exception("Needs to call the table");
         }
 
-        $query = "select ";
-        $query .= $this->fields. " from ";
+        $query = ($count) ? 'select count(*) as count ' : "select ";
+        $query .= (!$count) ? $this->fields . " from " : "from ";
         $query .= $this->table;
         $query .= (isset($this->join)) ? implode(' ', $this->join) : '';
         $query .= (isset($this->where)) ? ' where ' . implode(' ', $this->where) : '';
@@ -92,9 +92,7 @@ class Query
 
         try {
 
-            $connection = Connection::getConnection();
-            $prepare = $connection->prepare($query);
-            $prepare->execute($this->binds ?? []);
+            $prepare = $this->executeQuery($query);
 
             return $prepare->fetchAll();
             
@@ -103,20 +101,44 @@ class Query
         }
     }
 
+    private function executeQuery($query)
+    {
+        $connection = Connection::getConnection();
+        $prepare = $connection->prepare($query);
+        $prepare->execute($this->binds ?? []);
+
+        return $prepare;
+    }
+
     public function first()
     {
         $query = $this->createQuery();
 
         try {
 
-            $connection = Connection::getConnection();
-            $prepare = $connection->prepare($query);
-            $prepare->execute($this->binds ?? []);
+            $prepare = $this->executeQuery($query);
 
             return $prepare->fetchObject();
             
         } catch (\PDOException $e) {
             var_dump($e->getMessage());
         }
+    }
+
+    public function paginate(int $itensPerPage = 10)
+    {
+        $paginate = new Paginate;
+        $paginate->setItensPerPage($itensPerPage);
+        $paginate->setPageIdentification('page');
+        $query = $this->createQuery(count:true);
+        $paginate->setQueryCount($query);
+        $paginate->setBinds($this->binds ?? []);
+        
+        $queryToPaginate = $this->createQuery();
+        $queryToPaginate .= $paginate->queryToPaginate();
+
+        $prepare = $this->executeQuery($queryToPaginate);
+
+        return (object)['rows' => $prepare->fetchAll(), 'render' => $paginate->render()];
     }
 }

@@ -3,7 +3,7 @@
 <h2>Users</h2>
 
 <ul>
-    <?php foreach($users as $user): ?>
+    <?php foreach($users->rows as $user): ?>
         <li>
             
             <div style="padding: 5px; margin: 3px;">
@@ -21,4 +21,6 @@
         </li>
         
     <?php endforeach ?> 
+
+    <?php echo $users->render; ?> 
 </ul>
