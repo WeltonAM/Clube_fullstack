@@ -12,6 +12,7 @@ class Paginate
     private int $totalPages;
     private int $offset = 0;
     private int $totalItems;
+    private int $linksPerPage = 3;
     private array $binds;
 
     public function setItensPerPage(int $itensPerPage)
@@ -27,6 +28,11 @@ class Paginate
     public function setQueryCount(string $queryCount)
     {
         $this->queryCount = $queryCount;
+    }
+
+    public function setLinksPerPage(int $linksPerPage)
+    {
+        $this->linksPerPage = $linksPerPage;
     }
 
     public function setBinds(array $binds)
@@ -54,7 +60,29 @@ class Paginate
 
     public function render()
     {
+        $links = '<ul class="pagination">';
+        
+        if($this->currentPage > 1){
+            $first = http_build_query(array_merge($_GET,[$this->pageIdentification => 1]));
+            $links.="<li class='page-item'><a href='?{$first}' class='page-link'>Previous</a></li>";
+        }
 
+        for ($i = $this->currentPage - $this->linksPerPage; $i <= $this->currentPage + $this->linksPerPage; $i++) { 
+            if($i > 0 && $i <= $this->totalPages){
+                $class = $this->currentPage === 1 ? 'active' : '';
+                $linkPage = http_build_query(array_merge($_GET, [$this->pageIdentification => $i]));
+                $links .= "<li class='page-item {$class}'><a href='?{$linkPage}' class='page-link'>{$i}</a></li>";
+            }
+        }
+
+        if($this->currentPage < $this->totalPages){
+            $last = http_build_query(array_merge($_GET,[$this->pageIdentification => $this->totalPages]));
+            $links.="<li class='page-item'><a href='?{$last}' class='page-link'>Last</a></li>";
+        }
+        
+        $links .= '</ul>';
+
+        return $links;
     }
 
     public function queryToPaginate()

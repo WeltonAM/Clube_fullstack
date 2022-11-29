@@ -75,11 +75,11 @@ class Query
             throw new \Exception("Needs to call the table");
         }
 
-        $query = ($count) ? 'select count(*) as count ' : "select ";
-        $query .= (!$count) ? $this->fields . " from " : "from ";
+        $query = ($count) ? 'select count(*) as count ' : 'select ';
+        $query .= (!$count) ? $this->fields . ' from ' : 'from ';
         $query .= $this->table;
-        $query .= (isset($this->join)) ? implode(' ', $this->join) : '';
-        $query .= (isset($this->where)) ? ' where ' . implode(' ', $this->where) : '';
+        $query .= !empty($this->join) ? implode(' ', $this->join) : '';
+        $query .= !empty($this->where) ? ' where ' . implode(' ', $this->where) : '';
         $query .= $this->group ?? '';
         $query .= $this->order ?? '';
 
@@ -132,6 +132,7 @@ class Query
         $paginate->setPageIdentification('page');
         $query = $this->createQuery(count:true);
         $paginate->setQueryCount($query);
+        $paginate->setLinksPerPage(10);
         $paginate->setBinds($this->binds ?? []);
         
         $queryToPaginate = $this->createQuery();
