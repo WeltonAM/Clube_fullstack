@@ -69,7 +69,7 @@ class Paginate
 
         for ($i = $this->currentPage - $this->linksPerPage; $i <= $this->currentPage + $this->linksPerPage; $i++) { 
             if($i > 0 && $i <= $this->totalPages){
-                $class = $this->currentPage === 1 ? 'active' : '';
+                $class = $this->currentPage === $i ? 'active' : '';
                 $linkPage = http_build_query(array_merge($_GET, [$this->pageIdentification => $i]));
                 $links .= "<li class='page-item {$class}'><a href='?{$linkPage}' class='page-link'>{$i}</a></li>";
             }

@@ -4,7 +4,7 @@ namespace app\database\builder;
 
 use app\database\Connection;
 
-class Query
+class ReadQuery
 {
     private ?string $table = null;
     private ?string $fields = null;
@@ -91,7 +91,6 @@ class Query
         $query = $this->createQuery();
 
         try {
-
             $prepare = $this->executeQuery($query);
 
             return $prepare->fetchAll();
