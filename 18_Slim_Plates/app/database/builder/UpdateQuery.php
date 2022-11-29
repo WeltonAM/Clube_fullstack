@@ -2,14 +2,10 @@
 
 namespace app\database\builder;
 
-use app\database\Connection;
-
-class UpdateQuery
+class UpdateQuery extends Builder
 {
     private string $table;
     private array $data = [];
-    private array $where = [];
-    private array $binds = [];
 
     public static function table(string $table)
     {
@@ -24,21 +20,6 @@ class UpdateQuery
     {
         $this->data = $data;
 
-        return $this;
-    }
-
-    public function where(string $field, string $operator, string|int $value, ?string $logic = null)
-    {
-        $fieldPlaceholder = $field;
-
-        if(str_contains($fieldPlaceholder, '.')){
-            $fieldPlaceholder = str_replace('.', '', $fieldPlaceholder);
-        }
-
-        $this->where[] = "{$field} {$operator} :{$fieldPlaceholder} {$logic} ";
-
-        $this->binds[$fieldPlaceholder] = $value; 
-        
         return $this;
     }
 
@@ -64,13 +45,6 @@ class UpdateQuery
         $query .= !empty($this->where) ? ' where ' . implode(' ', $this->where) : '';
 
         return $query;
-    }
-
-    private function executeQuery($query)
-    {
-        $connection = Connection::getConnection();
-        $prepare = $connection->prepare($query);
-        return $prepare->execute($this->binds ?? []);
     }
 
     public function update()

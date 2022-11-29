@@ -12,25 +12,25 @@ class Home
 {
     public function index($request, $response)
     {
-        // $users = ReadQuery::select('users.id, firstName, lastName')
-        // ->from('users')
-        // ->paginate(3);
+        $users = ReadQuery::select('users.id, firstName, lastName')
+        ->from('users')
+        ->paginate(3);
 
-        // $updated = UpdateQuery::table('users')->set([
-        //     'firstName' => 'Markin',
-        //     'lastName' => 'Twin'
-        // ])->where('id', '=', 17)->update();
+        $updated = UpdateQuery::table('users')->set([
+            'firstName' => 'Poco',
+            'lastName' => 'Yoyo'
+        ])->where('id', '=', 18)->update();
 
-        $deleted = DeleteQuery::table('users')->where('id', '=', 17)->delete();
+        // $deleted = DeleteQuery::table('users')->where('id', '=', 16)->delete();
 
         // $created = InsertQuery::into('users')->insert([
-        //     'firstName' => 'Mark',
-        //     'lastName' => 'Zegarelli',
-        //     'email' => 'mar@k.com',
+        //     'firstName' => 'Poco',
+        //     'lastName' => 'Yo',
+        //     'email' => 'poc@yo.com',
         //     'password' => password_hash('123', PASSWORD_DEFAULT),
         // ]);
 
-        // render('site/home', ['users' => $users, 'title' => 'Home']);
+        render('site/home', ['users' => $users, 'title' => 'Home']);
 
         return $response;
 
