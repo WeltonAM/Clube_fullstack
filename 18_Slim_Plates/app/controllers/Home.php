@@ -2,9 +2,10 @@
 
 namespace app\controllers;
 
-use app\database\builder\InsertQuery;
 use app\database\models\User;
 use app\database\builder\ReadQuery;
+use app\database\builder\InsertQuery;
+use app\database\builder\UpdateQuery;
 
 class Home
 {
@@ -14,12 +15,17 @@ class Home
         // ->from('users')
         // ->paginate(3);
 
-        $created = InsertQuery::into('users')->insert([
-            'firstName' => 'Mark',
-            'lastName' => 'Zegarelli',
-            'email' => 'mar@k.com',
-            'password' => password_hash('123', PASSWORD_DEFAULT),
-        ]);
+        $updated = UpdateQuery::table('users')->set([
+            'firstName' => 'Markin',
+            'lastName' => 'Twin'
+        ])->where('id', '=', 17)->update();
+
+        // $created = InsertQuery::into('users')->insert([
+        //     'firstName' => 'Mark',
+        //     'lastName' => 'Zegarelli',
+        //     'email' => 'mar@k.com',
+        //     'password' => password_hash('123', PASSWORD_DEFAULT),
+        // ]);
 
         // render('site/home', ['users' => $users, 'title' => 'Home']);
 

@@ -20,7 +20,7 @@ class InsertQuery
     private function createQuery()
     {
         if(!$this->table){
-            throw new \Exception("Needs to call the select");
+            throw new \Exception("Needs to call the table");
         }
 
         if(!$this->data){
