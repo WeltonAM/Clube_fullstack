@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\database\models\User;
 use app\database\builder\ReadQuery;
+use app\database\builder\DeleteQuery;
 use app\database\builder\InsertQuery;
 use app\database\builder\UpdateQuery;
 
@@ -15,10 +16,12 @@ class Home
         // ->from('users')
         // ->paginate(3);
 
-        $updated = UpdateQuery::table('users')->set([
-            'firstName' => 'Markin',
-            'lastName' => 'Twin'
-        ])->where('id', '=', 17)->update();
+        // $updated = UpdateQuery::table('users')->set([
+        //     'firstName' => 'Markin',
+        //     'lastName' => 'Twin'
+        // ])->where('id', '=', 17)->update();
+
+        $deleted = DeleteQuery::table('users')->where('id', '=', 17)->delete();
 
         // $created = InsertQuery::into('users')->insert([
         //     'firstName' => 'Mark',
