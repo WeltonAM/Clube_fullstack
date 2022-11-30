@@ -71,10 +71,12 @@ class ReadQuery extends Builder
     {
         $query = $this->createQuery();
 
+        $this->query['get'][] = $query;
+
         try {
             $prepare = $this->executeQuery($query);
 
-            return $prepare->fetchAll();
+            return (object)['rows' => $prepare->fetchAll(), 'query' => $this->query];
             
         } catch (\PDOException $e) {
             var_dump($e->getMessage());
@@ -85,22 +87,31 @@ class ReadQuery extends Builder
     {
         $query = $this->createQuery();
 
-        try {
+        $this->query['first'][] = $query;
 
+        try {
             $prepare = $this->executeQuery($query);
 
-            return $prepare->fetchObject();
+            return (object)['register' => $prepare->fetchObject(), 'query' => $this->query];
             
         } catch (\PDOException $e) {
             var_dump($e->getMessage());
         }
     }
 
-    public function paginate(int $itensPerPage = 10)
+    private function getPaginate(int $itensPerPage = 3):Paginate
     {
         $paginate = new Paginate;
         $paginate->setItensPerPage($itensPerPage);
         $paginate->setPageIdentification('page');
+
+        return $paginate;
+    }
+
+    public function paginate(int $itensPerPage = 10)
+    {
+        $paginate = $this->getPaginate($itensPerPage);
+
         $query = $this->createQuery(count:true);
         $paginate->setQueryCount($query);
         $paginate->setLinksPerPage(10);
@@ -109,8 +120,11 @@ class ReadQuery extends Builder
         $queryToPaginate = $this->createQuery();
         $queryToPaginate .= $paginate->queryToPaginate();
 
+        $this->query['paginate'][] = $query;
+        $this->query['paginate'][] = $queryToPaginate;
+
         $prepare = $this->executeQuery($queryToPaginate, returnExecute: false);
 
-        return (object)['rows' => $prepare->fetchAll(), 'render' => $paginate->render()];
+        return (object)['rows' => $prepare->fetchAll(), 'render' => $paginate->render(), 'query' => $this->query];
     }
 }
