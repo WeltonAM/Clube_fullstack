@@ -12,14 +12,17 @@ class Home
 {
     public function index($request, $response)
     {
+        $search = $_GET['s'] ?? '';
+
         $users = ReadQuery::select('users.id, firstName, lastName')
         ->from('users')
+        ->where('firstName', 'like', "%{$search}%")
         ->paginate(3);
 
-        $updated = UpdateQuery::table('users')->set([
-            'firstName' => 'Poco',
-            'lastName' => 'Yoyo'
-        ])->where('id', '=', 18)->update();
+        // $updated = UpdateQuery::table('users')->set([
+        //     'firstName' => 'Poco',
+        //     'lastName' => 'Yoyo'
+        // ])->where('id', '=', 18)->update();
 
         // $deleted = DeleteQuery::table('users')->where('id', '=', 16)->delete();
 

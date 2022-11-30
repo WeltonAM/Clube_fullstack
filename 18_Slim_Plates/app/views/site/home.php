@@ -2,6 +2,11 @@
 
 <h2>Users</h2>
 
+<form action="/" method="get">
+    <input type="text" name="s" placeholder="Search">
+    <button type="submit">Search</button>
+</form>
+
 <ul>
     <?php foreach($users->rows as $user): ?>
         <li>

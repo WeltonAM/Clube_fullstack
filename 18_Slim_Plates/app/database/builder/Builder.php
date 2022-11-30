@@ -20,7 +20,7 @@ abstract class Builder
 
         $this->where[] = "{$field} {$operator} :{$fieldPlaceholder} {$logic} ";
 
-        $this->binds[$fieldPlaceholder] = $value; 
+        $this->binds[$fieldPlaceholder] = strip_tags($value); 
         
         return $this;
     }
