@@ -9,4 +9,8 @@
         <button type="submit">Login</button>
     </form>
 
+    @section('scripts')
+        <script src="/dist/login.js"></script>
+    @endsection
+
 @endsection
