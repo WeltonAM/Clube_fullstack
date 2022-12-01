@@ -3,10 +3,12 @@
 @section('content')
     <h2>Login</h2>
 
-    <form action="/login" method="post">
+    <div id="errors"></div>
+
+    <form>
         <input type="text" name="email" value="isom.hoppe@gmail.com">
         <input type="password" name="password" value="123">
-        <button type="submit">Login</button>
+        <button id="btn-login">Login</button>
     </form>
 
     @section('scripts')
