@@ -1,3 +1,24 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ul.header-links{
+    width: 50%;
+    display: flex;
+    list-style: none;
+    justify-content: flex-start;
+}
+
+ul.header-links li{
+    margin-right: 7px;
+}
+
+.header-status-login{
+    display: flex;
+}
+
 .error{
     background-color: crimson;
     color: aliceblue;

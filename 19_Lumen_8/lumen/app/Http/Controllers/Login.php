@@ -33,4 +33,12 @@ class Login extends Controller
         $_SESSION['userId'] = $user->id;
         return response()->json(['message' => 'Logged'], 200);
     }
+
+    public function destroy()
+    {
+        if(isset($_SESSION['userId'])){
+            session_destroy();
+            return redirect('/');
+        }
+    }
 }
