@@ -3,11 +3,11 @@
 @section('content')
     <h2>Login</h2>
 
-    <div id="errors"></div>
+    <div id="messages"></div>
 
     <form>
-        <input type="text" name="email" value="isom.hoppe@gmail.com">
-        <input type="password" name="password" value="123">
+        <input type="text" name="email">
+        <input type="password" name="password">
         <button id="btn-login">Login</button>
     </form>
 
