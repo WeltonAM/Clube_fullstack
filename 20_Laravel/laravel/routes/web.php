@@ -6,7 +6,33 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// working with routes
+
+## name routes
+
+// Route::get('/contact', function () {
+//     dd('Not redirected');
+// })->name('contact');
+
+// Route::get('/test', function () {
+//     echo ('Redirected');
+//     return redirect()->route('contact');
+// });
+
+// Route::name('admin.')->prefix('admin')->group(function(){
+//     Route::get('/', function(){
+//     });
+
+//     Route::get('/create', function(){
+//         dd('create admin');
+//     })->name('create');
+
+//     Route::get('/update', function(){
+//         dd('update admin');
+//     })->name('update');
+// });
+
+
+## working with routes
 
 // Route::prefix('blog')->group(function(){
 //     Route::get('/', function(){
