@@ -1,9 +1,33 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+Route::get('/', function(){
     return view('welcome');
+})->name(('home'));
+
+
+## Redirect ways
+
+Route::get('/product/{id}', [ProductController::class, 'edit'])->name('product.edit');
+
+Route::post('/login', function(){
+    // return redirect('/')->withInput()->with('message', 'Error');
+    return back();
+});
+
+Route::get('/test', function () {
+    return redirect('/');
+});
+
+Route::get('/test1', function () {
+    return redirect()->action([ProductController::class, 'edit'], ['id' => 2]);
+});
+
+Route::get('/test2', function () {
+    return redirect()->away('http://google.com');
 });
 
 
