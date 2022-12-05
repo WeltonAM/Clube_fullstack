@@ -6,6 +6,11 @@ class HomeController
 {
     public function index()
     {
-        dd('Home Controller');
+        return view('welcome');
+    }
+
+    public function show()
+    {
+        return view('welcome');
     }
 }
