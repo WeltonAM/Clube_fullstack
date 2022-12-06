@@ -7,11 +7,15 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\ProductController;
 
-Route::get('/', [HomeController::class, 'index'])->name(('home'));
+Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/login', [LoginController::class, 'index'])->name(('login'));
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'store'])->name('login.post');
+
+Route::get('/signup', [SignUpController::class, 'index']);
 
 ## >> Protected routes ----------##--------------------------------##-------------
 Route::prefix('admin')->middleware('auth')->group(function(){

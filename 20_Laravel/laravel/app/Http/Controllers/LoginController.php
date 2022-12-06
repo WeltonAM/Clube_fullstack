@@ -8,7 +8,7 @@ class LoginController extends Controller
 {
     public function index(Request $request)
     {
-        dd('login');
+        return view('login');
     }
 
     public function store(Request $request)
