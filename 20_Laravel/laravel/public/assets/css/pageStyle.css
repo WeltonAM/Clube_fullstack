@@ -16,3 +16,27 @@
     height: 60px;
     width: 60px;
 }
+
+.navbar{
+    position: fixed;
+    width: 100%;
+}
+
+.navbar-toggler{
+    border: none;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0;
+}
+
+#content{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    background-color: rgba(255, 255, 255, 0.795);
+    box-shadow: rgba(0, 0, 0, 0.445) 0px 1px 4px;
+    padding: 10px;
+}
