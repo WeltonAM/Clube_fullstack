@@ -12,7 +12,9 @@
     
     <link rel="stylesheet" href="assets/css/pageStyle.css">
 
-    <title>{{ $title }}</title>
+    <link rel="shortcut icon" href="assets/images/icons/icons8-laravel-is-a-free,-open-source-php-web-framework.-48.png" type="image/x-icon">
+
+    <title>Laravel-Course-{{ $title }}</title>
 </head>
 <body>
 
@@ -24,10 +26,10 @@
 
     @include('partials.topBar')
     
-    <div id="content">
+    <div class="content">
         @yield('content')
     </div>
-    
+
     @include('partials.footer')
         
     <!-- JavaScript Bundle with Popper -->

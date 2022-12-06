@@ -5,7 +5,7 @@
         <i class="bi bi-list"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
+        <div class="navbar-nav float-end">
           <a class="nav-link" href="/login">Login</a>
           <a class="nav-link" href="/signup">Sign Up</a>
         </div>

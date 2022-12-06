@@ -2,6 +2,8 @@
 
 @section('content')
 
-<h2>Home</h2>
+<div class="card">
+    <h2>Home</h2>
+</div>
 
 @endsection
