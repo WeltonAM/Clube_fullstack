@@ -44,7 +44,7 @@ Route::resource('/user', UserController::class)->names([
 //     return redirect()->away('http://google.com');
 // });
 
-## >> name routes ----------------##--------------------------------##------------
+## >> Named routes ---------------##--------------------------------##------------
 // Route::get('/contact', function () {
 //     dd('Not redirected');
 // })->name('contact');
@@ -67,7 +67,7 @@ Route::resource('/user', UserController::class)->names([
 //     })->name('update');
 // });
 
-## working with routes --------##--------------------------------##--------------
+## Working with routes ---------##--------------------------------##--------------
 // Route::prefix('blog')->group(function(){
 //     Route::get('/', function(){
 //         dd('blog');
