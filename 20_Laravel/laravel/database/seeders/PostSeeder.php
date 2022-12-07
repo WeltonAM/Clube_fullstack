@@ -2,13 +2,14 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Faker\Factory;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class UserSeeder extends Seeder
+class PostSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -19,13 +20,14 @@ class UserSeeder extends Seeder
     {
         $faker = Factory::create();
 
+        $users = User::all()->pluck('id')->toArray();
+
         for ($i=1; $i <= 50; $i++) { 
-            DB::table('users')->insert([
-                'name' => $faker->name,
-                'email' => $faker->email,
-                'email_verified_at' => now(),
-                'password' => bcrypt('123'),
-                'remember_token' => Str::random(10),
+            DB::table('posts')->insert([
+                'userId' => $faker->randomElement($users),
+                'title' => $faker->sentence(),
+                'slug' => $faker->slug,
+                'content' => $faker->paragraph,
             ]);
         }
     }

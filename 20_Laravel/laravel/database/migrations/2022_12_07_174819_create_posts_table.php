@@ -19,6 +19,8 @@ return new class extends Migration
             $table->bigInteger('userId')->unsigned();
             $table->foreign('userId')->references('id')->on('users')->delete('cascade');
             $table->string('title');
+            $table->string('slug');
+            $table->text('content');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP'));
         });
