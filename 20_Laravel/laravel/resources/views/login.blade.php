@@ -8,7 +8,10 @@
     @csrf
     <input type="text" name="firstName">
 
-    <button type="submit">Login</button>
+    <x-Button>
+        Login
+    </x-Button>
+    
 </form>
 
 @endsection
