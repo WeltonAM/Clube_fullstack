@@ -1,3 +1,7 @@
+body{
+    background-color: #797d810e;
+}
+
 .spinner-wrapper{
     background-color: #000;
     position: fixed;
@@ -9,7 +13,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 0.6s;
+    transition: all 1s;
 }
 
 .spinner-border{
@@ -21,6 +25,7 @@
     position: sticky;
     width: 100%;
     z-index: 999;
+    background-color: #94a89a9c;
 }
 
 .navbar-toggler{
@@ -46,9 +51,45 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 60%;
+    height: 250px;
     background-color: rgba(255, 255, 255, 0.795);
     box-shadow: rgba(0, 0, 0, 0.445) 0px 1px 4px;
     padding: 10px;
+    display: flex;
+}
+
+.card p{
+    color: #000;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.544);
+    text-decoration: solid;
+    text-transform: uppercase;
+}
+
+.card form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    margin: auto;
+    width: 80%;
+}
+
+.card form input{
+    border: none;
+    margin-top: 5px;
+    background-color: #94a89a33;
+    padding: 5px;
+    border-radius: 2px;
+    text-decoration-color: #94a89a;
+}
+
+.card form button{
+    border: none;
+    margin-top: 5px;
+    background-color: #94a89a;
+    padding: 5px;
+    border-radius: 2px;
+    color: #fff;
 }
 
 footer{

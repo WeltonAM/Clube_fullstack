@@ -13,7 +13,7 @@ use App\Http\Controllers\ProductController;
 Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login', [LoginController::class, 'store'])->name('login.post');
+Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 
 Route::get('/signup', [SignUpController::class, 'index']);
 

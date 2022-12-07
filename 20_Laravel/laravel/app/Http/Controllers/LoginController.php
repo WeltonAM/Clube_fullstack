@@ -13,6 +13,15 @@ class LoginController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->input('email'));
+        $validated = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        if($validated){
+            return view('/home');
+        }
+
+        return view('/login');
     }
 }
