@@ -18,6 +18,8 @@ Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 Route::get('/signup', [SignUpController::class, 'index']);
 Route::post('/signup', [SignUpController::class, 'store'])->name('signup.store');
 
+Route::get('/users', [UserController::class, 'index'])->name('users');
+
 ## >> Protected routes ----------##--------------------------------##-------------
 // Route::prefix('admin')->middleware('auth')->group(function(){
 //     Route::get('/', [AdminController::class, 'index'])->name('admin.home')->withoutMiddleware(('auth'));

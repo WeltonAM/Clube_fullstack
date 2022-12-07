@@ -118,7 +118,12 @@ body{
 .card{
     position: absolute;
     top: 77px;
-    width: 100%;
+    left: 50px;
+    width: 90%;
+    padding: 20px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.445) 0px 1px 4px;
+    border-radius: 2px;
 }
 
 footer{
