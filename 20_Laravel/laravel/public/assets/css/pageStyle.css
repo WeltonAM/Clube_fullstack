@@ -25,15 +25,26 @@ body{
     position: sticky;
     width: 100%;
     z-index: 999;
-    background-color: #94a89a9c;
+    background-color: #3d615bdc;
+    color: #fff;
+    border-bottom: 2px solid #000000;
 }
 
 .navbar-toggler{
     border: none;
 }
 
-.navbar-nav a{
+.navbar-system a{
     text-align: right;
+    color: #fff;
+}
+
+.navbar-system a:last-of-type{
+    color: #4f393c;
+}
+
+.bi{
+    color: #fff;
 }
 
 .navbar-toggler:focus {
@@ -45,27 +56,39 @@ body{
     padding: auto;
 }
 
-.card{
+.log_card{
     position: absolute;
     top: 38%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60%;
-    height: 250px;
+    width: 400px;
+    height: 300px;
     background-color: rgba(255, 255, 255, 0.795);
     box-shadow: rgba(0, 0, 0, 0.445) 0px 1px 4px;
-    padding: 10px;
-    display: flex;
+    padding: 15px;
+    border-radius: 3px;
 }
 
-.card p{
-    color: #000;
+.log_logo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #434247;
+    border-radius: 2px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.471);
+    margin-bottom: 40px;
+    padding: 6px;
+}
+
+.log_card p{
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.544);
     text-decoration: solid;
     text-transform: uppercase;
+    color: #fff;
 }
 
-.card form{
+.log_card form{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -74,22 +97,28 @@ body{
     width: 80%;
 }
 
-.card form input{
+.log_card form input{
     border: none;
     margin-top: 5px;
-    background-color: #94a89a33;
+    background-color: #5c735e43;
     padding: 5px;
     border-radius: 2px;
     text-decoration-color: #94a89a;
 }
 
-.card form button{
+.log_card form button{
     border: none;
     margin-top: 5px;
-    background-color: #94a89a;
+    background-color: #5c735e;
     padding: 5px;
     border-radius: 2px;
     color: #fff;
+}
+
+.card{
+    position: absolute;
+    top: 77px;
+    width: 100%;
 }
 
 footer{
@@ -97,4 +126,5 @@ footer{
     left: 0;
     bottom: 0;
     width: 100%;
+    background-color: #5c735e43;
 }
