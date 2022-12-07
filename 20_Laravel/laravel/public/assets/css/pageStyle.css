@@ -34,13 +34,13 @@ body{
     border: none;
 }
 
-.navbar-system a{
+.nav-system a{
     text-align: right;
     color: #fff;
 }
 
-.navbar-system a:last-of-type{
-    color: #4f393c;
+.nav-system a:last-of-type{
+    color: #f50928;
 }
 
 .bi{

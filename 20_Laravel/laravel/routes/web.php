@@ -10,7 +10,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\ProductController;
 
-Route::middleware('auth')->get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('login.store');

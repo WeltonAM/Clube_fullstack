@@ -15,8 +15,7 @@ class SignUpController extends Controller
     {
         $validated = $request->validate([
             'firstName' => 'required',
-            'lastName' => 'required',
-            'nickName' => 'nullable',
+            'lastName' => 'nullable',
             'email' => 'required|email',
             'password' => 'required',
         ]);
