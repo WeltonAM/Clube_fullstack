@@ -10,23 +10,24 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\ProductController;
 
-Route::get('/', [HomeController::class, 'index']);
+Route::middleware('auth')->get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 
 Route::get('/signup', [SignUpController::class, 'index']);
+Route::post('/signup', [SignUpController::class, 'store'])->name('signup.store');
 
 ## >> Protected routes ----------##--------------------------------##-------------
-Route::prefix('admin')->middleware('auth')->group(function(){
-    Route::get('/', [AdminController::class, 'index'])->name('admin.home')->withoutMiddleware(('auth'));
-    Route::get('/clients', [ClientController::class, 'index'])->name('admin.clients');
-});
+// Route::prefix('admin')->middleware('auth')->group(function(){
+//     Route::get('/', [AdminController::class, 'index'])->name('admin.home')->withoutMiddleware(('auth'));
+//     Route::get('/clients', [ClientController::class, 'index'])->name('admin.clients');
+// });
 
 ## >> Resource special methods --##--------------------------------##-------------
-Route::resource('/user', UserController::class)->names([
-    'create' => 'create.user',
-])->only('index', 'show', 'create');
+// Route::resource('/user', UserController::class)->names([
+//     'create' => 'create.user',
+// ])->only('index', 'show', 'create');
 
 ## >> Redirect ways -------------##--------------------------------##-------------
 // Route::get('/product/{id}', [ProductController::class, 'edit'])->name('product.edit');

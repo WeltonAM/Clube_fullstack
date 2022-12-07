@@ -19,9 +19,7 @@ class LoginController extends Controller
         ]);
 
         if($validated){
-            return view('/home');
+            return view('home');
         }
-
-        return view('/login');
     }
 }
