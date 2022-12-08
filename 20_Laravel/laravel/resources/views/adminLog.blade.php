@@ -1,18 +1,17 @@
-@extends('master', ['title' => 'Home'])
+@extends('master', ['title' => 'Amdin log'])
 
 @section('content')
 
 <div class="card">
-    <h2>Users</h2>
+    <h2>Admin</h2>
 
     <ul>
 
-        @foreach ($users as $user)
+        {{-- @foreach ($users as $user)
             <li>{{ $user->name }}</li>
-        @endforeach
+        @endforeach --}}
     </ul>
     {{-- {{ $users->links() }} --}}
 </div>
 
 @endsection
-

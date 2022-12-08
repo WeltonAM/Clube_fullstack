@@ -15,7 +15,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = DB::table('users')->paginate(10);
+        // $users = DB::table('users')->paginate(10);
+
+        $users = User::all();
+
+        // dd($users->name);
 
         return view('users')->with('users', $users);
     }
@@ -49,7 +53,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        
+
     }
 
     /**

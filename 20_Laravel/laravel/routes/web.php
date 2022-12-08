@@ -5,20 +5,28 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminLogController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\ProductController;
 
+// Home
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+//  Login
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 
+//  Sign up
 Route::get('/signup', [SignUpController::class, 'index']);
 Route::post('/signup', [SignUpController::class, 'store'])->name('signup.store');
 
+// Users
 Route::get('/users', [UserController::class, 'index'])->name('users');
+
+// AdminLog
+Route::get('/adminlog', [AdminLogController::class, 'index'])->name('adminLog');
 
 ## >> Protected routes ----------##--------------------------------##-------------
 // Route::prefix('admin')->middleware('auth')->group(function(){

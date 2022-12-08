@@ -116,15 +116,12 @@ body{
 }
 
 .card{
-    position: absolute;
-    top: 43%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
     padding: 20px;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.445) 0px 1px 4px;
     border-radius: 2px;
+    height: visible;
+    margin: 10px 0 150px 0;
 }
 
 footer{
@@ -132,5 +129,6 @@ footer{
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #5c735e43;
+    background-color: #5c735e;
+    color: #fff;
 }
