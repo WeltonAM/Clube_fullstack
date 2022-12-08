@@ -43,4 +43,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         // 'name' => Name::class,
     ];
+
+    // public function getNameAttribute($value)
+    // {
+    //     return 'CFS_'.$value;
+    // }
 }
