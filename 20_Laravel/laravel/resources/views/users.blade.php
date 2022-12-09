@@ -8,10 +8,10 @@
     <ul>
 
         @foreach ($users as $user)
-            <li>{{ $user->name }}</li>
+            <li>{{ $user->firstName }} {{ $user->lastName }}</li>
         @endforeach
     </ul>
-    {{-- {{ $users->links() }} --}}
+    {{ $users->links() }}
 </div>
 
 @endsection

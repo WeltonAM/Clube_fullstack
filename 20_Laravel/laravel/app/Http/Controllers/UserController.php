@@ -15,9 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        // $users = DB::table('users')->paginate(10);
-
-        $users = User::all();
+        $users = DB::table('users')->paginate(10);
 
         // dd($users->name);
 

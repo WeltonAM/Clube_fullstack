@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Error;
+use Exception;
 use Illuminate\Http\Request;
+use Mockery\Expectation;
 
 class SignUpController extends Controller
 {
@@ -20,8 +24,14 @@ class SignUpController extends Controller
             'password' => 'required',
         ]);
 
-        if($validated){
+        try {
+            $saved = (new User())->insert($validated);
+            session()->flash('success', 'User created.');
             return view('/login');
+        } catch (\Exception $e) {
+            session()->flash('error', $e->errorInfo[2]);
+            return back();
         }
+
     }
 }

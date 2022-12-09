@@ -2,6 +2,10 @@
 
 @section('content')
 
+@if (session()->has('success'))
+<x-alert key="success" :message="session()->get('success')" />
+@endif
+
 <div class="log_card">
     <div class="log_logo">
         <p>Access the system</p>

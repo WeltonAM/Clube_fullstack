@@ -19,9 +19,10 @@ class UserSeeder extends Seeder
     {
         $faker = Factory::create();
 
-        for ($i=1; $i <= 50; $i++) { 
+        for ($i=1; $i <= 100; $i++) {
             DB::table('users')->insert([
-                'name' => $faker->name,
+                'firstName' => $faker->firstName,
+                'lastName' => $faker->lastName,
                 'email' => $faker->email,
                 'email_verified_at' => now(),
                 'password' => bcrypt('123'),

@@ -2,6 +2,10 @@
 
 @section('content')
 
+@if (session()->has('error'))
+    <x-alert key="danger" :message="session()->get('error')" />
+@endif
+
 <div class="log_card">
     <div class="log_logo">
         <p>Sign up</p>

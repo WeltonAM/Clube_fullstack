@@ -44,6 +44,16 @@ class User extends Authenticatable
         // 'name' => Name::class,
     ];
 
+    public function insert(array $data)
+    {
+        $this->firstName = $data['firstName'];
+        $this->lastName = $data['lastName'];
+        $this->email = $data['email'];
+        $this->password = bcrypt($data['password']);
+
+        return $this->save();
+    }
+
     // public function getNameAttribute($value)
     // {
     //     return 'CFS_'.$value;
