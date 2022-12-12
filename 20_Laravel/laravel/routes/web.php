@@ -24,6 +24,8 @@ Route::post('/signup', [SignUpController::class, 'store'])->name('signup.store')
 
 // Users
 Route::get('/users', [UserController::class, 'index'])->name('users');
+Route::get('/user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
+Route::put('/user/{user}', [UserController::class, 'update'])->name('user.update');
 
 // AdminLog
 Route::get('/adminlog', [AdminLogController::class, 'index'])->name('adminLog');

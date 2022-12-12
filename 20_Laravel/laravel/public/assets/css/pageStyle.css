@@ -124,6 +124,10 @@ body{
     margin: 10px 0 150px 0;
 }
 
+.card li{
+    margin-top: 15px;
+}
+
 .alert{
     width: 60%;
     margin: auto;

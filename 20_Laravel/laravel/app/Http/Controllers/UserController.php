@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -63,9 +64,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        // model bind
+        return view('user_edit')->with('user', $user);
+
     }
 
     /**
@@ -75,9 +78,24 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $validated = $request->validate([
+            'firstName' => 'required',
+            'lastName' => 'required',
+            'email' => 'required|unique:users,email,'.$user->id,
+        ]);
+
+        $updated = $user->update($validated);
+
+        if($updated){
+            Session::flash('update_success', 'Update successfully.');
+            return view('home');
+        } else {
+            Session::flash('update_error', 'Something went wrong');
+        }
+        
+        return back();
     }
 
     /**
