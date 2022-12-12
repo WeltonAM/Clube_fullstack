@@ -29,7 +29,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        // $user = new User;
+        // $userFound = $user->firstOrCreate(
+        //     ['email' => ''],
+        // );
     }
 
     /**
