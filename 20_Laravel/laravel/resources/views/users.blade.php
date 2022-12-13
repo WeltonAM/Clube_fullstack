@@ -20,7 +20,7 @@
                 <td>
                     <a class="btn btn-outline-warning btn-sm" href="{{ route('user.edit', $user->id) }}">Edit</a>
                     <a class="btn btn-outline-info btn-sm" href="{{ route('user.info', $user->id) }}">Info</a>
-                    <a class="delete-user btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter">Delete</a>
+                    <a class="delete-user btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter" href="{{ route('user.destroy', $user->id) }}">Delete</a>
                 </td>
             </tr>
         @endforeach
@@ -28,7 +28,7 @@
 
     {{ $users->links() }}
 
-    <!-- Modal -->
+    {{-- <!-- Modal -->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -46,7 +46,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 </div>
 
@@ -56,15 +56,15 @@
 {{-- Modal delete user --}}
 
     <script>
-        let btnDeleteUser = document.querySelectorAll('.delete-user');
-        let exampleModalCenter = document.getElementById("exampleModalCenter");
-        let modal = new bootstrap.Modal(exampleModalCenter);
+        // let btnDeleteUser = document.querySelectorAll('.delete-user');
+        // let exampleModalCenter = document.getElementById("exampleModalCenter");
+        // let modal = new bootstrap.Modal(exampleModalCenter);
 
-        btnDeleteUser.forEach((btnDeleteUser) => {
-            btnDeleteUser.addEventListener('click', () =>{
-                modal.show();
-            });
-        });
+        // btnDeleteUser.forEach((btnDeleteUser) => {
+        //     btnDeleteUser.addEventListener('click', () =>{
+        //         modal.show();
+        //     });
+        // });
 
     </script>
 @endsection
