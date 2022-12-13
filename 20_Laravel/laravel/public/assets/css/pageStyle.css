@@ -135,6 +135,22 @@ body{
     text-align: center;
 }
 
+.users_table{
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #ddd;
+}
+
+.users_table td, th{
+    text-align: left;
+    padding: 8px;
+}
+
+.users_table tr:nth-child(even){
+    background-color: rgba(234, 234, 234, 0.758);
+}
+
 footer{
     position: fixed;
     left: 0;
@@ -142,6 +158,7 @@ footer{
     width: 100%;
     background-color: #5c735e;
     color: #fff;
+    z-index: 9999;
 }
 
 footer p{

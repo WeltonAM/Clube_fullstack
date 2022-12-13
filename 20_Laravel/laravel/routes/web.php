@@ -28,6 +28,8 @@ Route::get('/users', [UserController::class, 'index'])->name('users');
 Route::get('/user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
 Route::put('/user/{user}', [UserController::class, 'update'])->name('user.update');
 Route::put('/password/{user}', [PasswordController::class, 'update'])->name('password.update');
+Route::get('/user/{user}', [UserController::class, 'show'])->name('user.info');
+Route::get('/user/delete/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 
 // AdminLog
 Route::get('/adminlog', [AdminLogController::class, 'index'])->name('adminLog');
