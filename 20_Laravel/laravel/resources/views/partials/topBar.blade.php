@@ -1,6 +1,9 @@
 <nav class="navbar navbar-expand-lg nav-system">
     <div class="container-fluid">
       <a class="navbar-brand" href="/"><i class="bi bi-house"></i></a>
+        @auth
+          <p id="user-welcome"> User, {{$user->firstName}} {{$user->lastName}}</p>
+        @endauth
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <i class="bi bi-list icon-white"></i>
       </button>

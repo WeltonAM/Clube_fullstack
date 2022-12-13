@@ -17,6 +17,12 @@
         <input type="email" name="email" placeholder="Email">
         <input type="password" name="password" placeholder="Password">
 
+        <div id="check-login">
+            <input type="checkbox" name="remember">
+            <label for="remember">Remember</label>
+        </div>
+
+
         <x-Button>
             Login
         </x-Button>
