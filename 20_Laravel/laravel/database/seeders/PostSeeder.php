@@ -24,7 +24,7 @@ class PostSeeder extends Seeder
 
         for ($i=1; $i <= 50; $i++) { 
             DB::table('posts')->insert([
-                'userId' => $faker->randomElement($users),
+                'user_id' => $faker->randomElement($users),
                 'title' => $faker->sentence(),
                 'slug' => $faker->slug,
                 'content' => $faker->paragraph,

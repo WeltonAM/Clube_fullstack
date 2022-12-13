@@ -19,7 +19,7 @@
 
                 <td>
                     <a class="btn btn-outline-warning btn-sm" href="{{ route('user.edit', $user->id) }}">Edit</a>
-                    <a class="btn btn-outline-info btn-sm" href="{{ route('user.info', $user->id) }}">Info</a>
+                    <a class="btn btn-outline-info btn-sm" href="{{ route('user.texts', $user->id) }}">Texts</a>
                     <a class="delete-user btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter" href="{{ route('user.destroy', $user->id) }}">Delete</a>
                 </td>
             </tr>

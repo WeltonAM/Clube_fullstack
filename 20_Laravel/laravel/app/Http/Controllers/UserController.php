@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = DB::table('users')->paginate(10);
+        $users = User::with('posts')->paginate(10);
 
         // dd($users);
 
@@ -55,7 +55,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-
+        return view('posts')->with('users', User::with('posts')->find($id));
     }
 
     /**

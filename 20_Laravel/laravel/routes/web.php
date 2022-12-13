@@ -29,7 +29,7 @@ Route::get('/users', [UserController::class, 'index'])->name('users')->middlewar
 Route::get('/user/edit/{user}', [UserController::class, 'edit'])->name('user.edit')->middleware('auth');
 Route::put('/user/{user}', [UserController::class, 'update'])->name('user.update')->middleware('auth');
 Route::put('/password/{user}', [PasswordController::class, 'update'])->name('password.update')->middleware('auth');
-Route::get('/user/{user}', [UserController::class, 'show'])->name('user.info')->middleware('auth');
+Route::get('/user/texts/{user}', [UserController::class, 'show'])->name('user.texts')->middleware('auth');
 Route::get('/user/delete/{id}', [UserController::class, 'destroy'])->name('user.destroy')->middleware('auth');
 
 // AdminLog

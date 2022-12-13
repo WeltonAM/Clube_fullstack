@@ -22,7 +22,7 @@ body{
 }
 
 .navbar{
-    position: sticky;
+    position: absolute;
     width: 100%;
     z-index: 999;
     background-color: #3d615bdc;
@@ -124,12 +124,15 @@ body{
 }
 
 .card{
-    padding: 20px;
+    position: absolute;
+    width: 100%;
+    padding: 20px 20px 10px 20px;
+    margin-bottom: -200px;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.445) 0px 1px 4px;
     border-radius: 2px;
-    height: visible;
-    margin: 10px 0 150px 0;
+    top: 15%;
+    bottom: 2%;
 }
 
 .card li{
@@ -159,14 +162,18 @@ body{
     background-color: rgba(234, 234, 234, 0.758);
 }
 
+#creator p{
+    margin: 4px 0 0 9px;
+}
+
 footer{
     position: fixed;
-    left: 0;
-    bottom: 0;
     width: 100%;
+    height: 60px;
     background-color: #5c735e;
     color: #fff;
     z-index: 9999;
+    bottom: 0%;
 }
 
 footer p{
