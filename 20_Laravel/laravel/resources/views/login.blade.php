@@ -21,6 +21,8 @@
             Login
         </x-Button>
 
+        {{ $errors->first('email') }}
+
     </form>
 
 </div>

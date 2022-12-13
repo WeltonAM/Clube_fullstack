@@ -2,6 +2,7 @@
 
 namespace app\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller

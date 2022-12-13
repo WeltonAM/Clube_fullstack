@@ -8,7 +8,10 @@
         <div class="navbar-nav float-end">
           <a class="nav-link" href="/users">Users</a>
           <a class="nav-link" href="#">Texts</a>
-          <a class="nav-link text-red" href="#">Logout</a>
+
+          @auth
+            <a class="nav-link text-red" href="{{ route('login.destroy') }}">Logout</a>
+          @endauth
         </div>
       </div>
     </div>

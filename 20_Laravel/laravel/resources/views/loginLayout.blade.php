@@ -42,7 +42,7 @@
         @yield('content')
     </div>
 
-    <footer class="mt-auto text-center text-lg-start text-muted">
+    <footer class="mt-auto text-center text-lg-start">
 
         <div class="text-center p-4">
           © 2022 Copyright:

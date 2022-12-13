@@ -13,26 +13,27 @@ use App\Http\Controllers\AdminLogController;
 use App\Http\Controllers\PasswordController;
 
 // Home
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
 
-//  Login
+// Login
 Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login', [LoginController::class, 'store'])->name('login.store');
+Route::post('/login', [LoginController::class, 'store'])->name('login.store')->middleware('throttle:3');
+Route::get('/logout', [LoginController::class, 'destroy'])->name('login.destroy')->middleware('auth');
 
-//  Sign up
-Route::get('/signup', [SignUpController::class, 'index']);
+// Sign up
+Route::get('/signup', [SignUpController::class, 'index'])->name('signup');
 Route::post('/signup', [SignUpController::class, 'store'])->name('signup.store');
 
 // Users
-Route::get('/users', [UserController::class, 'index'])->name('users');
-Route::get('/user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
-Route::put('/user/{user}', [UserController::class, 'update'])->name('user.update');
-Route::put('/password/{user}', [PasswordController::class, 'update'])->name('password.update');
-Route::get('/user/{user}', [UserController::class, 'show'])->name('user.info');
-Route::get('/user/delete/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+Route::get('/users', [UserController::class, 'index'])->name('users')->middleware('auth');
+Route::get('/user/edit/{user}', [UserController::class, 'edit'])->name('user.edit')->middleware('auth');
+Route::put('/user/{user}', [UserController::class, 'update'])->name('user.update')->middleware('auth');
+Route::put('/password/{user}', [PasswordController::class, 'update'])->name('password.update')->middleware('auth');
+Route::get('/user/{user}', [UserController::class, 'show'])->name('user.info')->middleware('auth');
+Route::get('/user/delete/{id}', [UserController::class, 'destroy'])->name('user.destroy')->middleware('auth');
 
 // AdminLog
-Route::get('/adminlog', [AdminLogController::class, 'index'])->name('adminLog');
+Route::get('/adminlog', [AdminLogController::class, 'index'])->name('adminLog')->middleware('auth');
 
 ## >> Protected routes ----------##--------------------------------##-------------
 // Route::prefix('admin')->middleware('auth')->group(function(){
