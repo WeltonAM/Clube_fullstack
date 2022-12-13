@@ -89,12 +89,12 @@ class UserController extends Controller
         $updated = $user->update($validated);
 
         if($updated){
-            Session::flash('update_success', 'Update successfully.');
+            Session::flash('update_success', 'Update successfully');
             return view('home');
         } else {
             Session::flash('update_error', 'Something went wrong');
         }
-        
+
         return back();
     }
 

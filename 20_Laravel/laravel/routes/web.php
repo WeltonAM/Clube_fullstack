@@ -5,11 +5,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AdminLogController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AdminLogController;
+use App\Http\Controllers\PasswordController;
 
 // Home
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -26,6 +27,7 @@ Route::post('/signup', [SignUpController::class, 'store'])->name('signup.store')
 Route::get('/users', [UserController::class, 'index'])->name('users');
 Route::get('/user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
 Route::put('/user/{user}', [UserController::class, 'update'])->name('user.update');
+Route::put('/password/{user}', [PasswordController::class, 'update'])->name('password.update');
 
 // AdminLog
 Route::get('/adminlog', [AdminLogController::class, 'index'])->name('adminLog');
