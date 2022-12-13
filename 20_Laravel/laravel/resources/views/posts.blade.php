@@ -1,4 +1,4 @@
-@extends('master', ['title' => 'Users'])
+@extends('master', ['title' => 'Posts'])
 
 @section('content')
 

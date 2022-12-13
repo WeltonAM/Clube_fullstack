@@ -3,15 +3,16 @@
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\SignUpController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminLogController;
 use App\Http\Controllers\PasswordController;
-use App\Http\Controllers\PostController;
 
 // Home
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
@@ -32,6 +33,11 @@ Route::put('/user/{user}', [UserController::class, 'update'])->name('user.update
 Route::put('/password/{user}', [PasswordController::class, 'update'])->name('password.update')->middleware('auth');
 Route::get('/user/texts/{user}', [UserController::class, 'show'])->name('user.texts')->middleware('auth');
 Route::get('/user/delete/{id}', [UserController::class, 'destroy'])->name('user.destroy')->middleware('auth');
+
+// Email
+Route::get('/contact', [ContactController::class, 'index'])->name('contact')->middleware('auth');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store')->middleware('auth');
+
 
 // Posts
 Route::get('/posts', [PostController::class, 'index'])->name('posts')->middleware('auth');
