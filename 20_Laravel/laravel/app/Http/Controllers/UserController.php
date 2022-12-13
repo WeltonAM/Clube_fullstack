@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -55,7 +56,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return view('posts')->with('users', User::with('posts')->find($id));
+        return view('posts')->with(['users' => User::with('posts')->find($id), 'posts' => Post::with('tag')]);
     }
 
     /**

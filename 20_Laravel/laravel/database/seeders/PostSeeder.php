@@ -22,7 +22,7 @@ class PostSeeder extends Seeder
 
         $users = User::all()->pluck('id')->toArray();
 
-        for ($i=1; $i <= 50; $i++) { 
+        for ($i=1; $i <= 100; $i++) { 
             DB::table('posts')->insert([
                 'user_id' => $faker->randomElement($users),
                 'title' => $faker->sentence(),
