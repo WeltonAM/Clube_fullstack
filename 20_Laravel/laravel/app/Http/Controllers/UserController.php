@@ -18,7 +18,7 @@ class UserController extends Controller
     {
         $users = DB::table('users')->paginate(10);
 
-        // dd($users->name);
+        // dd($users);
 
         return view('users')->with('users', $users);
     }
