@@ -11,6 +11,7 @@ use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminLogController;
 use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\PostController;
 
 // Home
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
@@ -31,6 +32,10 @@ Route::put('/user/{user}', [UserController::class, 'update'])->name('user.update
 Route::put('/password/{user}', [PasswordController::class, 'update'])->name('password.update')->middleware('auth');
 Route::get('/user/texts/{user}', [UserController::class, 'show'])->name('user.texts')->middleware('auth');
 Route::get('/user/delete/{id}', [UserController::class, 'destroy'])->name('user.destroy')->middleware('auth');
+
+// Posts
+Route::get('/posts', [PostController::class, 'index'])->name('posts')->middleware('auth');
+Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('posts.show')->middleware('auth');
 
 // AdminLog
 Route::get('/adminlog', [AdminLogController::class, 'index'])->name('adminLog')->middleware('auth');

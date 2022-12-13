@@ -51,6 +51,11 @@ body{
     box-shadow: 0 0 0;
 }
 
+.container-fluid{
+    display: flex;
+    align-content: space-between;
+}
+
 .content{
     margin: auto;
     padding: auto;
