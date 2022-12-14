@@ -6,7 +6,7 @@ use PDO;
 
 class Connection
 {
-    private static $pdo;
+    private static $pdo = null;
 
     public static function open()
     {
@@ -26,6 +26,6 @@ class Connection
 
     public static function close()
     {
-
+        static::$pdo = null;
     }
 }

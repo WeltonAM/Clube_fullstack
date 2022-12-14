@@ -4,20 +4,28 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\User;
+use Database\Query\Select;
 use Illuminate\Http\Request;
 use Database\Query\Connection;
+use Database\Query\QueryBuilder;
 use Illuminate\Support\Facades\Auth;
 
 class Home extends Controller
 {
+    private $queryBuilder;
+
+    public function __construct()
+    {
+        $this->queryBuilder = new QueryBuilder;
+    }
+
     public function index()
     {
         // $post = Post::with('user')->get();
 
         // return view('site.home', ['title' => 'Home', 'posts' => $post]);
 
-        $connection = Connection::open();
-        $users = $connection->query('select * from users')->fetchAll();
+        $users = $this->queryBuilder->table('users')->where('id', '>', 10)->execute(new Select);
 
         dd($users);
     }
