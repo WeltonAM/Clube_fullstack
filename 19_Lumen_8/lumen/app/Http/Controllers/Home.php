@@ -27,8 +27,7 @@ class Home extends Controller
 
         $users = $this->queryBuilder->select()
         ->table('users')
-        ->where('users.id', '>', 5)
-        ->join('posts', 'id')
+        ->like('firstName', 'ff')
         ->execute(new Select);
 
         dd($users);
