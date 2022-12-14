@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\User;
+use Database\Query\Create;
 use Database\Query\Select;
 use Illuminate\Http\Request;
 use Database\Query\Connection;
@@ -31,7 +32,7 @@ class Home extends Controller
             'email' => 'juju@hgta.com',
             'password' => '123',
         ])
-        ->execute(new Select);
+        ->execute(new Create);
 
         dd($users);
         

@@ -18,11 +18,10 @@ class Execute
 
         $sql = SqlRaw::raw($response['query'], $this->queries);
 
-        
         $prepare = $connection->prepare($sql);
         $executed = $prepare->execute($this->queries['binds']);
         
-        // dd($sql);
+        // dd($prepare);
 
         if($builder instanceof Select){
             $fetch = $response['fetchAll'] ? $prepare->fetchAll() : $prepare->fetch();
