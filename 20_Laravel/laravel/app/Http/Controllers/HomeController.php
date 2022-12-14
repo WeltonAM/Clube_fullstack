@@ -15,6 +15,17 @@ class HomeController extends Controller
 
     public function index()
     {
+        if(cache()->has('users')){
+            $users = cache()->get('users');
+        } else {
+            $users = User::limit(10)->get();
+            // create if not exists
+            cache()->put('users', $users, now()->addMinute(10));
+        }
+
+        // doesn't create if exists
+        // cache()->add('users', $users, 10);
+
         $user = auth()->user();
         return view('home')->with('user', $user);
     }
