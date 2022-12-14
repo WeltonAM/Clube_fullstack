@@ -40,7 +40,7 @@ class QueryBuilder
 
     public function join($table, $foreignKey)
     {
-        $this->queries['join'][$foreignKey] = " inner join {$table} on {$table}.id = {$this->queries['table']}.{$foreignKey}";
+        $this->queries['join'][] = " inner join {$table} on {$table}.id = {$this->queries['table']}.{$foreignKey}";
 
         return $this;
     }
@@ -60,11 +60,9 @@ class QueryBuilder
             list($field, $operator, $value) = $args;
         }
 
-        $fieldWhere = ":{$field}";
+        $this->queries['binds'][] = $value;
 
-        $this->queries['binds'][$fieldWhere] = $value;
-
-        $this->queries['where'][$field] = "{$field} {$operator} {$fieldWhere}";
+        $this->queries['where'][] = "{$field} {$operator} ?";
 
         return $this;
     }
@@ -84,11 +82,9 @@ class QueryBuilder
             list($field, $operator, $value) = $args;
         }
 
-        $fieldWhere = ":{$field}";
+        $this->queries['binds'][] = $value;
 
-        $this->queries['binds'][$fieldWhere] = $value;
-
-        $this->queries['orWhere'][$field] = "{$field} {$operator} {$fieldWhere}";
+        $this->queries['orWhere'][] = "{$field} {$operator} ?";
 
         return $this;
     }
