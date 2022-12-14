@@ -16,6 +16,13 @@ class Execute
         $connection = Connection::open();
         $response = $builder->execute($this->queries);
 
-        dd($response);
+        $prepare = $connection->prepare($response['query']);
+        $prepare->execute();
+
+        if($builder instanceof Select){
+            $fetch = $response['fetchAll'] ? $prepare->fetchAll() : $prepare->fetch();
+        }
+
+        dd($fetch);
     }
 }
