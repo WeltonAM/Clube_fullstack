@@ -27,8 +27,8 @@ class Home extends Controller
 
         $users = $this->queryBuilder->select()
         ->table('users')
-        ->where('id', '>', 5)
-        ->orWhere('id', '<', 9)
+        ->where('users.id', '>', 5)
+        ->join('posts', 'id')
         ->execute(new Select);
 
         dd($users);
