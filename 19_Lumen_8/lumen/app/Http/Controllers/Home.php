@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\User;
 use Database\Query\Create;
+use Database\Query\Delete;
 use Database\Query\Select;
 use Database\Query\Update;
 use Illuminate\Http\Request;
@@ -26,14 +27,8 @@ class Home extends Controller
         // $post = Post::with('user')->get();
 
         $users = $this->queryBuilder->table('users')
-        ->update([
-            'firstName' => 'Juliana',
-            'lastName' => 'Karla',
-            'email' => 'juju@hgta.com',
-            'password' => '123',
-        ])
-        ->where('id', 21)
-        ->execute(new Update);
+        ->where('id', 20)
+        ->execute(new Delete);
 
         dd($users);
         
