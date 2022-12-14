@@ -18,6 +18,8 @@ class Execute
 
         $sql = SqlRaw::raw($response['query'], $this->queries);
 
+        // dd($sql);
+
         $prepare = $connection->prepare($sql);
         $prepare->execute();
 

@@ -11,6 +11,7 @@ class QueryBuilder
         'table' => '',
         'select' => '',
         'limit' => '',
+        'join' => [],
     ];
 
     public function select($fields = '*')
@@ -30,6 +31,13 @@ class QueryBuilder
     public function limit($limit)
     {
         $this->queries['limit'] = $limit;
+
+        return $this;
+    }
+
+    public function join($table, $foreignKey)
+    {
+        $this->queries['join'][$foreignKey] = " inner join {$table} on {$table}.id = {$this->queries['table']}.{$foreignKey}";
 
         return $this;
     }

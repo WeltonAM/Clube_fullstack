@@ -7,7 +7,7 @@ class Limit
     public static function execute($queries)
     {
         if(!$queries['limit']){
-            throw new \Exception("No limit in the query");
+            return;
         }
 
         return ' limit ' . $queries['limit'];
