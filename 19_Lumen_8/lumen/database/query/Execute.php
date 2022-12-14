@@ -29,13 +29,17 @@ class Execute
 
             $count = $connection->query('select FOUND_ROWS()')->fetchColumn();
             
-            $data = [
-                'rows' => $fetch,
-                'count' => $count,
-                // 'rows' => $fetch,
-            ];
+            if($this->queries['paginate']){
+                return [
+                    'rows' => $fetch,
+                    'count' => $count,
+                    'links' => RenderLinks::render($count, $this->queries['limit']),
+                ];
+            }
 
-            dd($data);
+            // dd($data);
+
+            return ['rows' => $fetch];
         }
 
     }

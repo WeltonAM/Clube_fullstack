@@ -23,13 +23,13 @@ class Home extends Controller
     {
         // $post = Post::with('user')->get();
 
-        // return view('site.home', ['title' => 'Home', 'posts' => $post]);
-
         $users = $this->queryBuilder->select()
         ->table('users')
         ->paginate(5)
         ->execute(new Select);
 
-        dd($users);
+        // dd($users);
+        
+        return view('site.home', ['title' => 'Home', 'users' => $users]);
     }
 }

@@ -8,9 +8,9 @@
     <title>{{ $title }}</title>
 </head>
 <body>
+    @include('site.partials.header')
+    
     <div class="container">
-        @include('site.partials.header')
-
         @yield('content')
     </div>
 

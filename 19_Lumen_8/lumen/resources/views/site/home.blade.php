@@ -1,17 +1,20 @@
 @extends('site.master')
 
 @section('content')
-    <h2>Posts</h2>
+    <h2>Users</h2>
 
     <ul>
-        @foreach ($posts as $post)
+        @foreach ($users['rows'] as $user)
         <li>
-            <a href="/post/{{ $post->slug }}">
-                {{ $post->title }} -
+            {{ $user }} 
+            
+            {{-- <a href="/post/{{ $post->slug }}">
                 <small>{{ $post->user->firstName }}</small>
-            </a>
+            </a> --}}
         </li>
         @endforeach
     </ul>
+
+    {!! $users['links'] !!}
 
 @endsection

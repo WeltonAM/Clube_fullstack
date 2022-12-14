@@ -121,6 +121,6 @@ class QueryBuilder
     {
         $execute = new Execute;
         $execute->setQuery($this->queries);
-        $execute->execute($builder);
+        return $execute->execute($builder);
     }
 }
