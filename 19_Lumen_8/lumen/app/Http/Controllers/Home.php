@@ -25,10 +25,10 @@ class Home extends Controller
 
         $users = $this->queryBuilder->select()
         ->table('users')
-        ->paginate(5)
+        ->order('id', 'desc')
         ->execute(new Select);
 
-        // dd($users);
+        dd($users);
         
         return view('site.home', ['title' => 'Home', 'users' => $users]);
     }

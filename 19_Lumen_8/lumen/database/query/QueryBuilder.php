@@ -17,6 +17,7 @@ class QueryBuilder
         'orWhere' => [],
         'offset' => 0,
         'like' => [],
+        'order' => '',
         'paginate' => false,
     ];
 
@@ -113,6 +114,13 @@ class QueryBuilder
         $this->queries['select'] = 'SQL_CALC_FOUND_ROWS ' . $this->queries['select'];
 
         $this->queries['paginate'] = true;
+
+        return $this;
+    }
+
+    public function order($field, $value)
+    {
+        $this->queries['order'] = "{$field} {$value}";
 
         return $this;
     }
