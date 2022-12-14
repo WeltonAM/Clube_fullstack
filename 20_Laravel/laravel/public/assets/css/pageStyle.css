@@ -145,8 +145,11 @@ body{
 }
 
 .alert{
+    position: absolute;
+    top: 12%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 60%;
-    margin: auto;
     margin-top: 8px;
     text-align: center;
 }

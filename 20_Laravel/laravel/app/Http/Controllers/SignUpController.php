@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\CreatedUser;
 use Error;
 use Exception;
 use App\Models\User;
@@ -24,10 +25,16 @@ class SignUpController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
+        event(new CreatedUser($validated));
+
 
         try {
-            (new User())->insert($validated);
-            Session::flash('success', 'User created.');
+            $saved = (new User())->insert($validated);
+            if($saved){
+                Session::flash('success', 'User created.');
+                event(new CreatedUser($validated));
+            }
+
             return view('/login');
         } catch (\Exception $e) {
             Session::flash('error', $e->errorInfo[2]);

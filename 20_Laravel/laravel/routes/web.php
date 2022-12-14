@@ -20,7 +20,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('aut
 
 // Login
 Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login', [LoginController::class, 'store'])->name('login.store')->middleware('throttle:3');
+Route::post('/login', [LoginController::class, 'store'])->middleware('throttle:3');
 Route::get('/logout', [LoginController::class, 'destroy'])->name('login.destroy')->middleware('auth');
 
 // Sign up
