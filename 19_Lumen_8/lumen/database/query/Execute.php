@@ -21,7 +21,7 @@ class Execute
         // dd($sql);
 
         $prepare = $connection->prepare($sql);
-        $prepare->execute();
+        $prepare->execute($this->queries['binds']);
 
         if($builder instanceof Select){
             $fetch = $response['fetchAll'] ? $prepare->fetchAll() : $prepare->fetch();

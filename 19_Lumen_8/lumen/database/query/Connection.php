@@ -12,7 +12,7 @@ class Connection
     {
         if(!static::$pdo){
             try {
-                static::$pdo = new PDO("mysql:host=localhost;dbname=curso_lumen",'root', 'root102.',[
+                static::$pdo = new PDO("mysql:host=localhost;dbname=lumen_8",'root', 'root',[
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
                 ]);
