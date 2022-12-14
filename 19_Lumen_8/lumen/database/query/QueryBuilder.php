@@ -14,6 +14,7 @@ class QueryBuilder
         'join' => [],
         'where' => [],
         'binds' => [],
+        'orWhere' => [],
     ];
 
     public function select($fields = '*')
@@ -64,6 +65,30 @@ class QueryBuilder
         $this->queries['binds'][$fieldWhere] = $value;
 
         $this->queries['where'][$field] = "{$field} {$operator} {$fieldWhere}";
+
+        return $this;
+    }
+
+    public function orWhere(...$args)
+    {
+        $numArgs = count($args);
+        if($numArgs <= 1 || $numArgs > 3){
+            throw new \Exception("Exceeding number of args.");
+        }
+
+        $operator = "=";
+
+        if($numArgs == 2){
+            list($field, $value) = $args;
+        } else {
+            list($field, $operator, $value) = $args;
+        }
+
+        $fieldWhere = ":{$field}";
+
+        $this->queries['binds'][$fieldWhere] = $value;
+
+        $this->queries['orWhere'][$field] = "{$field} {$operator} {$fieldWhere}";
 
         return $this;
     }

@@ -28,6 +28,7 @@ class Home extends Controller
         $users = $this->queryBuilder->select()
         ->table('users')
         ->where('id', '>', 5)
+        ->orWhere('id', '<', 10)
         ->execute(new Select);
 
         dd($users);
