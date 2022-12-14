@@ -25,7 +25,12 @@ class Home extends Controller
 
         $users = $this->queryBuilder->select()
         ->table('users')
-        ->order('id', 'desc')
+        ->create([
+            'firstName' => 'Juju',
+            'lastName' => 'Juju',
+            'email' => 'juju@hgta.com',
+            'password' => '123',
+        ])
         ->execute(new Select);
 
         dd($users);

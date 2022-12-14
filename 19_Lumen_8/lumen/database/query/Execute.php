@@ -20,16 +20,16 @@ class Execute
 
         
         $prepare = $connection->prepare($sql);
-        $prepare->execute($this->queries['binds']);
+        $executed = $prepare->execute($this->queries['binds']);
         
         // dd($sql);
 
         if($builder instanceof Select){
             $fetch = $response['fetchAll'] ? $prepare->fetchAll() : $prepare->fetch();
-
-            $count = $connection->query('select FOUND_ROWS()')->fetchColumn();
             
             if($this->queries['paginate']){
+                $count = $connection->query('select FOUND_ROWS()')->fetchColumn();
+
                 return [
                     'rows' => $fetch,
                     'count' => $count,
@@ -37,10 +37,10 @@ class Execute
                 ];
             }
 
-            // dd($data);
-
             return ['rows' => $fetch];
         }
+
+        return $executed;
 
     }
 }
