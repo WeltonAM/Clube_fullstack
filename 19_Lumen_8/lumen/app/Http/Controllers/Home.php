@@ -25,7 +25,7 @@ class Home extends Controller
 
         // return view('site.home', ['title' => 'Home', 'posts' => $post]);
 
-        $users = $this->queryBuilder->select()->table('users')->execute(new Select);
+        $users = $this->queryBuilder->select()->table('users')->limit(10)->execute(new Select);
 
         dd($users);
     }

@@ -10,6 +10,7 @@ class QueryBuilder
     protected $queries = [
         'table' => '',
         'select' => '',
+        'limit' => '',
     ];
 
     public function select($fields = '*')
@@ -22,6 +23,13 @@ class QueryBuilder
     public function table($table)
     {
         $this->queries['table'] = $table;
+
+        return $this;
+    }
+
+    public function limit($limit)
+    {
+        $this->queries['limit'] = $limit;
 
         return $this;
     }
