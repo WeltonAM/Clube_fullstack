@@ -13,21 +13,23 @@ class Contact extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $user;
-
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct(public $user)
     {
-        $this->user = $user; 
     }
 
     public function build()
     {
-        return $this->from($this->user['email'])->subject($this->user['subject'])->view('emails.contact');
+        // return $this->from($this->user['email'])->subject($this->user['subject'])->view('emails.contact');
+
+        // markdown
+        return $this->from($this->user['email'])->subject($this->user['subject'])->markdown('emails.contact', [
+            'url' => 'https://github.com/WeltonAM'
+        ]);
     }
 
     /**
