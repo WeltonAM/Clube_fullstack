@@ -6,8 +6,8 @@ window.onload = function(){
     let btn_users = document.querySelector('#btn-users');
     btn_users.onclick = function(){   
         xhttp.onreadystatechange = function(){
-            if(xhttp.readyState == 4 && xhttp.status == 200){
-                console.log(xhttp.responseText);
+            if(this.readyState == 4 && this.status == 200){
+                console.log(this.responseText);
             }
         }     
 
