@@ -27,7 +27,7 @@ class Home extends Controller
 
         $users = $this->queryBuilder->select()
         ->table('users')
-        ->like('firstName', 'ff')
+        ->paginate(5)
         ->execute(new Select);
 
         dd($users);

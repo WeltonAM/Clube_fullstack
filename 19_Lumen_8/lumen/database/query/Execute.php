@@ -18,16 +18,24 @@ class Execute
 
         $sql = SqlRaw::raw($response['query'], $this->queries);
 
-        // dd($sql);
-
+        
         $prepare = $connection->prepare($sql);
         $prepare->execute($this->queries['binds']);
+        
+        // dd($sql);
 
         if($builder instanceof Select){
             $fetch = $response['fetchAll'] ? $prepare->fetchAll() : $prepare->fetch();
 
-            dd($fetch);
-            return ['rows' => $fetch];
+            $count = $connection->query('select FOUND_ROWS()')->fetchColumn();
+            
+            $data = [
+                'rows' => $fetch,
+                'count' => $count,
+                // 'rows' => $fetch,
+            ];
+
+            dd($data);
         }
 
     }

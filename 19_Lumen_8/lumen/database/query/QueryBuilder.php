@@ -15,6 +15,9 @@ class QueryBuilder
         'where' => [],
         'binds' => [],
         'orWhere' => [],
+        'offset' => 0,
+        'like' => [],
+        'paginate' => false,
     ];
 
     public function select($fields = '*')
@@ -93,6 +96,23 @@ class QueryBuilder
     {
         $this->queries['like'][] = "{$field} like ?";
         $this->queries['binds'][] = "%{$value}%";
+
+        return $this;
+    }
+
+    public function paginate($limit = 20)
+    {
+        if(!$this->queries['limit']){
+            $this->queries['limit'] = $limit;
+        } else {
+            $limit = $this->queries['limit'];
+        }
+
+        $this->queries['offset'] = (($_GET['page'] ?? 1) - 1) * $limit;
+
+        $this->queries['select'] = 'SQL_CALC_FOUND_ROWS ' . $this->queries['select'];
+
+        $this->queries['paginate'] = true;
 
         return $this;
     }

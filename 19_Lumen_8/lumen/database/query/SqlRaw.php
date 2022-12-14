@@ -11,6 +11,7 @@ class SqlRaw
         $sql .= OrWhere::execute($queries);
         $sql .= Like::execute($queries);
         $sql .= Limit::execute($queries);
+        $sql .= Offset::execute($queries);
 
         return $sql;
     }
