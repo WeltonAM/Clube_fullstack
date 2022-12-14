@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\User;
 use Database\Query\Create;
 use Database\Query\Select;
+use Database\Query\Update;
 use Illuminate\Http\Request;
 use Database\Query\Connection;
 use Database\Query\QueryBuilder;
@@ -24,15 +25,15 @@ class Home extends Controller
     {
         // $post = Post::with('user')->get();
 
-        $users = $this->queryBuilder->select()
-        ->table('users')
-        ->create([
-            'firstName' => 'Juju',
-            'lastName' => 'Juju',
+        $users = $this->queryBuilder->table('users')
+        ->update([
+            'firstName' => 'Juliana',
+            'lastName' => 'Karla',
             'email' => 'juju@hgta.com',
             'password' => '123',
         ])
-        ->execute(new Create);
+        ->where('id', 21)
+        ->execute(new Update);
 
         dd($users);
         

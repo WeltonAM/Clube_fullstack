@@ -19,9 +19,9 @@ class Execute
         $sql = SqlRaw::raw($response['query'], $this->queries);
 
         $prepare = $connection->prepare($sql);
+        // dd($prepare);
         $executed = $prepare->execute($this->queries['binds']);
         
-        // dd($prepare);
 
         if($builder instanceof Select){
             $fetch = $response['fetchAll'] ? $prepare->fetchAll() : $prepare->fetch();
