@@ -8,6 +8,12 @@ class Select implements IBuilder
 {
     public function execute($queries)
     {
-        dd($queries);
+        if(!$queries['select']){
+            throw new \Exception("No select");
+        }
+
+        return [
+            'query' => "select {$queries['select']} from {$queries['table']}",
+        ];
     }
 }
