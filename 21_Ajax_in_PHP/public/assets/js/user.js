@@ -11,7 +11,28 @@ window.onload = function(){
             if(this.readyState == 4 && this.status == 200){
 
                 let users = JSON.parse(this.responseText);
-                console.log(users);
+                
+                let table = `<table class="table table-stripped">`;
+
+                table += `<thead><tr><td>Nome Completo</td><td>Email</td><td>Endereço</td></tr></thead>`;
+
+                table += `<tbody>`;
+
+                users.forEach(user => {
+                    table += `<tr>`;
+
+                    table += `<td>${user.nomecompleto}</td>`;
+                    table += `<td>${user.email}</td>`;
+                    table += `<td>${user.endereco}</td>`;
+
+                    table += `</td>`;
+                });
+                
+                table += `</tbody>`;
+
+                table += `</table>`;
+
+                div_users.innerHTML = table;
             }
         }     
 
