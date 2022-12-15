@@ -13,7 +13,11 @@ function xmlHttpPost(url, callback, params = '')
 {
     xhttp.onreadystatechange = callback;
 
-    xhttp.open('POST', url + '.php' + params, true);
+    xhttp.open('POST', url + '.php', true);
+
+    if(typeof(params) != 'object'){
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    }
 
     xhttp.send(params);
 }

@@ -4,7 +4,7 @@ namespace app\Models;
 
 abstract class Model
 {
-    private $connection;
+    protected $connection;
 
     public function __construct()
     {

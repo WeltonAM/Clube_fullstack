@@ -10,19 +10,27 @@ window.onload = function(){
     let form_signup = document.querySelector('#form-signup');
 
     form_signup.onsubmit = function(e){
+
         e.preventDefault();
 
-        xmlHttpPost('ajax/create', (e)=>{
-            e.preventDefault();
+        let form = new FormData(form_signup);
 
+        xmlHttpPost('ajax/create', ()=>{
             beforeSend(()=>{
                 div_create.innerHTML = `<i class="fa fa-refresh fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>`
             });
 
             success(()=>{
-                
+                let response = xhttp.responseText;
+
+                if(response = 'registered'){
+                    div_create.innerHTML = 'Successfully signed!';
+                } else {
+                    div_create.innerHTML = 'Something went wrong';
+                }
             });
-        });
+
+        }, form);
     }
 
     

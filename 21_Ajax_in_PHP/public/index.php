@@ -35,7 +35,7 @@
                     <br>
 
                     <div id="div-create"></div>
-                    
+
                     <br>
 
                     <form action="" method="POST" role="form" id="form-signup" enctype="multipart/form-data">
@@ -43,15 +43,27 @@
                         <div class="form-group">
                             <input type="text" class="form-control" name="name" placeholder="Name">
                         </div>
-
+                        
                         <br>
 
                         <div class="form-group">
-                            <input type="email" class="form-control" name="email" placeholder="Email">
+                            <input type="text" class="form-control" name="lastName" placeholder="Last Name">
                         </div>
 
                         <br>
-
+                        
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email" placeholder="Email">
+                        </div>
+                        
+                        <br>
+                        
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="password" placeholder="Password">
+                        </div>
+                        
+                        <br>
+                        
                         <button id="btn-signup" type="submit" class="btn btn-outline-info btn-sm" id="btn-users">Sign up</button>
                     </form>
                 </div>
@@ -59,7 +71,7 @@
                 <div id="search" role="tabpanel" class="tab-pane fade">
                     <div id="create">
                         <br>
-                        <form action="" method="POST" role="form" id="form-signup" enctype="multipart/form-data">
+                        <form action="" method="POST" role="form" id="form-search" enctype="multipart/form-data">
 
                             <div class="form-group">
                                 <form class="d-flex" role="search">
