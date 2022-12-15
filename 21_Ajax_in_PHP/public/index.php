@@ -41,7 +41,7 @@
                     <form action="" method="POST" role="form" id="form-signup" enctype="multipart/form-data">
 
                         <div class="form-group">
-                            <input type="text" class="form-control" name="name" placeholder="Name">
+                            <input type="text" class="form-control" name="firstName" placeholder="Name">
                         </div>
                         
                         <br>
@@ -63,26 +63,23 @@
                         </div>
                         
                         <br>
-                        
+
                         <button id="btn-signup" type="submit" class="btn btn-outline-info btn-sm" id="btn-users">Sign up</button>
                     </form>
                 </div>
 
                 <div id="search" role="tabpanel" class="tab-pane fade">
-                    <div id="create">
-                        <br>
-                        <form action="" method="POST" role="form" id="form-search" enctype="multipart/form-data">
+                    <br>
 
-                            <div class="form-group">
-                                <form class="d-flex" role="search">
-                                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                    <br>
-                                    <button class="btn btn-outline-success btn-sm" type="submit">Search</button>
-                                </form>
-                            </div>
+                    <form class="d-flex" role="search" action="" method="POST" role="form" id="form-search">
 
-                        </form>
-                    </div>
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="name">
+                        <button class="btn btn-outline-success btn-sm" type="submit">Search</button>
+                        
+                    </form>
+                    
+                    <hr>
+                    <div id="div-search"></div>
                 </div>
 
             </div>

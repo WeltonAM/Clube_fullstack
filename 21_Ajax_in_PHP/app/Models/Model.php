@@ -34,4 +34,17 @@ abstract class Model
 
         return $find->fetch();
     }
+
+    public function search($value)
+    {
+        $sql = "select * from {$this->table} where firstName like ?";
+
+        $search = $this->connection->prepare($sql);
+
+        $search->bindValue(1, "%{$value}%");
+
+        $search->execute();
+
+        return $search->fetchAll();
+    }
 }
