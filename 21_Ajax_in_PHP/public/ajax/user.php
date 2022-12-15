@@ -1,3 +1,8 @@
 <?php
+require "../../config.php";
 
-echo 'test';
+use app\Models\User;
+
+$user = new User;
+
+echo json_encode($user->all());

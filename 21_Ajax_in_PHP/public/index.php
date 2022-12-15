@@ -9,6 +9,8 @@
 <body>
 
     <button id="btn-users">Users</button>
+
+    <div id="div-users"></div>
     
     <script src="assets/js/user.js"></script>
 </body>
