@@ -21,4 +21,17 @@ abstract class Model
 
         return $all->fetchAll();
     }
+
+    public function find($field, $value)
+    {
+        $sql = "select * from {$this->table} where {$field} = ?";
+
+        $find = $this->connection->prepare(1, $value);
+
+        $find->bindValue(1, $value);
+
+        $find->execute();
+
+        return $find->fetch();
+    }
 }

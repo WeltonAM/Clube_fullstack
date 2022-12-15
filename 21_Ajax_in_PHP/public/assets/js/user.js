@@ -1,21 +1,18 @@
 // Equivalent to $(document).ready(()=>{})
 
 window.onload = function(){
-    let xhttp = new XMLHttpRequest();
-
     let div_users = document.querySelector('#div-users');
 
     let btn_users = document.querySelector('#btn-users');
     btn_users.onclick = function(){   
-        xhttp.onreadystatechange = function(){
+        xmlHttpGet('ajax/user', ()=>{
             
-            if(this.readyState < 4){
+            beforeSend(()=>{
                 div_users.innerHTML = `<i class="fa fa-refresh fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>`
-            }
+            });
 
-            if(this.readyState == 4 && this.status == 200){
-
-                let users = JSON.parse(this.responseText);
+            success(()=>{
+                let users = JSON.parse(xhttp.responseText);
                 
                 let table = `<table class="table table-stripped">`;
 
@@ -38,11 +35,12 @@ window.onload = function(){
                 table += `</table>`;
 
                 div_users.innerHTML = table;
-            }
-        }     
+            });
 
-        xhttp.open('GET', 'ajax/user.php', true);
-        xhttp.send();
+            // error(()=>{
+            //     div_users.innerHTML = 'Something went wrong';
+            // });
+
+        }, '?id = 1');
     }
-    
 }
