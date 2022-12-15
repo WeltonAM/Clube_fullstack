@@ -22,6 +22,7 @@
    
     <script src="https://kit.fontawesome.com/cea34a366f.js" crossorigin="anonymous"></script>
     
+    <script src="assets/js/xhttp.js"></script>
     <script src="assets/js/user.js"></script>
     
 </body>
