@@ -22,3 +22,7 @@ function getData(url, callback){
     xhttp.open('GET', url, true);
     xhttp.send();
 }
+
+getData('https://reqres.in/api/users', function(data){
+    console.log(JSON.parse(data.response));
+});
