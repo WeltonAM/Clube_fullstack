@@ -1,4 +1,4 @@
-// Immediately invoke function scope
+// Immediately invoke function expression
 (function(){
     console.log('fn');
 })()
