@@ -16,7 +16,9 @@ var person = {
   'name': 'Juliana',
   'age': '27'
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (person);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  person: person
+});
 
 /***/ })
 
@@ -85,7 +87,7 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers */ "./src/helpers.js");
 
-console.log(_helpers__WEBPACK_IMPORTED_MODULE_0__);
+console.log(_helpers__WEBPACK_IMPORTED_MODULE_0__["default"].person.name);
 })();
 
 /******/ })()

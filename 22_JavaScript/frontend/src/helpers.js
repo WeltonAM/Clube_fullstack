@@ -3,4 +3,4 @@ let person = {
     'age': '27',
 }
 
-export default person;
+export default {person};
