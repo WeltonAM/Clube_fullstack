@@ -41,11 +41,11 @@ const listContainer = document.querySelector("#list");
 const header = document.querySelector("header");
 const search = document.querySelector("#search");
 
-function maskMoney(price){
-    price = price.toFixed(2);
-    price = price.toString();
-    return "R$"+price.replace('.', ',');
-}
+const formatter = Intl.NumberFormat(undefined, {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 2,
+});
 
 function render(products){
     let list = '';
@@ -59,9 +59,9 @@ function render(products){
                     <div class="product-image">
                         <img src="public/assets/images/${product.poster}" alt="">
                     </div>
-                    ${product.title} - ${maskMoney(product.price)}
+                    ${product.title} - ${formatter.format(product.price)}
                     <a href="#">
-                        <div class="product-button" data-id="${product.id}">Remove</div>
+                        <div class="product-button" data-remove="${product.id}">Remove</div>
                     </a>
                 </div>`;
         });
@@ -69,5 +69,25 @@ function render(products){
 
     listContainer.innerHTML = list;
 }
+
+function removeProduct(productId){
+    const index = products.findIndex((product) => {
+        return product.id === +productId;
+    });
+
+    if(index > -1){
+        products.splice(index, 1);
+        render(products);
+    }
+}
+
+document.body.addEventListener('click', function(e){
+    e.preventDefault();
+
+    const productId = e.target.getAttribute('data-remove');
+    if(productId){
+        removeProduct(productId);
+    }
+});
 
 render(products);
