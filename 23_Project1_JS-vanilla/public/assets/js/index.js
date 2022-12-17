@@ -39,7 +39,23 @@ const products = [
 
 const listContainer = document.querySelector("#list");
 const header = document.querySelector("header");
-const search = document.querySelector("#search");
+const search = document.querySelector("#searchInput");
+
+function searchInKeyUp(e){
+    const searched = e.target.value;
+    
+    const productsFound = productsFilterInSearch(searched);
+
+    productsFound.length > 0 ? renderListAndHeader(productsFound) : listContainer.innerHTML = 'Not found';
+}
+
+function productsFilterInSearch(searched){
+    return products.filter((product) => {
+        return product.title.toLowerCase().includes(searched.toLowerCase());
+    });
+}
+
+search.addEventListener('keyup', _.debounce(searchInKeyUp, 400));
 
 function renderHeader(products){
     const totalProducts = products.length;
@@ -90,6 +106,16 @@ function removeProduct(productId){
 
     if(index > -1){
         products.splice(index, 1);
+
+        if(search.value !== ''){
+            const productFiltered = productsFilterInSearch(search.value);
+            renderListAndHeader(productFiltered);
+            if(productFiltered.length = 0){
+                search.value = '';
+            }
+            return;
+        }
+
         renderListAndHeader(products);
     }
 }
