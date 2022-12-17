@@ -41,11 +41,24 @@ const listContainer = document.querySelector("#list");
 const header = document.querySelector("header");
 const search = document.querySelector("#search");
 
+function renderHeader(products){
+    const totalProducts = products.length;
+
+    header.innerHTML = totalProducts > 0 ? 
+        `${totalProducts} products in stock` :
+        "No products in stock";
+}
+
 const formatter = Intl.NumberFormat(undefined, {
     style: 'currency',
     currency: 'USD',
     maximumFractionDigits: 2,
 });
+
+function renderListAndHeader(products){
+    render(products);
+    renderHeader(products);
+}
 
 function render(products){
     let list = '';
@@ -77,7 +90,7 @@ function removeProduct(productId){
 
     if(index > -1){
         products.splice(index, 1);
-        render(products);
+        renderListAndHeader(products);
     }
 }
 
@@ -90,4 +103,4 @@ document.body.addEventListener('click', function(e){
     }
 });
 
-render(products);
+renderListAndHeader(products);
