@@ -1,10 +1,17 @@
-const edit = function(request, response) {
-    return response.json("edit");
-}
+const edit = function (request, response) {
+    return response.json(request.params);
+};
 
-const show = function(request, response) {
-    const { name, age } = request.query;
-    return response.json(name);
-}
+const store = function (request, response) {
+    return response.json(request.body);
+};
 
-module.exports = { edit, show };
+const update = function (request, response) {
+    return response.json(request.body);
+};
+
+const destroy = function (request, response) {
+    return response.json(request.params);
+};
+
+module.exports = { edit, store, update, destroy };
