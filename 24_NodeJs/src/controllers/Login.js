@@ -1,3 +1,4 @@
+const { validationResult } = require("express-validator");
 const { MASTER_DIR } = require("../helpers/constants");
 
 const index = (request, response) => {
@@ -10,6 +11,12 @@ const index = (request, response) => {
 };
 
 const store = (request, response) => {
+    const errors = validationResult(request);
+    
+    if(!errors.isEmpty()){
+        return response.status(400).json({errors: errors.array() });
+    }
+
     return response.json(request.body);
 };
 
