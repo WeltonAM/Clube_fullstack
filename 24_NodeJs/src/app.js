@@ -2,14 +2,20 @@ require("dotenv").config();
 
 const { response } = require("express");
 const express = require('express');
+const path = require('path');
 
 const Home = require('./controllers/Home');
-const Login = require('./controllers/Login');
+// const Login = require('./controllers/Login');
+
+const { init: initHandlebars } = require("./helpers/handlebars");
 
 const app = express();
 
-app.use("/", require("./routes/site"));
+initHandlebars(app);
+app.use(express.static(path.join(__dirname, "assets")));
 
+// ## Grouping routes
+app.use("/", require("./routes/site"));
 app.use("/post", require("./routes/post"));
 
 // ## Middleware
@@ -34,7 +40,6 @@ app.use("/post", require("./routes/post"));
 //         return response.json("middleware");
 //     }, 
 //     Login.store);
-
 
 app.listen(process.env.PORT || 3000, () => {
     console.log("Server on");
