@@ -4,6 +4,7 @@ const { response } = require("express");
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
+const session = require("express-session");
 const bodyParser = require("body-parser");
 const { init: initHandlebars } = require("./helpers/handlebars");
 
@@ -14,19 +15,29 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "assets")));
 
-app.use((request, response, next) => {
-    // if(request.session.user){
-    //     response.locals.user = request.session.user;
-    // }
-    next();
-});
-
 // ## CORS
 app.use(
     cors({
         origin: "http://localhost:5000",
     })
 );
+
+// ## SESSIONS
+app.use(
+    session({
+        secret: "keyboard cat",
+        resave: false,
+        saveUninitialized: true,
+        cookie: { secure: false },
+    })
+);
+
+app.use((request, response, next) => {
+    if(request.session.user){
+        response.locals.user = request.session.user;
+    }
+    next();
+});
 
 // ## Grouping routes
 app.use("/", require("./routes/site"));
