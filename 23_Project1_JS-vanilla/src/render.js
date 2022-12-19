@@ -1,4 +1,7 @@
 import products from "./products";
+import formatter from "../helpers/format";
+import { listContainer } from "./selectors";
+import { header } from "./selectors";
 
 export function renderListAndHeader(products){
     render(products);
@@ -11,19 +14,27 @@ export function render(products){
     if(products.length <= 0){
         list += `<div id="no-products">Any products found.</div>`;
     } else {
-        products.forEach((product, index) => {
+        products.forEach((product) => {
             list += `
                 <div class="product">
                     <div class="product-image">
-                        <img src="public/assets/images/${product.poster}" alt="">
+                        <img src="/assets/images/${product.poster}" alt="">
                     </div>
                     ${product.title} - ${formatter.format(product.price)}
                     <a href="#">
-                        <div class="product-button" data-remove="${index}">Remove</div>
+                        <div class="product-button" data-remove="${product.id}">Remove</div>
                     </a>
                 </div>`;
         });
     }
 
     listContainer.innerHTML = list;
+}
+
+export function renderHeader(products){
+    const totalProducts = products.length;
+
+    header.innerHTML = totalProducts > 0 ? 
+        `${totalProducts} products in stock` :
+        "No products in stock";
 }

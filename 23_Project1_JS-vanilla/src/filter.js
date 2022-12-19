@@ -1,3 +1,6 @@
+import products from "./products";
+import { renderListAndHeader } from "./render";
+
 export function searchInKeyUp(e){
     const searched = e.target.value;
     

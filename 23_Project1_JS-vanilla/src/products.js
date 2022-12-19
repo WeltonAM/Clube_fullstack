@@ -1,4 +1,4 @@
-export default products = [
+const products = [
     {
         id: 1,
         title: 'Mouse',
@@ -36,3 +36,5 @@ export default products = [
         poster: 'placa-de-video.png',
     },
 ];
+
+export default products;
