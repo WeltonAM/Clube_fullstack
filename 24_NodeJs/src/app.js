@@ -4,16 +4,17 @@ const { response } = require("express");
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
-const session = require("express-session");
+
 const bodyParser = require("body-parser");
-const redis = require("redis");
-const RedisStore = require("connect-redis")(session);
-const redisClient = redis.createClient();
+
 const { init: initHandlebars } = require("./helpers/handlebars");
+const { sessionInit: initSession } = require("./helpers/redis");
 
 const app = express();
 
 initHandlebars(app);
+initSession(app);
+
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "assets")));
@@ -25,21 +26,10 @@ app.use(
     })
 );
 
-// ## SESSIONS
-app.use(
-    session({
-        // store: new RedisStore({ client: redisClient }),
-        secret: "keyboard cat",
-        resave: false,
-        saveUninitialized: true,
-        cookie: { secure: false },
-    })
-);
-
 app.use((request, response, next) => {
-    if(request.session.user){
-        response.locals.user = request.session.user;
-    }
+    // if(request.session.user){
+    //     response.locals.user = request.session.user;
+    // }
     next();
 });
 
