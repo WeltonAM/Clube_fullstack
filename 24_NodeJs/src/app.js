@@ -3,6 +3,7 @@ require("dotenv").config();
 const express = require('express');
 
 const Home = require('./controllers/Home');
+const Login = require('./controllers/Login');
 
 const app = express();
 
@@ -10,14 +11,16 @@ const app = express();
 //     return response.json(request.params.id);
 // });
 
-app.get('/user', (request, response) => {
-    const { name, age } = request.query;
-    return response.send(name);
-});
+// app.get('/user', (request, response) => {
+//     const { name, age } = request.query;
+//     return response.send(name);
+// });
 
-app.get('/login', (request, response) => {
-    return response.json("login");
-});
+// Controllers
+app.get('/', Home.index);
+
+app.post('/login', Login.store);
+
 
 app.listen(process.env.PORT || 3000, () => {
     console.log("Server on");
