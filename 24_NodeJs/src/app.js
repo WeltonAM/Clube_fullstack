@@ -6,6 +6,9 @@ const path = require("path");
 const cors = require("cors");
 const session = require("express-session");
 const bodyParser = require("body-parser");
+const redis = require("redis");
+const RedisStore = require("connect-redis")(session);
+const redisClient = redis.createClient();
 const { init: initHandlebars } = require("./helpers/handlebars");
 
 const app = express();
@@ -25,6 +28,7 @@ app.use(
 // ## SESSIONS
 app.use(
     session({
+        // store: new RedisStore({ client: redisClient }),
         secret: "keyboard cat",
         resave: false,
         saveUninitialized: true,
