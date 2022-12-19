@@ -5,6 +5,7 @@ exports.init = function(app) {
     app.engine(
         "html", 
         exphbs.engine({
+            extname:'html',
             partialsDir: PARTIALS_DIR,
             layoutsDir: LAYOUTS_DIR,
         }),
