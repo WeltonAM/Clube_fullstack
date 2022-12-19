@@ -1,5 +1,6 @@
 require("dotenv").config();
 
+const { response } = require("express");
 const express = require('express');
 
 const Home = require('./controllers/Home');
@@ -16,10 +17,19 @@ const app = express();
 //     return response.send(name);
 // });
 
+// Middleware
+app.use(function(request, response, next){
+    next();
+});
+
 // Controllers
 app.get('/', Home.index);
 
-app.post('/login', Login.store);
+app.post('/login', 
+    function(){
+        return response.json("middleware");
+    }, 
+    Login.store);
 
 
 app.listen(process.env.PORT || 3000, () => {
