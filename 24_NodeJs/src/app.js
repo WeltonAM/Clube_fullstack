@@ -13,6 +13,13 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "assets")));
 
+app.use((request, response, next) => {
+    // if(request.session.user){
+    //     response.locals.user = request.session.user;
+    // }
+    next();
+});
+
 // ## Grouping routes
 app.use("/", require("./routes/site"));
 app.use("/post", require("./routes/post"));
