@@ -21,9 +21,16 @@
         <form>
             <input type="file" id="file" @change="choose">
             <template x-if="showButtonUpload">
-                <button @click="sendImage">Upload</button>
+                <button @click.prevent="upload">Upload</button>
             </template>
         </form>
+
+        <br>
+
+        <template x-if="message">
+            <span x-text="message"></span>
+        </template>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

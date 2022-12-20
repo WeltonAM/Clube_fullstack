@@ -4,13 +4,19 @@ import http from '../helpers/http';
 function upload(){
     return {
         showButtonUpload: false,
+        message: '',
         choose: function(){
             const file = document.querySelector("#file");
             const splitName = file.value.split(".");
             const extension = splitName[splitName.length - 1];
             
             if(!['png','jpeg','jpg'].includes(extension)){
-                console.log("Extension not accepted!");
+                this.message = "Extension not accepted!";
+                
+                setTimeout(() => {
+                    this.message = "";
+                    
+                }, 3000);
                 return; 
             }
 
@@ -28,22 +34,44 @@ function upload(){
             reader.readAsDataURL(imageData);
         },
 
-        sendImage: async function(){
+        upload: async function(){
             try {
                 this.showButtonUpload = false;
                 const file = document.querySelector("#file");
 
                 if(file.files?.length <= 0){
-                    console.log("Choose a image");
+                    this.message = "Choose an image";
+                
+                    setTimeout(() => {
+                        this.message = "";
+                        
+                    }, 3000);
                     return;
                 }
-
+                
                 const formData = new FormData();
                 formData.append("file", file.files[0]);
+                
+                const { data } = await http.post("/image", formData);
 
-                const { data } = await http.post('/image', formData);
+                console.log(data);
+                
+                if(data === 'upload'){
+                    this.message = "Image uploaded!";
+                
+                    setTimeout(() => {
+                        this.message = "";
+                        
+                    }, 3000);
+                }
+
             } catch (error) {
-                console.log(error);
+                this.message = error.response?.data;
+                
+                setTimeout(() => {
+                    this.message = "";
+                    
+                }, 3000);
             }
         },
     };
