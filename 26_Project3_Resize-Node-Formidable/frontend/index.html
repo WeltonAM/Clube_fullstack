@@ -9,15 +9,24 @@
 
     <link rel="stylesheet" href="/src/assets/styles.css">
 
-    <title>Upload and resize - NODEjs</title>
+    <title>Upload and resize - NodeJs</title>
 </head>
 <body>
     <h2>Upload and resize in Node</h2>
-    <form>
-        <input type="file" id="file">
-        <button>Upload</button>
-    </form>
 
+    <div x-data="upload()">
+
+        <img src="" x-ref="img">
+
+        <form>
+            <input type="file" id="file" @change="choose">
+            <button @click="upload">Upload</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
 
     <script src="/src/dist/uploads.js"></script>
 </body>
