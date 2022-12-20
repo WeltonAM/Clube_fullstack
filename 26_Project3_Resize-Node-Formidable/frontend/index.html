@@ -20,7 +20,9 @@
 
         <form>
             <input type="file" id="file" @change="choose">
-            <button @click="upload">Upload</button>
+            <template x-if="showButtonUpload">
+                <button @click="sendImage">Upload</button>
+            </template>
         </form>
     </div>
 
