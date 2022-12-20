@@ -35,6 +35,7 @@ app.use((request, response, next) => {
 
 // ## Grouping routes
 app.use("/", require("./routes/site"));
+app.use("/post", require("./routes/post"));
 app.use("/posts", require("./routes/posts"));
 
 // ## Middleware
