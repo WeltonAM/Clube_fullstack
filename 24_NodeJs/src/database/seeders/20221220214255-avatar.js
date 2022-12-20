@@ -1,18 +1,13 @@
 'use strict';
 
-const bcrypt = require("bcrypt");
-const faker = require("faker");
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
 
     for (let i = 0; i < 10; i++) {
-      await queryInterface.bulkInsert("posts", [
+      await queryInterface.bulkInsert("avatars", [
         {
-          title: faker.lorem.sentence(),
-          slug: faker.lorem.slug(),
-          content: faker.lorem.paragraph(),
+          path: 'avatar.png',
           userId: Math.ceil(Math.random() * 10),
         },
       ],
@@ -23,7 +18,7 @@ module.exports = {
 
   async down (queryInterface, Sequelize) {
 
-    await queryInterface.bulkDelete('posts', null, {});
+    await queryInterface.bulkDelete('avatars', null, {});
     
   }
 };
