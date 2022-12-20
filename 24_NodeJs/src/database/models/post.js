@@ -9,6 +9,12 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'userId',
         as: "user",
       });
+
+      post.belongsToMany(models.keyword,{
+        through:'postKeywords',
+        foreignKey: 'postId',
+        as: 'keywords'
+      });
     }
   }
   post.init({

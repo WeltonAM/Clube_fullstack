@@ -1,15 +1,26 @@
 const { MASTER_DIR } = require("../helpers/constants");
-const { user, avatar } = require('../database/models');
+const { post, user, avatar, keyword } = require('../database/models');
 
 const index = async function(request, response) {
     
     try {
-        const data = await user.findAll({
+
+        // # belongsToMany
+        const data = await post.findAll({
             include: {
-                model: avatar,
-                as: "avatar"
+                through: {attributes:[]},
+                model: keyword,
+                as: "keywords",
             }
         });
+
+        // # hasOne
+        // const data = await user.findAll({
+        //     include: {
+        //         model: avatar,
+        //         as: "avatar"
+        //     }
+        // });
 
         response.json(data);
 
