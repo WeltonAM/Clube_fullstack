@@ -1,18 +1,21 @@
 const { MASTER_DIR } = require("../helpers/constants");
 const { post, user, avatar, keyword } = require('../database/models');
+const { findBy } = require("../repository/repository");
 
 const index = async function(request, response) {
     
     try {
 
+        const data = await findBy(user, 'email', 'Dillon_Kiehn@yahoo.com');
+
         // # belongsToMany
-        const data = await post.findAll({
-            include: {
-                through: {attributes:[]},
-                model: keyword,
-                as: "keywords",
-            }
-        });
+        // const data = await post.findAll({
+        //     include: {
+        //         through: {attributes:[]},
+        //         model: keyword,
+        //         as: "keywords",
+        //     }
+        // });
 
         // # hasOne
         // const data = await user.findAll({
