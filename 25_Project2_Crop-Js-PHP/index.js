@@ -4,6 +4,10 @@ function Crop(){
         saveImage: false,
         showRemoveCrop: true,
         crop: null,
+        extensions: {
+            'image/png':'png',
+            'image/jpeg':'jpeg',
+        },
         cropper(){
             this.crop = new Cropper(this.previewImage, {
                 aspectRatio: 1/1,
@@ -34,6 +38,37 @@ function Crop(){
         addCrop(){
             this.showRemoveCrop = true;
             this.cropper();
-        }
+        },
+
+        getFile(){
+            return new Promise((resolve, reject) => {
+                if(!this.crop?.cropped){
+                    const formData = new FormData(this.$refs.form);
+
+                    if(!this.extensions[formData.get('file')['type']]){
+                        reject('Extension not accept');
+                    }
+
+                    resolve(formData);
+                }
+
+                this.crop.getCroppedCanvas().toBlob(
+                    async (blob) => {
+                        const formData = new FormData();
+
+                        const extensions = this.extensions[blob['type']] ?? reject('Extension not accept');
+
+                        formData.append('file', blob, 'croped.png');
+
+                        resolve(formData);
+                    }
+                );
+            });
+        },
+
+        async save(){
+            const formData = await this.getFile();
+            const { data } = await axios.post('http://localhost:5000/upload.php', formData);
+        },
     };
 }
