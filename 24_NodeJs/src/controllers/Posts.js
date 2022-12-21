@@ -5,6 +5,7 @@ const index = async function(request, response) {
     try {
 
         const data = await post.findAll({
+            subQuery: false,
             attributes:{
                 include: [
                     [
@@ -19,6 +20,7 @@ const index = async function(request, response) {
                     as: "user"
                 },
                 {
+                    required: true,
                     attributes: [],
                     model: comment,
                     as: "comments"
