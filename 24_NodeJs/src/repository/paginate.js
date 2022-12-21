@@ -3,7 +3,7 @@ exports.paginate = {
     limit: 5,
     options: {},
     route: '',
-    linksPerPage: 5,
+    linksPerPage: 3,
 
     setLimit: function(limit) {
         this.limit = limit;
@@ -29,13 +29,24 @@ exports.paginate = {
     render: function(total){
         const totalPages = Math.ceil(total / this.limit);
 
+        let startLinks = 1;
+
+        if(+this.currentPage > +this.linksPerPage){
+            startLinks = +this.currentPage - this.linksPerPage;
+        }
+
+        let endLinks = totalPages;
+        if(+this.currentPage + +this.linksPerPage < totalPages){
+            endLinks = +this.currentPage + this.linksPerPage;
+        }
+
         let links = `<ul class="pagination m-4">`;
 
         if(this.currentPage > 1){
             links += `<li class="page-item"><a href="?page=1" class="page-link">First</a><li>`;   
         }
         
-        for (let index = 1; index <= totalPages; index++) {
+        for (let index = startLinks; index <= endLinks; index++) {
             const active = this.currentPage == index ? 'active' : '';
             links += `<li class="page-item ${active}"><a href="?page=${index}" class="page-link">${index}</a><li>`;   
         }
