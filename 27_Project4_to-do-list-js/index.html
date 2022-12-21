@@ -37,9 +37,9 @@
         <ul class="list-group" id="todo-list">
             <template x-for="(todo, index) in tasks" :key="index">
                 <div class="todo d-inline-flex">
-                    <li class="list-group-item" x-text="`${index} ${todo.name} ${todo.completed}`"></li>
+                    <li class="list-group-item" :class="{'checked': todo.completed === true}" x-text="`${index} ${todo.name} ${todo.completed}`"></li>
                     <div class="form-check">
-                        <input @click="checkTask(todo)" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input @click="checkTask(index)" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                     </div>
                     <button @click="removeTask(todo)" class="btn btn-outline-danger btn-sm">Remove task</button>
                 </div>

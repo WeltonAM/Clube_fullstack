@@ -13,3 +13,7 @@
     align-content: space-between;
     justify-content: space-between;
 }
+
+.checked{
+    text-decoration: line-through;
+}

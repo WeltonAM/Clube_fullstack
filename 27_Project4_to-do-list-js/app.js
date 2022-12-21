@@ -30,13 +30,12 @@ function todo(){
             this.task = '';
         },
 
-        checkTask: function(task){
-            console.log(task.name);
+        checkTask: function(index){
+            this.tasks[index]['completed'] = !this.tasks[index]['completed'];
         },
         
         removeTask: function(task){
             console.log(task.name);
-
         },
     }
 }
