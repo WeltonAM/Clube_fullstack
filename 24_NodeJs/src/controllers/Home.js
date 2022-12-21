@@ -2,18 +2,23 @@ const { MASTER_DIR } = require("../helpers/constants");
 const db = require('../database/models');
 const { findBy } = require("../repository/repository");
 const { Op } = require("sequelize"); 
+const { posts } = require('../repository/post');
 
 const index = async function(request, response) {
     
     try {
 
-        const data = await db.user.findAll({
-            where:{
-                id:{
-                    [Op.gt]: 5,
-                }
-            }
-        });
+        const data = await posts();
+
+        return response.render("home", { layout: MASTER_DIR, title:'Home', posts:data });
+
+        // const data = await db.user.findAll({
+        //     where:{
+        //         id:{
+        //             [Op.gt]: 5,
+        //         }
+        //     }
+        // });
 
         // # belongsToMany
         // const data = await post.findAll({
@@ -32,15 +37,12 @@ const index = async function(request, response) {
         //     }
         // });
 
-        response.json(data);
+        // request.session.name = 'Welton';
+        // response.redirect('/login');
 
     } catch (error) {
         console.log(error);
     }
-    
-    // request.session.name = 'Welton';
-    // response.redirect('/login');
-    // return response.render("home", { layout: MASTER_DIR, title:'Home' });
 }
 
 const show = function(request, response) {

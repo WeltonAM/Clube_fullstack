@@ -1,1 +1,5 @@
-<h2>Home</h2>
+<ul class="list-group m-4">
+    {{#each posts}}
+      <li class="list-group-item">{{this.dataValues.title}} - {{this.dataValues.user.dataValues.firstName}}</li>
+    {{/each}}
+  </ul>
