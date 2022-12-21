@@ -24,7 +24,18 @@ exports.paginate = {
           limit: this.limit,
           offset,
         });
-      },
+    },
+      
+    setRouteInSearch: function(request){
+        this.route = '?';
+        const query = request.query;
+
+        for (const key in query) {
+            if(key !== 'page'){
+                this.route += `${key}=${query[key]}&`;
+            }
+        }
+    },
     
     render: function(total){
         const totalPages = Math.ceil(total / this.limit);
@@ -43,16 +54,16 @@ exports.paginate = {
         let links = `<ul class="pagination m-4">`;
 
         if(this.currentPage > 1){
-            links += `<li class="page-item"><a href="?page=1" class="page-link">First</a><li>`;   
+            links += `<li class="page-item"><a href="${this.route}page=1" class="page-link">First</a><li>`;   
         }
         
         for (let index = startLinks; index <= endLinks; index++) {
             const active = this.currentPage == index ? 'active' : '';
-            links += `<li class="page-item ${active}"><a href="?page=${index}" class="page-link">${index}</a><li>`;   
+            links += `<li class="page-item ${active}"><a href="${this.route}page=${index}" class="page-link">${index}</a><li>`;   
         }
 
         if(this.currentPage < totalPages){
-            links += `<li class="page-item"><a href="?page=${totalPages}" class="page-link">Last</a><li>`;   
+            links += `<li class="page-item"><a href="${this.route}page=${totalPages}" class="page-link">Last</a><li>`;   
         }
         
         links += `</ul>`;

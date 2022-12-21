@@ -4,6 +4,8 @@ const {paginate} = require('./paginate');
 exports.posts = async function(request){
     try {
         paginate.setLimit(4);
+
+        paginate.setRouteInSearch(request);
         
         paginate.setCurrentPage(request.query['page']);
         
