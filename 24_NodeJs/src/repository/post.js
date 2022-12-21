@@ -1,13 +1,28 @@
 const { post, user } = require('../database/models');
+const {paginate} = require('./paginate');
 
-exports.posts = function(){
+exports.posts = async function(request){
     try {
-        return post.findAll({
-            include: {
-                model: user,
-                as: "user"
+        paginate.setLimit(4);
+        
+        paginate.setCurrentPage(request.query['page']);
+        
+        paginate.setOptions(
+            {
+                attributes:['id', 'title', 'content'],
+                where:{},
+                limit: 4
             }
-        });
+        );
+
+        const posts = await paginate.paginate(post);
+
+        const links = paginate.render(posts['count']);
+
+        return {
+            posts: posts['rows'],
+            links
+        }
     } catch (error) {
         console.log(error);
     }

@@ -1,5 +1,7 @@
 <ul class="list-group m-4">
-    {{#each posts}}
+    {{#each data.posts}}
       <li class="list-group-item">{{this.dataValues.title}} - {{this.dataValues.user.dataValues.firstName}}</li>
     {{/each}}
-  </ul>
+</ul>
+
+{{{data.links}}}

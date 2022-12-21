@@ -8,9 +8,11 @@ const index = async function(request, response) {
     
     try {
 
-        const data = await posts();
+        const data = await posts(request);
 
-        return response.render("home", { layout: MASTER_DIR, title:'Home', posts:data });
+        console.log(data);
+
+        return response.render("home", { layout: MASTER_DIR, title:'Home', data });
 
         // const data = await db.user.findAll({
         //     where:{
