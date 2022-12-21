@@ -34,8 +34,8 @@ function todo(){
             this.tasks[index]['completed'] = !this.tasks[index]['completed'];
         },
         
-        removeTask: function(task){
-            console.log(task.name);
+        removeTask: function(index){
+            this.tasks.splice(index, 1);
         },
     }
 }
