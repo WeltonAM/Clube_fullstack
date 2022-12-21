@@ -1,12 +1,19 @@
 const { MASTER_DIR } = require("../helpers/constants");
-const { post, user, avatar, keyword } = require('../database/models');
+const db = require('../database/models');
 const { findBy } = require("../repository/repository");
+const { Op } = require("sequelize"); 
 
 const index = async function(request, response) {
     
     try {
 
-        const data = await findBy(user, 'email', 'Dillon_Kiehn@yahoo.com');
+        const data = await db.user.findAll({
+            where:{
+                id:{
+                    [Op.gt]: 5,
+                }
+            }
+        });
 
         // # belongsToMany
         // const data = await post.findAll({
