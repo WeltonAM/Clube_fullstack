@@ -37,6 +37,7 @@ app.use((request, response, next) => {
 app.use("/", require("./routes/site"));
 app.use("/post", require("./routes/post"));
 app.use("/posts", require("./routes/posts"));
+app.use("/search", require("./routes/search"));
 
 // ## Middleware
 // app.use(function(request, response, next){
