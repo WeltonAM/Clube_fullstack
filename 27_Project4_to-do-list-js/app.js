@@ -27,6 +27,16 @@ function todo(){
                 completed: false
             });
 
-            this.task = '';        }
+            this.task = '';
+        },
+
+        checkTask: function(task){
+            console.log(task.name);
+        },
+        
+        removeTask: function(task){
+            console.log(task.name);
+
+        },
     }
 }
