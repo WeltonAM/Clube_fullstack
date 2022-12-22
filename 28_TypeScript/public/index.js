@@ -1,5 +1,5 @@
 "use strict";
-let data = [];
-data.push("Juliana");
-data.push(27);
-console.log(data);
+function person(name, age, isAdmin) {
+    console.log(name, age, isAdmin);
+}
+person('Juliana', 27);
