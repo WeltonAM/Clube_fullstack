@@ -10,23 +10,23 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/classes/Person.ts":
+/*!*******************************!*\
+  !*** ./src/classes/Person.ts ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nexports.Person = void 0;\r\nclass Person {\r\n    constructor(name, age) {\r\n        this.name = name;\r\n        this.age = age;\r\n    }\r\n    ;\r\n    info() {\r\n        return `My name is ${this.name} and I'm ${this.age} years old`;\r\n    }\r\n}\r\nexports.Person = Person;\r\n\n\n//# sourceURL=webpack://09_webpack-ts/./src/classes/Person.ts?");
+
+/***/ }),
+
 /***/ "./src/index.ts":
 /*!**********************!*\
   !*** ./src/index.ts ***!
   \**********************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nconst test_1 = __webpack_require__(/*! ./test */ \"./src/test.ts\");\r\nconsole.log(test_1.name);\r\n\n\n//# sourceURL=webpack://09_webpack-ts/./src/index.ts?");
-
-/***/ }),
-
-/***/ "./src/test.ts":
-/*!*********************!*\
-  !*** ./src/test.ts ***!
-  \*********************/
-/***/ ((__unused_webpack_module, exports) => {
-
-eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nexports.name = void 0;\r\nexports.name = \"Juliana\";\r\n\n\n//# sourceURL=webpack://09_webpack-ts/./src/test.ts?");
+eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nconst Person_1 = __webpack_require__(/*! ./classes/Person */ \"./src/classes/Person.ts\");\r\nconst person = new Person_1.Person(\"Juliana\", 27);\r\nconsole.log(person.info());\r\n\n\n//# sourceURL=webpack://09_webpack-ts/./src/index.ts?");
 
 /***/ })
 
