@@ -26,7 +26,7 @@ eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\n
   \**********************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nconst Person_1 = __webpack_require__(/*! ./classes/Person */ \"./src/classes/Person.ts\");\r\nconst person = new Person_1.Person(\"Juliana\", 27);\r\nperson.myName = 'Karla';\r\nconsole.log(person.info());\r\n\n\n//# sourceURL=webpack://09_webpack-ts/./src/index.ts?");
+eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nconst Person_1 = __webpack_require__(/*! ./classes/Person */ \"./src/classes/Person.ts\");\r\nconst person = new Person_1.Person(\"Juliana\", 27);\r\nperson.myName = 'Karla';\r\nconsole.log(person.info());\r\nconst form = document.querySelector('form');\r\nconst link = document.querySelector('a');\r\nform.addEventListener('onchange', () => {\r\n});\r\n\n\n//# sourceURL=webpack://09_webpack-ts/./src/index.ts?");
 
 /***/ })
 
