@@ -12,4 +12,10 @@ person = {
     name: 'Juliana',
     age: 27
 };
-console.log(person);
+// ## Tuplas
+let data;
+data = [
+    ['Juliana', 27],
+    ['Karla', 12]
+];
+console.log(data);
