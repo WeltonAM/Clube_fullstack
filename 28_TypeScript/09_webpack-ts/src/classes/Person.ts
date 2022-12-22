@@ -2,6 +2,10 @@ export class Person
 {
     private _myName:string = '';
 
+    static test(){
+        console.log('test');
+    };
+
     set myName(myName:string){
         this._myName = myName; 
     }

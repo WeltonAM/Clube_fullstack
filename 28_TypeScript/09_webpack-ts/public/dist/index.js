@@ -16,7 +16,7 @@
   \*******************************/
 /***/ ((__unused_webpack_module, exports) => {
 
-eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nexports.Person = void 0;\r\nclass Person {\r\n    set myName(myName) {\r\n        this._myName = myName;\r\n    }\r\n    get myName() {\r\n        return this._myName;\r\n    }\r\n    constructor(name, age) {\r\n        this.name = name;\r\n        this.age = age;\r\n        this._myName = '';\r\n    }\r\n    ;\r\n    info() {\r\n        return `My name is ${this.name} ${this._myName} and I'm ${this.age} years old`;\r\n    }\r\n}\r\nexports.Person = Person;\r\n\n\n//# sourceURL=webpack://09_webpack-ts/./src/classes/Person.ts?");
+eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nexports.Person = void 0;\r\nclass Person {\r\n    static test() {\r\n        console.log('test');\r\n    }\r\n    ;\r\n    set myName(myName) {\r\n        this._myName = myName;\r\n    }\r\n    get myName() {\r\n        return this._myName;\r\n    }\r\n    constructor(name, age) {\r\n        this.name = name;\r\n        this.age = age;\r\n        this._myName = '';\r\n    }\r\n    ;\r\n    info() {\r\n        return `My name is ${this.name} ${this._myName} and I'm ${this.age} years old`;\r\n    }\r\n}\r\nexports.Person = Person;\r\n\n\n//# sourceURL=webpack://09_webpack-ts/./src/classes/Person.ts?");
 
 /***/ }),
 
