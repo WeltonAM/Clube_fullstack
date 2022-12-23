@@ -30,6 +30,28 @@ eval("/*!\n* sweetalert2 v11.6.16\n* Released under the MIT License.\n*/\n(funct
 
 /***/ }),
 
+/***/ "./components/CreateUser.ts":
+/*!**********************************!*\
+  !*** ./components/CreateUser.ts ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nfunction component() {\r\n    const render = function () {\r\n        return `\r\n        <div x-data=\"create()\">\r\n\r\n            <h4 class=\"mb-3 mt-4\">Create User</h4>\r\n            <form action=\"\" method=\"\" x-on:submit.prevent=\"createUser\">\r\n                <div class=\"mb-3 mt-3\">\r\n                    <input type=\"text\" class=\"form-control\" id=\"firstName\" name=\"firstName\" placeholder=\"First name\" x-model=\"user.firstName\">\r\n                </div>\r\n\r\n                <div class=\"mb-3\">\r\n                    <input type=\"text\" class=\"form-control\" id=\"lastName\" name=\"lastName\" placeholder=\"Last name\" x-model=\"user.lastName\">\r\n                </div>\r\n\r\n                <div class=\"mb-3\">\r\n                    <input type=\"email\" class=\"form-control\" id=\"exampleInputEmail1\" aria-describedby=\"emailHelp\" placeholder=\"Email\" x-model=\"user.email\">\r\n                </div>\r\n                \r\n                <div class=\"mb-1\">\r\n                    <input type=\"password\" class=\"form-control\" id=\"exampleInputPassword1\" placeholder=\"Password\" x-model=\"user.password\">\r\n                </div>\r\n\r\n                <div id=\"emailHelp\" class=\"form-text\">We'll never share your email with anyone else.</div>\r\n\r\n                <button type=\"submit\" class=\"btn btn-outline-primary btn-sm mt-4\">Create</button>\r\n\r\n            </form>\r\n        \r\n        </div>\r\n        `;\r\n    };\r\n    return {\r\n        render,\r\n    };\r\n}\r\nexports[\"default\"] = component();\r\n\n\n//# sourceURL=webpack://frontend/./components/CreateUser.ts?");
+
+/***/ }),
+
+/***/ "./components/Error404.ts":
+/*!********************************!*\
+  !*** ./components/Error404.ts ***!
+  \********************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nfunction component() {\r\n    const render = function () {\r\n        return `Error!`;\r\n    };\r\n    return {\r\n        render,\r\n    };\r\n}\r\nexports[\"default\"] = component();\r\n\n\n//# sourceURL=webpack://frontend/./components/Error404.ts?");
+
+/***/ }),
+
 /***/ "./components/Home.ts":
 /*!****************************!*\
   !*** ./components/Home.ts ***!
@@ -81,7 +103,7 @@ eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod)
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
-eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\n__webpack_require__(/*! alpinejs */ \"./node_modules/alpinejs/dist/module.esm.js\");\r\nconst create_1 = __importDefault(__webpack_require__(/*! ./create */ \"./src/create.ts\"));\r\nconst Home_1 = __importDefault(__webpack_require__(/*! ../components/Home */ \"./components/Home.ts\"));\r\nfunction loadComponent() {\r\n    const content = document.querySelector(\"#content\");\r\n    content.innerHTML = Home_1.default.render();\r\n    // content.innerHTML = CreateUser.render();\r\n}\r\nloadComponent();\r\nwindow.addEventListener('hashchange', () => {\r\n    loadComponent();\r\n});\r\nwindow.create = create_1.default;\r\n\n\n//# sourceURL=webpack://frontend/./src/index.ts?");
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\n__webpack_require__(/*! alpinejs */ \"./node_modules/alpinejs/dist/module.esm.js\");\r\nconst create_1 = __importDefault(__webpack_require__(/*! ./create */ \"./src/create.ts\"));\r\nconst Home_1 = __importDefault(__webpack_require__(/*! ../components/Home */ \"./components/Home.ts\"));\r\nconst CreateUser_1 = __importDefault(__webpack_require__(/*! ../components/CreateUser */ \"./components/CreateUser.ts\"));\r\nconst Error404_1 = __importDefault(__webpack_require__(/*! ../components/Error404 */ \"./components/Error404.ts\"));\r\nconst routes = {\r\n    '/': Home_1.default,\r\n    '/create/user': CreateUser_1.default,\r\n    // '/user/:id': CreateUser,\r\n    // '/login': CreateUser,\r\n};\r\nfunction loadComponent() {\r\n    var _a;\r\n    const content = document.querySelector(\"#content\");\r\n    const hash = window.location.hash;\r\n    const hashSplit = hash.split('/');\r\n    const component = hashSplit[1] ? `${hashSplit[1]}` : '/';\r\n    const placeholder = hashSplit[2] ? '/:id' : '';\r\n    const uri = hash.substring(1);\r\n    const newUri = component + placeholder;\r\n    let componentHtml = (_a = routes[uri]) !== null && _a !== void 0 ? _a : routes[newUri];\r\n    if (!componentHtml) {\r\n        componentHtml = Error404_1.default;\r\n    }\r\n    if (componentHtml) {\r\n        content.innerHTML = componentHtml.render();\r\n    }\r\n    console.log(componentHtml);\r\n    // content.innerHTML = CreateUser.render();\r\n}\r\nloadComponent();\r\nwindow.addEventListener('hashchange', () => {\r\n    loadComponent();\r\n});\r\nwindow.create = create_1.default;\r\n\n\n//# sourceURL=webpack://frontend/./src/index.ts?");
 
 /***/ }),
 
