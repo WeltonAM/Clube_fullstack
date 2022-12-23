@@ -67,10 +67,32 @@ eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\n
 /*!****************************!*\
   !*** ./components/User.ts ***!
   \****************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nconst hashInfo_1 = __importDefault(__webpack_require__(/*! ../helpers/hashInfo */ \"./helpers/hashInfo.ts\"));\r\nfunction component() {\r\n    const data = function () {\r\n        const { param } = (0, hashInfo_1.default)();\r\n        return param();\r\n    };\r\n    const render = function () {\r\n        return `User`;\r\n    };\r\n    return {\r\n        render,\r\n    };\r\n}\r\nexports[\"default\"] = component();\r\n\n\n//# sourceURL=webpack://frontend/./components/User.ts?");
+
+/***/ }),
+
+/***/ "./helpers/hashInfo.ts":
+/*!*****************************!*\
+  !*** ./helpers/hashInfo.ts ***!
+  \*****************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
-eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nfunction component() {\r\n    const render = function () {\r\n        return `User`;\r\n    };\r\n    return {\r\n        render,\r\n    };\r\n}\r\nexports[\"default\"] = component();\r\n\n\n//# sourceURL=webpack://frontend/./components/User.ts?");
+eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nconst hashInfo = function () {\r\n    const hash = window.location.hash;\r\n    const hashSplit = hash.split('/');\r\n    const component = hashSplit[1] ? `/${hashSplit[1]}` : '/';\r\n    const placeholder = hashSplit[2] ? '/:id' : '';\r\n    const param = function (index = 2) {\r\n        var _a;\r\n        return (_a = hashSplit[index]) !== null && _a !== void 0 ? _a : '';\r\n    };\r\n    const uri = hash.substring(1);\r\n    return {\r\n        component,\r\n        placeholder,\r\n        uri,\r\n        param,\r\n    };\r\n};\r\nexports[\"default\"] = hashInfo;\r\n\n\n//# sourceURL=webpack://frontend/./helpers/hashInfo.ts?");
+
+/***/ }),
+
+/***/ "./helpers/loadComponent.ts":
+/*!**********************************!*\
+  !*** ./helpers/loadComponent.ts ***!
+  \**********************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nconst Home_1 = __importDefault(__webpack_require__(/*! ../components/Home */ \"./components/Home.ts\"));\r\nconst CreateUser_1 = __importDefault(__webpack_require__(/*! ../components/CreateUser */ \"./components/CreateUser.ts\"));\r\nconst Error404_1 = __importDefault(__webpack_require__(/*! ../components/Error404 */ \"./components/Error404.ts\"));\r\nconst User_1 = __importDefault(__webpack_require__(/*! ../components/User */ \"./components/User.ts\"));\r\nconst routes = {\r\n    '/': Home_1.default,\r\n    '/user/create': CreateUser_1.default,\r\n    '/user/:id': User_1.default,\r\n    // '/login': CreateUser,\r\n};\r\nconst loadComponentHtml = function (component, placeholder, uri) {\r\n    var _a;\r\n    const content = document.querySelector(\"#content\");\r\n    const newUri = component + placeholder;\r\n    let componentHtml = (_a = routes[uri]) !== null && _a !== void 0 ? _a : routes[newUri];\r\n    !componentHtml ?\r\n        (componentHtml = Error404_1.default) :\r\n        (content.innerHTML = componentHtml.render());\r\n};\r\nexports[\"default\"] = loadComponentHtml;\r\n\n\n//# sourceURL=webpack://frontend/./helpers/loadComponent.ts?");
 
 /***/ }),
 
@@ -114,7 +136,7 @@ eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod)
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
-eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\n__webpack_require__(/*! alpinejs */ \"./node_modules/alpinejs/dist/module.esm.js\");\r\nconst create_1 = __importDefault(__webpack_require__(/*! ./create */ \"./src/create.ts\"));\r\nconst Home_1 = __importDefault(__webpack_require__(/*! ../components/Home */ \"./components/Home.ts\"));\r\nconst CreateUser_1 = __importDefault(__webpack_require__(/*! ../components/CreateUser */ \"./components/CreateUser.ts\"));\r\nconst Error404_1 = __importDefault(__webpack_require__(/*! ../components/Error404 */ \"./components/Error404.ts\"));\r\nconst User_1 = __importDefault(__webpack_require__(/*! ../components/User */ \"./components/User.ts\"));\r\nconst routes = {\r\n    '/': Home_1.default,\r\n    '/user/create': CreateUser_1.default,\r\n    '/user/:id': User_1.default,\r\n    // '/login': CreateUser,\r\n};\r\nfunction loadComponent() {\r\n    var _a;\r\n    const content = document.querySelector(\"#content\");\r\n    const hash = window.location.hash;\r\n    const hashSplit = hash.split('/');\r\n    const component = hashSplit[1] ? `${hashSplit[1]}` : '/';\r\n    const placeholder = hashSplit[2] ? '/:id' : '';\r\n    const uri = hash.substring(1);\r\n    const newUri = component + placeholder;\r\n    let componentHtml = (_a = routes[uri]) !== null && _a !== void 0 ? _a : routes[newUri];\r\n    if (!componentHtml) {\r\n        componentHtml = Error404_1.default;\r\n    }\r\n    if (componentHtml) {\r\n        content.innerHTML = componentHtml.render();\r\n    }\r\n    ;\r\n}\r\nloadComponent();\r\nwindow.addEventListener('hashchange', () => {\r\n    loadComponent();\r\n});\r\nwindow.create = create_1.default;\r\n\n\n//# sourceURL=webpack://frontend/./src/index.ts?");
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\n__webpack_require__(/*! alpinejs */ \"./node_modules/alpinejs/dist/module.esm.js\");\r\nconst create_1 = __importDefault(__webpack_require__(/*! ./create */ \"./src/create.ts\"));\r\nconst hashInfo_1 = __importDefault(__webpack_require__(/*! ../helpers/hashInfo */ \"./helpers/hashInfo.ts\"));\r\nconst loadComponent_1 = __importDefault(__webpack_require__(/*! ../helpers/loadComponent */ \"./helpers/loadComponent.ts\"));\r\nfunction loadComponent() {\r\n    const { component, placeholder, uri } = (0, hashInfo_1.default)();\r\n    (0, loadComponent_1.default)(component, placeholder, uri);\r\n}\r\nloadComponent();\r\nwindow.addEventListener('hashchange', () => {\r\n    loadComponent();\r\n});\r\nwindow.create = create_1.default;\r\n\n\n//# sourceURL=webpack://frontend/./src/index.ts?");
 
 /***/ }),
 
