@@ -4,11 +4,19 @@ import { userCreateInterface } from "../interfaces/userCreateInterface";
 import Home from "../components/Home";
 import CreateUser from "../components/CreateUser";
 import Error404 from "../components/Error404";
+import User from "../components/User";
 
-const routes = {
+interface routerInterface<T>{
+    [id:string]:T,
+}
+interface componentInterface{
+    render: () => string,
+}
+
+const routes:routerInterface<componentInterface> = {
     '/': Home,
-    '/create/user': CreateUser,
-    // '/user/:id': CreateUser,
+    '/user/create': CreateUser,
+    '/user/:id': User,
     // '/login': CreateUser,
 }
 
@@ -29,10 +37,7 @@ function loadComponent(){
     
     if(componentHtml){
         content.innerHTML = componentHtml.render();
-    }
-    console.log(componentHtml);
-
-    // content.innerHTML = CreateUser.render();
+    };
 }
 
 loadComponent();
