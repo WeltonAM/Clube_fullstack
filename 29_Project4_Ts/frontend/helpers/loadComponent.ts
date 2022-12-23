@@ -26,9 +26,11 @@ const loadComponentHtml = function(component:string, placeholder:string, uri:str
 
     let componentHtml = routes[uri] ?? routes[newUri];
 
-    !componentHtml ? 
-    (componentHtml = Error404) :
-    (content.innerHTML = componentHtml.render());
+    if(!componentHtml){
+        componentHtml = Error404;
+    }
+
+    content.innerHTML = componentHtml.render();
 
     if(componentHtml.action){
         componentHtml.action();
