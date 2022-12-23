@@ -1,6 +1,7 @@
 import http from "./helpers/http";
+import { userCreateInterface } from "../interfaces/userCreateInterface";
 
-function create(){
+function create():userCreateInterface{
     return {
 
         user: {
