@@ -15,8 +15,34 @@
     
     <h2>Ts course</h2>
 
-    <div x-data="create()">
-        <button x-on:click="create" id="create">Create</button>
+    <div class="container">
+
+        <div x-data="create()">
+            <form action="" method="" x-on:submit.prevent="createUser">
+                <div class="mb-3 mt-5">
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First name" x-model="user.firstName">
+                </div>
+
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last name" x-model="user.lastName">
+                </div>
+
+                <div class="mb-3">
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" x-model="user.email">
+                </div>
+                
+                <div class="mb-3">
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" x-model="user.password">
+                </div>
+
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+
+                <button type="submit" class="btn btn-outline-primary btn-sm mt-4">Create</button>
+
+                <span id="error"></span>
+            </form>
+        </div>
+
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>

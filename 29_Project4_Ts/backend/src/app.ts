@@ -6,6 +6,7 @@ import home from '../routes/home';
 import user from '../routes/user';
 
 const app = express();
+app.use(express.json());
 
 app.use(cors({
     origin:['http://localhost:5000'],
