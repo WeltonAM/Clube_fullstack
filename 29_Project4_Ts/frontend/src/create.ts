@@ -1,5 +1,6 @@
 import http from "./helpers/http";
 import { userCreateInterface } from "../interfaces/userCreateInterface";
+import { errorValidateInterface } from "../interfaces/errorValidateInterface";
 
 function create():userCreateInterface{
     return {
@@ -23,7 +24,7 @@ function create():userCreateInterface{
                 const elementValidation = document.querySelector('#error') as HTMLSpanElement;
 
                 if(errors){
-                    errors.forEach((element) => {
+                    errors.forEach((element:errorValidateInterface) => {
                         elementValidation.innerHTML = element.msg;
                         setTimeout(() => {
                             elementValidation.innerHTML = '';
