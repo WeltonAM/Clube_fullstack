@@ -36,3 +36,5 @@
 17-Sequelize
 
 18-Typescript
+
+https://drive.google.com/file/d/1qY-3VziTXkG-TT_Dq_CUxNpJqpjbf2HF/view
