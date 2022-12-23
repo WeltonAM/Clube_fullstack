@@ -1,5 +1,6 @@
-import express from 'express';
-import cors from 'cors';
+import * as express from 'express';
+import * as cors from 'cors';
+import '../database/src';
 
 // routes
 import home from '../routes/home';
@@ -16,5 +17,5 @@ app.use('/', home);
 app.use('/user', user);
 
 app.listen(3000, ()=>{
-    console.log('Server on 🔥')
+    console.log('Running server 🔥')
 });

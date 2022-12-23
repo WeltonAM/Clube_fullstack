@@ -14,8 +14,6 @@ function create():userCreateInterface{
 
         createUser: async function(){
             try{
-                // console.log( await this.user);
-                
                 const {data} = await http.post('/user/create', this.user); 
                 console.log(data);
                 

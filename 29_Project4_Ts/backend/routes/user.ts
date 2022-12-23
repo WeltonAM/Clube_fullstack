@@ -1,4 +1,4 @@
-import express from 'express';
+import * as express from 'express';
 import {store} from '../controllers/User';
 import {userStoreValidate} from '../validations/user';
 
