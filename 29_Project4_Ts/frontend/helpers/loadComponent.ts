@@ -8,6 +8,7 @@ interface routerInterface<T>{
 }
 interface componentInterface{
     render: () => string,
+    action?: () => void,
 }
 
 const routes:routerInterface<componentInterface> = {
@@ -28,6 +29,10 @@ const loadComponentHtml = function(component:string, placeholder:string, uri:str
     !componentHtml ? 
     (componentHtml = Error404) :
     (content.innerHTML = componentHtml.render());
+
+    if(componentHtml.action){
+        componentHtml.action();
+    }
 }
 
 export default loadComponentHtml;
