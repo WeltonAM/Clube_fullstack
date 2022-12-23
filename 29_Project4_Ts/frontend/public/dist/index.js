@@ -30,6 +30,17 @@ eval("/*!\n* sweetalert2 v11.6.16\n* Released under the MIT License.\n*/\n(funct
 
 /***/ }),
 
+/***/ "./components/Home.ts":
+/*!****************************!*\
+  !*** ./components/Home.ts ***!
+  \****************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nfunction component() {\r\n    const render = function () {\r\n        return `Home`;\r\n    };\r\n    return {\r\n        render,\r\n    };\r\n}\r\nexports[\"default\"] = component();\r\n\n\n//# sourceURL=webpack://frontend/./components/Home.ts?");
+
+/***/ }),
+
 /***/ "./src/create.ts":
 /*!***********************!*\
   !*** ./src/create.ts ***!
@@ -70,7 +81,7 @@ eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod)
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
-eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\n__webpack_require__(/*! alpinejs */ \"./node_modules/alpinejs/dist/module.esm.js\");\r\nconst create_1 = __importDefault(__webpack_require__(/*! ./create */ \"./src/create.ts\"));\r\nwindow.create = create_1.default;\r\n\n\n//# sourceURL=webpack://frontend/./src/index.ts?");
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\n__webpack_require__(/*! alpinejs */ \"./node_modules/alpinejs/dist/module.esm.js\");\r\nconst create_1 = __importDefault(__webpack_require__(/*! ./create */ \"./src/create.ts\"));\r\nconst Home_1 = __importDefault(__webpack_require__(/*! ../components/Home */ \"./components/Home.ts\"));\r\nfunction loadComponent() {\r\n    const content = document.querySelector(\"#content\");\r\n    content.innerHTML = Home_1.default.render();\r\n    // content.innerHTML = CreateUser.render();\r\n}\r\nloadComponent();\r\nwindow.addEventListener('hashchange', () => {\r\n    loadComponent();\r\n});\r\nwindow.create = create_1.default;\r\n\n\n//# sourceURL=webpack://frontend/./src/index.ts?");
 
 /***/ }),
 
