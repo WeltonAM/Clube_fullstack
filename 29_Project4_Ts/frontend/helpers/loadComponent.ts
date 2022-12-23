@@ -7,7 +7,7 @@ interface routerInterface<T>{
     [id:string]:T,
 }
 interface componentInterface{
-    render: () => string,
+    render: () => string | Promise<string>,
     action?: () => void,
 }
 
@@ -18,7 +18,7 @@ const routes:routerInterface<componentInterface> = {
     // '/login': CreateUser,
 }
 
-const loadComponentHtml = function(component:string, placeholder:string, uri:string)
+const loadComponentHtml = async function(component:string, placeholder:string, uri:string)
 {
     const content = document.querySelector("#content") as HTMLDivElement;
 
@@ -30,7 +30,7 @@ const loadComponentHtml = function(component:string, placeholder:string, uri:str
         componentHtml = Error404;
     }
 
-    content.innerHTML = componentHtml.render();
+    content.innerHTML = await componentHtml.render();
 
     if(componentHtml.action){
         componentHtml.action();

@@ -1,4 +1,5 @@
 import hashInfo from "../helpers/hashInfo";
+import http from "../src/helpers/http";
 
 function component()
 {
@@ -8,8 +9,32 @@ function component()
     //     return param();
     // };
 
-    const render = function()
+    const user = async function(){
+        try {
+            const {param} = hashInfo();
+            const id = param();
+            const {data} = await http.get('/user/show', {
+                params: {
+                    id,
+                },
+            });
+            
+            return data;
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const render = async function()
     {
+        const userData:{
+            id:number,
+            firstName:string,
+            lastName:string,
+            email:string,
+        } = await user();
+
         return `
             <form id="formCreateUser">
                 <input id="firstName" >
