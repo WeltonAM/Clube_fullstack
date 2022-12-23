@@ -1,9 +1,12 @@
 import http from "./helpers/http";
 import { userCreateInterface } from "../interfaces/userCreateInterface";
 import { errorValidateInterface } from "../interfaces/errorValidateInterface";
+import { USER_CREATED } from "./helpers/constants";
+import Swal from 'sweetalert2';
 
 function create():userCreateInterface{
     return {
+        created: false,
 
         user: {
             firstName: '',
@@ -14,20 +17,27 @@ function create():userCreateInterface{
 
         createUser: async function(){
             try{
-                const {data} = await http.post('/user/create', this.user); 
+                const {data} = await http.post('/user/store', this.user); 
                 console.log(data);
+
+                if(data === USER_CREATED){
+                    Swal.fire(
+                        'Success!',
+                        'User created successfully!',
+                        'success',
+                    );
+                }
                 
             }catch (error:any){
                 const errors = error.response?.data?.errors;
-                const elementValidation = document.querySelector('#error') as HTMLSpanElement;
 
                 if(errors){
                     errors.forEach((element:errorValidateInterface) => {
-                        elementValidation.innerHTML = element.msg;
-                        setTimeout(() => {
-                            elementValidation.innerHTML = '';
-                            
-                        }, 3000);
+                        Swal.fire(
+                            'Error!',
+                            element.msg,
+                            'error',
+                        );
                     });
                     
                     // errors.forEach(element => {

@@ -1,9 +1,18 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm"
+import {
+    Entity,
+    Tree,
+    Column,
+    PrimaryGeneratedColumn,
+    TreeChildren,
+    TreeParent,
+    TreeLevelColumn,
+} from "typeorm"
 
 @Entity('users')
+@Tree("nested-set")
 export class User {
 
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn('increment')
     id:number;
 
     @Column({

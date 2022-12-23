@@ -18,6 +18,11 @@
     <div class="container">
 
         <div x-data="create()">
+
+            <div x-show="created">
+                User created successfully!
+            </div>
+
             <form action="" method="" x-on:submit.prevent="createUser">
                 <div class="mb-3 mt-5">
                     <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First name" x-model="user.firstName">
