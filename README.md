@@ -1,40 +1,11 @@
 # Clube_fullstack
- Full stack course Udemy
+Full stack course Udemy
 
-01-PHP
+## 🚀 Technologies learned:
 
-02-PHP-professional
+PHP: Object oriented | Composer | Design Patterns | JWT | MVC | ActiveRecord | PDO | Lumen | Laravel
 
-03-PHP OO
+JavaScript: Ajax | NPM | Node.Js | AlpineJs | Sequelize | Typescript
 
-04-Composer
-
-05-Design Patterns PHP
-
-06-JWT with PHP
-
-07-MVC
-
-08-ActiveRecord
-
-09-PDO
-
-10-Lumen
-
-11-Laravel
-
-12-Ajax
-
-13-JavaScript
-
-14-NPM
-
-15-Node
-
-16-AlpineJs
-
-17-Sequelize
-
-18-Typescript
-
+## 👓 Take a look at the certificate:
 https://drive.google.com/file/d/1qY-3VziTXkG-TT_Dq_CUxNpJqpjbf2HF/view
